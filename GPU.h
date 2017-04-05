@@ -12,7 +12,7 @@ typedef struct color
     int red;
     int green;
     int blue;
-    
+
 } color;
 
 color palette[4];
