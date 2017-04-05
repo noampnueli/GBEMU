@@ -13,12 +13,12 @@
 
 byte memory[MEM_SIZE];
 
-byte read_byte(word addr)
+inline byte read_byte(word addr)
 {
     return memory[addr];
 }
 
-word read_word(word addr)
+inline word read_word(word addr)
 {
     return (word) memory[addr] + (word) (memory[addr + 1] << 8); // little endian
 }
