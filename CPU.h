@@ -1,8 +1,8 @@
-#include "definitions.h"
-#include "MMU.h"
-
 #ifndef GBEMU_CPU_H
 #define GBEMU_CPU_H
+
+#include "definitions.h"
+#include "MMU.h"
 
 class Z80
 {
