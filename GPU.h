@@ -12,11 +12,10 @@ typedef struct color
     int red;
     int green;
     int blue;
-
-//    color(int red, int green, int blue) : red(red), green(green), blue(blue) {}
+    
 } color;
 
-color palette[3];
+color palette[4];
 
 void init_palette()
 {
