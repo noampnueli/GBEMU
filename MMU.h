@@ -7,7 +7,9 @@
 
 #include "definitions.h"
 
-byte memory[0xFFFF];
+#define MEM_SIZE 0xFFFF
+
+byte memory[MEM_SIZE];
 
 byte read_byte(word addr)
 {
@@ -16,7 +18,22 @@ byte read_byte(word addr)
 
 word read_word(word addr)
 {
-    return (word) memory[addr] + (word) (memory[addr + 1] << 8);
+    return (word) memory[addr] + (word) (memory[addr + 1] << 8); // little endian
+}
+
+void write_byte(byte data, word addr)
+{
+    if(addr > MEM_SIZE)
+        throw "Invalid memory access";
+    memory[addr] = data;
+}
+
+void write_word(word data, word addr)
+{
+    if(addr > MEM_SIZE - 1)
+        throw "Invalid memory access";
+    memory[addr] = (byte) (data);   // little endian once again
+    memory[addr + 1] = (byte) (data >> 8);
 }
 
 

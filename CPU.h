@@ -19,7 +19,7 @@ public:
     } r;
 
     regs _r = {}; // init struct members to 0
-    clock clock = {};
+    clock _clock = {};
 
 };
 
