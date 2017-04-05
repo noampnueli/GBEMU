@@ -1,6 +1,9 @@
 #include <iostream>
+#include "CPU.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    std::cout << "Welcome to Gameboy EMU" << std::endl;
+    Z80 cpu;
+
     return 0;
 }
