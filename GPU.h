@@ -1,6 +1,3 @@
-//
-// Created by bubz on 4/5/17.
-//
 
 #ifndef GBEMU_GPU_H
 #define GBEMU_GPU_H
