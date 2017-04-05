@@ -17,7 +17,7 @@ public:
         byte a, b, c, d, e, h, l, f; // 8-bit registers
         word pc, sp; // 16-bit registers
         byte m, t;
-    } r;
+    } regs;
 
     regs _r = {}; // init struct members to 0
     clock _clock = {};
