@@ -1,4 +1,5 @@
 #include "definitions.h"
+#include "MMU.h"
 
 #ifndef GBEMU_CPU_H
 #define GBEMU_CPU_H
@@ -25,6 +26,19 @@ public:
     {
         _r = {};
         _clock = {};
+    }
+
+    // TODO finish and test
+    void dispatcher()
+    {
+        while(1)
+        {
+            byte op = read_byte(_r.pc++);
+            // TODO execute function according to opcode
+            _r.pc &= 65535; // TODO check if needed
+            _clock.m += _r.m; // add time to CPU clock
+            _clock.t += _r.t;
+        }
     }
 
     bool isZero()
