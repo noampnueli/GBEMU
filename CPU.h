@@ -21,6 +21,12 @@ public:
     regs _r = {}; // init struct members to 0
     clock _clock = {};
 
+    void reset()
+    {
+        _r = {};
+        _clock = {};
+    }
+
     bool isZero()
     {
         return (_r.f & 0x80) > 0; // remove non-related bits, check if zero is on
