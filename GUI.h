@@ -62,4 +62,9 @@ bool is_left_arrow()
     return (event.type == SDL_KEYDOWN) && (event.key.keysym.sym == SDLK_LEFT);
 }
 
+bool gameboy_keys_pressed() // TODO add A, B, Start, Select
+{
+    return is_up_arrow() || is_down_arrow() || is_right_arrow() || is_left_arrow();
+}
+
 #endif //GBEMU_GUI_H
