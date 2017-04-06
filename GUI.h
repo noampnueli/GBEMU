@@ -32,31 +32,31 @@ void create_window(const int width, const int height)
  * @param b blue
  * @param a alpha
  */
-void setPixel(int x, int y, int r, int g, int b, int a)
+void set_pixel(int x, int y, int r, int g, int b, int a)
 {
     SDL_SetRenderDrawColor(renderer, r, g, b, a);
     SDL_RenderDrawPoint(renderer, x, y);
 }
 
-bool isUpArrow()
+bool is_up_arrow()
 {
     SDL_PollEvent(&event);
     return (event.type == SDL_KEYDOWN) && (event.key.keysym.sym == SDLK_UP);
 }
 
-bool isDownArrow()
+bool is_down_arrow()
 {
     SDL_PollEvent(&event);
     return (event.type == SDL_KEYDOWN) && (event.key.keysym.sym == SDLK_DOWN);
 }
 
-bool isRightArrow()
+bool is_right_arrow()
 {
     SDL_PollEvent(&event);
     return (event.type == SDL_KEYDOWN) && (event.key.keysym.sym == SDLK_RIGHT);
 }
 
-bool isLeftArrow()
+bool is_left_arrow()
 {
     SDL_PollEvent(&event);
     return (event.type == SDL_KEYDOWN) && (event.key.keysym.sym == SDLK_LEFT);
