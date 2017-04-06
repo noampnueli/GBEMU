@@ -27,9 +27,19 @@ void opcode_0x02(Z80& cpu)
     write_byte(cpu._r.a, (word) ((cpu._r.b << 8) + cpu._r.c));
     cpu._r.m = 2;
 }
+
 void opcode_0x03(Z80& cpu)
 {
+    if(!cpu._r.c)
+        cpu._r.b = (byte) ((cpu._r.b + 1) & 0xFF);
+    else
+        cpu._r.c = (byte) ((cpu._r.c + 1) & 0xFF);
+    cpu._r.m = 1;
+}
 
+void opcode_0x04(Z80& cpu)
+{
+    cpu.add(cpu._r.b, 1);
 }
 
 void opcode_0x10()
@@ -53,8 +63,10 @@ void opcode_0x12(Z80& cpu)
 
 void opcode_0x13(Z80& cpu)
 {
-    cpu._r.e = (cpu._r.e + 1) & 255;
-    cpu.add(&cpu._r.e,1);
+    cpu.add(cpu._r.e, 1);
+    if(!cpu._r.e)
+        cpu.add(cpu._r.d, 1);
+    cpu._r.m = 1;
 }
 
 #endif //GBEMU_OPCODES_H
