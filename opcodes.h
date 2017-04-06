@@ -59,6 +59,7 @@ void opcode_0x11(Z80& cpu)
 void opcode_0x12(Z80& cpu)
 {
     write_byte(cpu._r.a, (cpu._r.d << 8) + cpu._r.e);
+    cpu._r.m = 3;
 }
 
 void opcode_0x13(Z80& cpu)
@@ -66,6 +67,18 @@ void opcode_0x13(Z80& cpu)
     cpu.add(cpu._r.e, 1);
     if(!cpu._r.e)
         cpu.add(cpu._r.d, 1);
+    cpu._r.m = 1;
+}
+
+void opcode_0x14(Z80& cpu)
+{
+    cpu.add(cpu._r.d, 1);
+    cpu._r.m = 1;
+}
+
+void opcode_0x15(Z80& cpu)
+{
+    cpu.sub(cpu._r.d, 1);
     cpu._r.m = 1;
 }
 
