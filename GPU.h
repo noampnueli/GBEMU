@@ -4,7 +4,7 @@
 
 #include <SDL2/SDL.h>
 
-typedef struct color
+static typedef struct color
 {
     int red;
     int green;
@@ -12,14 +12,23 @@ typedef struct color
 
 } color;
 
-color palette[4];
-
-void init_palette()
+class GPU
 {
-    palette[0] = {255, 255, 255};
-    palette[1] = {192, 192, 192};
-    palette[2] = {96, 96, 96};
-    palette[3] = {0, 0, 0};
-}
+private:
+    color palette[4];
 
+    void init_palette()
+    {
+        palette[0] = {255, 255, 255};
+        palette[1] = {192, 192, 192};
+        palette[2] = {96, 96, 96};
+        palette[3] = {0, 0, 0};
+    }
+
+public:
+    GPU()
+    {
+        init_palette();
+    }
+};
 #endif //GBEMU_GPU_H
