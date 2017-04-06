@@ -3,6 +3,6 @@
 #define GBEMU_DEFINITIONS_H
 
 typedef char byte;
-typedef short word;
+typedef unsigned short word;
 
 #endif //GBEMU_DEFINITIONS_H
