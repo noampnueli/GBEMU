@@ -18,8 +18,6 @@ int main() {
 
     std::cout << "Welcome to Gameboy EMU" << std::endl << std::endl;
     boot();
-    for(word i = 0; i < 16; i+=2)
-        printf("%02x\n", read_word(cpu._r.pc + i));
 
 //    create_window(160, 144);
 //    while(1){
