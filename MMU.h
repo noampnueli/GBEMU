@@ -20,7 +20,7 @@ inline byte read_byte(word addr)
 
 inline word read_word(word addr)
 {
-    return (word) memory[addr] + (word) (memory[addr + 1] << 8); // little endian
+    return (word) (memory[addr]) + (word) (memory[addr + 1] << 8); // little endian
 }
 
 void write_byte(byte data, word addr)
@@ -42,6 +42,8 @@ void load_ROM(const char* file_name) // TODO: Test when time has come
 {
     std::ifstream rom_file;
     rom_file.open(file_name);
+    if(!rom_file.good())
+        std::cout << "Can't find ROM" << std::endl;
 
     rom_file >> memory;
 
