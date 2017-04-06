@@ -3,7 +3,7 @@
 #include "GUI.h"
 
 Z80 cpu;
-char* rom_file_name = (char *) "/home/bubz/ClionProjects/GBEMU/Tetris.gb";
+char* rom_file_name = (char *) "Tetris.gb";
 
 void boot()
 {
@@ -15,6 +15,7 @@ void boot()
 }
 
 int main() {
+
     std::cout << "Welcome to Gameboy EMU" << std::endl << std::endl;
     boot();
     for(word i = 0; i < 16; i+=2)
