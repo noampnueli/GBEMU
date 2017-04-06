@@ -101,4 +101,11 @@ void opcode_0x15(Z80& cpu)
     cpu._r.m = 1;
 }
 
+void opcode_0x16(Z80& cpu)
+{
+    cpu._r.d = read_byte(cpu._r.pc);
+    cpu._r.pc++;
+    cpu._r.m = 1;
+}
+
 #endif //GBEMU_OPCODES_H
