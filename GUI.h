@@ -22,4 +22,19 @@ void create_window(const int width, const int height)
     SDL_RenderClear(renderer);
 }
 
+/**
+ * set a pixel on the SDL windows
+ * @param x x location
+ * @param y y location
+ * @param r red
+ * @param g green
+ * @param b blue
+ * @param a alpha
+ */
+void setPixel(int x, int y, int r, int g, int b, int a)
+{
+    SDL_SetRenderDrawColor(renderer, r, g, b, a);
+    SDL_RenderDrawPoint(renderer, x, y);
+}
+
 #endif //GBEMU_GUI_H
