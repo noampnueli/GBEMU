@@ -39,6 +39,12 @@ void opcode_0x03(Z80& cpu)
 void opcode_0x04(Z80& cpu)
 {
     cpu.add(cpu._r.b, 1);
+    cpu._r.m = 1;
+}
+
+void opcode_0x05(Z80& cpu)
+{
+    
 }
 
 #endif //GBEMU_OPCODES_H
