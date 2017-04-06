@@ -45,7 +45,6 @@ void load_ROM(const char* file_name) // TODO: Test when time has come
     if(!rom_file.good())
         std::cout << "Can't find ROM" << std::endl;
 
-//    rom_file >> memory;
     rom_file.read((char *) memory, 32768);
 
     rom_file.close();
