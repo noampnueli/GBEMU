@@ -3,7 +3,7 @@
 #include "GUI.h"
 
 Z80 cpu;
-char* rom_file_name = (char *) "/home/bubz/ClionProjects/GBEMU/Tetris.gb";
+char* rom_file_name = (char *) "Tetris.gb";
 
 void boot()
 {
