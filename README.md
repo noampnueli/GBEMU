@@ -1,5 +1,5 @@
 # GBEMU
-GameBoy classic emulator
+GameBoy classic emulator. Graphics powered by SDL 2.
 
 Noam Pnueli
 
