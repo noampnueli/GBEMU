@@ -45,7 +45,20 @@ void opcode_0x04(Z80& cpu)
 
 void opcode_0x05(Z80& cpu)
 {
-    
+    cpu.sub(cpu._r.b, 1);
+    cpu._r.m = 1;
+}
+
+void opcode_0x06(Z80& cpu)
+{
+    cpu._r.b = read_byte(cpu._r.pc);
+    cpu._r.pc++;
+    cpu._r.m = 1;
+}
+
+void opcode_0x07(Z80& cpu)
+{
+    cpu.set_carry((bool) (cpu._r.a & 0x80));
 }
 
 void opcode_0x10()
