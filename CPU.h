@@ -41,7 +41,7 @@ public:
         }
     }
 
-    void add(byte& reg1, byte& reg2)
+    void add(byte& reg1, byte reg2)
     {
         if ((((reg1 & 0x0F) + (reg2 & 0x0F)) & 0x10) == 0x10)
             set_half_carry(1);
@@ -55,7 +55,7 @@ public:
         set_operation(0);
     }
 
-    void add(word& reg1, word& reg2)
+    void add(word& reg1, word reg2)
     {
         if ((((reg1 & 0xFF) + (reg2 & 0xFF)) & 0x10) == 0x10)
             set_half_carry(1);
@@ -69,7 +69,7 @@ public:
         set_operation(0);
     }
 
-    void sub(byte& reg1, byte& reg2)
+    void sub(byte& reg1, byte reg2)
     {
         if (reg1 < 0 && reg2 > (255 + reg1))
             set_carry(1);
@@ -81,7 +81,7 @@ public:
         set_operation(1);
     }
 
-    void sub(word& reg1, word& reg2)
+    void sub(word& reg1, word reg2)
     {
         if (reg1 < 0 && reg2 > (0xFF + reg1))
             set_carry(1);

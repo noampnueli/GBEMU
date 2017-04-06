@@ -29,7 +29,16 @@ void opcode_0x02(Z80& cpu)
 
 void opcode_0x03(Z80& cpu)
 {
-    
+    if(!cpu._r.c)
+        cpu._r.b = (byte) ((cpu._r.b + 1) & 0xFF);
+    else
+        cpu._r.c = (byte) ((cpu._r.c + 1) & 0xFF);
+    cpu._r.m = 1;
+}
+
+void opcode_0x04(Z80& cpu)
+{
+    cpu.add(cpu._r.b, 1);
 }
 
 #endif //GBEMU_OPCODES_H
