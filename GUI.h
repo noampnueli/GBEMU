@@ -7,6 +7,7 @@
 SDL_Window* window;
 SDL_Surface* surface;
 SDL_Renderer* renderer;
+SDL_Event event;
 
 void create_window(const int width, const int height)
 {
@@ -35,6 +36,30 @@ void setPixel(int x, int y, int r, int g, int b, int a)
 {
     SDL_SetRenderDrawColor(renderer, r, g, b, a);
     SDL_RenderDrawPoint(renderer, x, y);
+}
+
+bool isUpArrow()
+{
+    SDL_PollEvent(&event);
+    return (event.type == SDL_KEYDOWN) && (event.key.keysym.sym == SDLK_UP);
+}
+
+bool isDownArrow()
+{
+    SDL_PollEvent(&event);
+    return (event.type == SDL_KEYDOWN) && (event.key.keysym.sym == SDLK_DOWN);
+}
+
+bool isRightArrow()
+{
+    SDL_PollEvent(&event);
+    return (event.type == SDL_KEYDOWN) && (event.key.keysym.sym == SDLK_RIGHT);
+}
+
+bool isLeftArrow()
+{
+    SDL_PollEvent(&event);
+    return (event.type == SDL_KEYDOWN) && (event.key.keysym.sym == SDLK_LEFT);
 }
 
 #endif //GBEMU_GUI_H
