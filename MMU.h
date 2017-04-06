@@ -43,10 +43,7 @@ void load_ROM(const char* file_name) // TODO: Test when time has come
     std::ifstream rom_file;
     rom_file.open(file_name);
 
-    while(!rom_file.eof())
-    {
-        rom_file >> memory;
-    }
+    rom_file >> memory;
 
     rom_file.close();
 }
