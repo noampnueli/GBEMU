@@ -17,6 +17,10 @@ void boot()
 int main() {
     std::cout << "Welcome to Gameboy EMU" << std::endl << std::endl;
     boot();
+    for(int i = 0; i < 16; i+=2) {
+        printf("%x: ", i);
+        std::cout << std::hex << read_word(cpu._r.pc + i) << std::endl;
+    }
 //    create_window(160, 144);
 //    while(1){
 //        SDL_RenderPresent(renderer);

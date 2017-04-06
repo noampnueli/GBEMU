@@ -20,7 +20,7 @@ inline byte read_byte(word addr)
 
 inline word read_word(word addr)
 {
-    return (word) memory[addr] + (word) (memory[addr + 1] << 8); // little endian
+    return (word) (memory[addr] & 0xFF) + (word) ((memory[addr + 1] << 8) & 0xFF00); // little endian
 }
 
 void write_byte(byte data, word addr)
