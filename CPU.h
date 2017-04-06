@@ -93,6 +93,38 @@ public:
         set_operation(1);
     }
 
+    void xor_reg(byte n)
+    {
+        _r.a ^= n;
+        reset_flags();
+        if (_r.a == 0) {
+            set_zero(1);
+        }
+    }
+
+    void or_reg(byte n)
+    {
+        _r.a |= n;
+        reset_flags();
+        if (_r.a == 0) {
+            set_zero(1);
+        }
+    }
+
+    void and_reg(byte n)
+    {
+        _r.a &= n;
+        reset_flags();
+        if (_r.a == 0) {
+            set_zero(1);
+        }
+    }
+
+    void reset_flags()
+    {
+        _r.f = 0;
+    }
+
     bool is_zero()
     {
         return (_r.f & 0x80) > 0; // remove non-related bits, check if zero is on
