@@ -5,6 +5,7 @@
 #include "CPU.h"
 #include "GUI.h"
 #include "MMU.h"
+#include "CPU.h"
 #include <csignal>
 
 void opcode_0x00(Z80& cpu)
