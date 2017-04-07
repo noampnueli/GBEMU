@@ -1453,7 +1453,8 @@ void opcode_0xEF(Z80& cpu)
 
 void opcode_0xF0(Z80& cpu)
 {
-
+    cpu._r.a = read_byte((word) (0xFF00 + cpu._r.pc));
+    cpu._r.m = 2;
 }
 
 void opcode_0xF1(Z80& cpu)
@@ -1502,27 +1503,29 @@ void opcode_0xF8(Z80& cpu)
 
 void opcode_0xF9(Z80& cpu)
 {
-
+    cpu._r.sp = ((word) cpu._r.h) << 8 + cpu._r.l;
+    cpu._r.m = 3;
 }
 
 void opcode_0xFA(Z80& cpu)
 {
-
+    cpu._r.a = read_byte(cpu._r.pc++);
+    cpu._r.m = 2;
 }
 
 void opcode_0xFB(Z80& cpu)
 {
-
+    throw "Enable interrupts not here yet"; // TODO
 }
 
 void opcode_0xFC(Z80& cpu)
 {
-
+    throw "Invalid instruction 0xFC";
 }
 
 void opcode_0xFD(Z80& cpu)
 {
-
+    throw "Invalid instruction 0xFD";
 }
 
 void opcode_0xFE(Z80& cpu)
@@ -1532,7 +1535,9 @@ void opcode_0xFE(Z80& cpu)
 
 void opcode_0xFF(Z80& cpu)
 {
-
+    cpu.push((word) (cpu._r.pc + 2));
+    cpu._r.pc = 0x38;
+    cpu._r.m = 3;
 }
 
 #endif //GBEMU_OPCODES_H
