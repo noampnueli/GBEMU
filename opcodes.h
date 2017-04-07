@@ -7,12 +7,9 @@
 #include "MMU.h"
 #include <csignal>
 
-void opcode_0x00()
+void opcode_0x00(Z80& cpu)
 {
-    asm
-    {
-        NOP
-    }
+    // There was ASM here once
 }
 
 void opcode_0x01(Z80& cpu)
@@ -437,7 +434,7 @@ void opcode_0x39(Z80& cpu)
 
 void opcode_0x40(Z80& cpu)
 {
-    opcode_0x00(); // y u du dis Z80 ?
+    opcode_0x00(cpu); // y u du dis Z80 ?
     cpu._r.m = 1;
 }
 
@@ -492,7 +489,7 @@ void opcode_0x48(Z80& cpu)
 
 void opcode_0x49(Z80& cpu)
 {
-    opcode_0x00();
+    opcode_0x00(cpu);
 }
 
 void opcode_0x4A(Z80& cpu)
@@ -546,7 +543,7 @@ void opcode_0x51(Z80& cpu)
 
 void opcode_0x52(Z80& cpu)
 {
-    opcode_0x00();
+    opcode_0x00(cpu);
     cpu._r.m = 1;
 }
 
@@ -600,7 +597,7 @@ void opcode_0x5A(Z80& cpu)
 
 void opcode_0x5B(Z80& cpu)
 {
-    opcode_0x00();
+    opcode_0x00(cpu);
     cpu._r.m = 1;
 }
 
@@ -825,7 +822,7 @@ void opcode_0x7E(Z80& cpu)
 
 void opcode_0x7F(Z80& cpu)
 {
-    opcode_0x00();
+    opcode_0x00(cpu);
 }
 
 void opcode_0x80(Z80& cpu)
@@ -872,7 +869,7 @@ void opcode_0x86(Z80& cpu)
 
 void opcode_0x87(Z80& cpu)
 {
-    opcode_0x00();
+    opcode_0x00(cpu);
     cpu._r.m = 1;
 }
 
@@ -920,7 +917,7 @@ void opcode_0x8E(Z80& cpu)
 
 void opcode_0x8F(Z80& cpu)
 {
-    opcode_0x00();
+    opcode_0x00(cpu);
     cpu._r.m = 1;
 }
 

@@ -1,6 +1,7 @@
 #include <iostream>
 #include "CPU.h"
 #include "GUI.h"
+#include "opmap.h"
 
 Z80 cpu;
 char* rom_file_name = (char *) "Tetris.gb";
@@ -18,6 +19,7 @@ int main() {
 
     std::cout << "[*] Welcome to Gameboy EMU" << std::endl << std::endl;
     boot();
+    opmap[0](cpu);
 
 //    create_window(160, 144);
 //    while(1){

@@ -165,22 +165,22 @@ public:
     void pop(byte& high, byte& low)
     {
         low = read_byte(_r.sp++);
-        high = read_bte(_r.sp++);
+        high = read_byte(_r.sp++);
         _r.m = 3;
     }
 
     void push(word nn)
     {
-        write_word(nn, cpu._r.sp);
-        cpu._r.sp -= 2;
-        cpu._r.m = 3;
+        write_word(nn, _r.sp);
+        _r.sp -= 2;
+        _r.m = 3;
     }
 
     void call()
     {
-        push(cpu._r.pc + 2);
-        cpu._r.pc = read_word(cpu._r.pc);
-        cpu._r.m += 3;
+        push(_r.pc + 2);
+        _r.pc = read_word(_r.pc);
+        _r.m += 3;
     }
 
     void reset_flags()
