@@ -1367,4 +1367,164 @@ void opcode_0xDF(Z80& cpu)
     cpu._r.pc = 0x18;
 }
 
+void opcode_0xE0(Z80& cpu)
+{
+
+}
+
+void opcode_0xE1(Z80& cpu)
+{
+
+}
+
+void opcode_0xE2(Z80& cpu)
+{
+
+}
+
+void opcode_0xE3(Z80& cpu)
+{
+
+}
+
+void opcode_0xE4(Z80& cpu)
+{
+
+}
+
+void opcode_0xE5(Z80& cpu)
+{
+
+}
+
+void opcode_0xE6(Z80& cpu)
+{
+
+}
+
+void opcode_0xE7(Z80& cpu)
+{
+
+}
+
+void opcode_0xE8(Z80& cpu)
+{
+
+}
+
+void opcode_0xE9(Z80& cpu)
+{
+
+}
+
+void opcode_0xEA(Z80& cpu)
+{
+
+}
+
+void opcode_0xEB(Z80& cpu)
+{
+
+}
+
+void opcode_0xEC(Z80& cpu)
+{
+
+}
+
+void opcode_0xED(Z80& cpu)
+{
+
+}
+
+void opcode_0xEE(Z80& cpu)
+{
+
+}
+
+void opcode_0xEF(Z80& cpu)
+{
+
+}
+
+void opcode_0xF0(Z80& cpu)
+{
+
+}
+
+void opcode_0xF1(Z80& cpu)
+{
+
+}
+
+void opcode_0xF2(Z80& cpu)
+{
+
+}
+
+void opcode_0xF3(Z80& cpu)
+{
+
+}
+
+void opcode_0xF4(Z80& cpu)
+{
+
+}
+
+void opcode_0xF5(Z80& cpu)
+{
+
+}
+
+void opcode_0xF6(Z80& cpu)
+{
+
+}
+
+void opcode_0xF7(Z80& cpu)
+{
+
+}
+
+void opcode_0xF8(Z80& cpu)
+{
+
+}
+
+void opcode_0xF9(Z80& cpu)
+{
+
+}
+
+void opcode_0xFA(Z80& cpu)
+{
+
+}
+
+void opcode_0xFB(Z80& cpu)
+{
+
+}
+
+void opcode_0xFC(Z80& cpu)
+{
+
+}
+
+void opcode_0xFD(Z80& cpu)
+{
+
+}
+
+void opcode_0xFE(Z80& cpu)
+{
+
+}
+
+void opcode_0xFF(Z80& cpu)
+{
+
+}
+
 #endif //GBEMU_OPCODES_H
