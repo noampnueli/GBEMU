@@ -1207,17 +1207,19 @@ void opcode_0xC2(Z80& cpu)
 
 void opcode_0xC4(Z80& cpu)
 {
-
+    if(!cpu.is_zero())
+        cpu.call(read_word(cpu._r.pc));
 }
 
 void opcode_0xC5(Z80& cpu)
 {
-
+    cpu.push((word) cpu._r.b << 8 + cpu._r.c);
 }
 
 void opcode_0xC6(Z80& cpu)
 {
-
+    cpu._r.a += read_byte(cpu._r.pc++);
+    cpu._r.m = 2;
 }
 
 void opcode_0xC7(Z80& cpu)

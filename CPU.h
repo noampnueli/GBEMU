@@ -180,6 +180,7 @@ public:
     {
         push(++cpu._r.pc);
         cpu._r.pc = read_word(cpu._r.pc);
+        cpu._r.pc += 2;
         cpu._r.m += 3;
     }
 
