@@ -121,6 +121,7 @@ public:
         if (_r.a == 0) {
             set_zero(1);
         }
+        _r.m = 1;
     }
 
     void or_reg(byte n)
@@ -130,6 +131,7 @@ public:
         if (_r.a == 0) {
             set_zero(1);
         }
+        _r.m = 1;
     }
 
     void and_reg(byte n)
@@ -139,6 +141,8 @@ public:
         if (_r.a == 0) {
             set_zero(1);
         }
+        set_half_carry(1);
+        _r.m = 1;
     }
 
     void reset_flags()

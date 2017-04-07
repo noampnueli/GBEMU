@@ -25,7 +25,7 @@ void opcode_0x01(Z80& cpu)
 
 void opcode_0x02(Z80& cpu)
 {
-    write_byte(cpu._r.a, (word) ((word) (cpu._r.b << 8) + cpu._r.c));
+    write_byte(cpu._r.a, (word) cpu._r.b << 8 + cpu._r.c);
     cpu._r.m = 2;
 }
 
@@ -1023,82 +1023,82 @@ void opcode_0x9F(Z80& cpu)
 
 void opcode_0xA0(Z80& cpu)
 {
-
+    cpu.and_reg(cpu._r.b);
 }
 
 void opcode_0xA1(Z80& cpu)
 {
-
+    cpu.and_reg(cpu._r.c);
 }
 
 void opcode_0xA2(Z80& cpu)
 {
-
+    cpu.and_reg(cpu._r.d);
 }
 
 void opcode_0xA3(Z80& cpu)
 {
-
+    cpu.and_reg(cpu._r.e);
 }
 
 void opcode_0xA4(Z80& cpu)
 {
-
+    cpu.and_reg(cpu._r.h);
 }
 
 void opcode_0xA5(Z80& cpu)
 {
-
+    cpu.and_reg(cpu._r.l);
 }
 
 void opcode_0xA6(Z80& cpu)
 {
-
+    cpu.and_reg(read_byte((word)cpu._r.h << 8 + cpu._r.l));
 }
 
 void opcode_0xA7(Z80& cpu)
 {
-
+    cpu.and_reg(cpu._r.a);
 }
 
 void opcode_0xA8(Z80& cpu)
 {
-
+    cpu.xor_reg(cpu._r.b);
 }
 
 void opcode_0xA9(Z80& cpu)
 {
-
+    cpu.xor_reg(cpu._r.c);
 }
 
 void opcode_0xAA(Z80& cpu)
 {
-
+    cpu.xor_reg(cpu._r.d);
 }
 
 void opcode_0xAB(Z80& cpu)
 {
-
+    cpu.xor_reg(cpu._r.e);
 }
 
 void opcode_0xAC(Z80& cpu)
 {
-
+    cpu.xor_reg(cpu._r.h);
 }
 
 void opcode_0xAD(Z80& cpu)
 {
-
+    cpu.xor_reg(cpu._r.l);
 }
 
 void opcode_0xAE(Z80& cpu)
 {
-
+    cpu.xor_reg(read_byte((word)cpu._r.h << 8 + cpu._r.l));
 }
 
 void opcode_0xAF(Z80& cpu)
 {
-
+    cpu.xor_reg(cpu._r.a);
 }
 
 
