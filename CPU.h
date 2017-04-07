@@ -3,6 +3,7 @@
 
 #include "definitions.h"
 #include "MMU.h"
+//#include "opmap.h"
 
 class Z80
 {
@@ -34,8 +35,9 @@ public:
         while(1)
         {
             byte op = read_byte(_r.pc++);
-            // TODO execute function according to opcode
-            _r.pc &= 65535; // TODO check if needed
+            _r.pc &= 0xFFFF; // TODO check if needed
+//            opmap[op](*this);
+
             _clock.m += _r.m; // add time to CPU clock
             _clock.t += _r.t;
         }

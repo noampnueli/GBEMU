@@ -1,7 +1,7 @@
-#include "opcodes.h"
-
 #ifndef GBEMU_OPMAP_H
 #define GBEMU_OPMAP_H
+
+#include "opcodes.h"
 
 void (*opmap[])(Z80&) =
 {
