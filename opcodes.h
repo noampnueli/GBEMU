@@ -74,6 +74,18 @@ void opcode_0x08(Z80& cpu)
     cpu._r.m = 3;
 }
 
+void opcode_0x09(Z80& cpu)
+{
+    word hl = (cpu._r.h << 8) + cpu._r.l;
+    hl += (cpu._r.b << 8) + cpu._r.c;
+    cpu._r.h = (byte) ((hl >> 8) & 0xFF);
+    cpu._r.l = (byte) (hl & 0xFF);
+    cpu.set_operation(0);
+    cpu.set_half_carry((bool) (cpu._r.l & 0x08));
+    cpu.set_carry((bool) (cpu._r.l & 0x80));
+    cpu._r.m = 3;
+}
+
 void opcode_0x10()
 {
     while(!gameboy_keys_pressed()) // TODO is this legit?
