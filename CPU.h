@@ -79,7 +79,7 @@ public:
         set_half_carry((bool) (low & 0x08));
         set_carry((bool) (low & 0x80));
         set_zero(hl);
-        m = 3;
+        _r.m = 3;
     }
 
     void sub(byte& high, byte& low, word value)
