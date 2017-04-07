@@ -86,6 +86,51 @@ void opcode_0x09(Z80& cpu)
     cpu._r.m = 3;
 }
 
+void opcode_0x0A(Z80& cpu)
+{
+    cpu._r.a = read_byte((cpu._r.b << 8) + cpu._r.c);
+    cpu._r.m = 2;
+}
+
+void opcode_0x0B(Z80& cpu)
+{
+    if(!cpu._r.c)
+        cpu._r.b = (byte) ((cpu._r.b - 1) & 0xFF);
+    else
+        cpu._r.c = (byte) ((cpu._r.c - 1) & 0xFF);
+    cpu._r.m = 1;
+}
+
+void opcode_0x0C(Z80& cpu)
+{
+    cpu._r.c += 1;
+    cpu._r.m = 1;
+}
+
+void opcode_0x0D(Z80& cpu)
+{
+    cpu._r.c -= 1;
+    cpu._r.m = 1;
+}
+
+void opcode_0x0E(Z80& cpu)
+{
+    cpu._r.c = read_byte(cpu._r.pc++);
+    cpu._r.m = 3;
+}
+
+void opcode_0x0F(Z80& cpu)
+{
+    byte carry = (byte) (cpu._r.a & 0x01);
+    cpu.set_carry(carry);
+    cpu.set_operation(0);
+    cpu.set_half_carry(0);
+    cpu._r.a = (cpu._r.a >> 1) + carry;
+    if(cpu._r.a == 0)
+        cpu.set_zero(1);
+    cpu._r.m = 1;
+}
+
 void opcode_0x10()
 {
     while(!gameboy_keys_pressed()) // TODO is this legit?
