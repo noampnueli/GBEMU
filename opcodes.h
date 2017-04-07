@@ -5,6 +5,7 @@
 #include "CPU.h"
 #include "GUI.h"
 #include "MMU.h"
+#include <csignal>
 
 void opcode_0x00()
 {
@@ -726,82 +727,104 @@ void opcode_0x6F(Z80& cpu)
 
 void opcode_0x70(Z80& cpu)
 {
-    
+    word addr = ((word) cpu._r.h << 8) + cpu._r.l;
+    write_word(addr, cpu._r.b);
+    cpu._r.m = 2;
 }
 
 void opcode_0x71(Z80& cpu)
 {
-    
+    word addr = ((word) cpu._r.h << 8) + cpu._r.l;
+    write_word(addr, cpu._r.c);
+    cpu._r.m = 2;
 }
 
 void opcode_0x72(Z80& cpu)
 {
-    
+    word addr = ((word) cpu._r.h << 8) + cpu._r.l;
+    write_word(addr, cpu._r.d);
+    cpu._r.m = 2;
 }
 
 void opcode_0x73(Z80& cpu)
 {
-    
+    word addr = ((word) cpu._r.h << 8) + cpu._r.l;
+    write_word(addr, cpu._r.e);
+    cpu._r.m = 2;
 }
 
 void opcode_0x74(Z80& cpu)
 {
-    
+    word addr = ((word) cpu._r.h << 8) + cpu._r.l;
+    write_word(addr, cpu._r.h);
+    cpu._r.m = 2;
 }
 
 void opcode_0x75(Z80& cpu)
 {
-    
+    word addr = ((word) cpu._r.h << 8) + cpu._r.l;
+    write_word(addr, cpu._r.l);
+    cpu._r.m = 2;
 }
 
 void opcode_0x76(Z80& cpu)
 {
-    
+    std::raise(SIGABRT); // lel
 }
 
 void opcode_0x77(Z80& cpu)
 {
-    
+    word addr = ((word) cpu._r.h << 8) + cpu._r.l;
+    write_word(addr, cpu._r.a);
+    cpu._r.m = 2;
 }
 
 void opcode_0x78(Z80& cpu)
 {
-    
+    cpu._r.a = cpu._r.b;
+    cpu._r.m = 1;
 }
 
 void opcode_0x79(Z80& cpu)
 {
-    
+    cpu._r.a = cpu._r.c;
+    cpu._r.m = 1;
 }
 
 void opcode_0x7A(Z80& cpu)
 {
-    
+    cpu._r.a = cpu._r.d;
+    cpu._r.m = 1;
 }
 
 void opcode_0x7B(Z80& cpu)
 {
-    
+    cpu._r.a = cpu._r.e;
+    cpu._r.m = 1;
 }
 
 void opcode_0x7C(Z80& cpu)
 {
-    
+    cpu._r.a = cpu._r.h;
+    cpu._r.m = 1;
 }
 
 void opcode_0x7D(Z80& cpu)
 {
-    
+    cpu._r.a = cpu._r.l;
+    cpu._r.m = 1;
 }
 
 void opcode_0x7E(Z80& cpu)
 {
-    
+    word addr = ((word) cpu._r.h << 8) + cpu._r.l;
+    cpu._r.a = read_byte(addr);
+    cpu._r.m = 2;
 }
 
 void opcode_0x7F(Z80& cpu)
 {
-    
+    opcode_0x00();
 }
 
 void opcode_0x80(Z80& cpu)
