@@ -78,6 +78,7 @@ public:
         set_operation(0);
         set_half_carry((bool) (low & 0x08));
         set_carry((bool) (low & 0x80));
+        set_zero(hl);
         m = 3;
     }
 
@@ -87,10 +88,6 @@ public:
         hl -= value;
         high = (byte) ((hl >> 8) & 0xFF);
         low = (byte) (hl & 0xFF);
-        set_operation(0);
-        set_half_carry((bool) (low & 0x08));
-        set_carry((bool) (low & 0x80));
-        m = 3;
     }
 
     void sub(byte& reg1, byte reg2)
