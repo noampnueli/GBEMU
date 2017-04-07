@@ -328,6 +328,7 @@ void opcode_0x30(Z80& cpu)
 {
     if(!cpu.is_carry())
         opcode_0x18(cpu);
+    cpu._r.m = 3;
 }
 
 void opcode_0x31(Z80& cpu)
@@ -342,6 +343,47 @@ void opcode_0x32(Z80& cpu)
     word HL = (cpu._r.h << 8) + cpu._r.l;
     write_byte(cpu._r.a, HL);
     cpu.sub(cpu._r.h, cpu._r.l, 1);
+    cpu._r.m = 4; // TODO unable to find m so guessed it is m(12) + m(0B)
+}
+
+void opcode_0x33(Z80& cpu)
+{
+    cpu.add(cpu._r.sp, 1);
+    cpu._r.m = 1;
+}
+
+void opcode_0x34(Z80& cpu)
+{
+    word addr = (cpu._r.h << 8) + cpu._r.l;
+    byte val = (byte) ((read_byte(addr) + 1) & 255);
+    write_byte(val, addr);
+    cpu.reset_flags();
+    cpu.set_zero(val == 0);
+    cpu._r.m = 3;
+}
+
+void opcode_0x35(Z80& cpu)
+{
+    word addr = (cpu._r.h << 8) + cpu._r.l;
+    byte val = (byte) ((read_byte(addr) - 1) & 255);
+    write_byte(val, addr);
+    cpu.reset_flags();
+    cpu.set_zero(val == 0);
+    cpu._r.m = 3;
+}
+
+void opcode_0x36(Z80& cpu)
+{
+    word addr = (cpu._r.h << 8) + cpu._r.l;
+    write_byte(read_byte(cpu._r.pc), addr);
+    cpu._r.pc++;
+    cpu._r.m = 3;
+}
+
+void opcode_0x37(Z80& cpu)
+{
+    cpu.set_carry(1);
+    cpu._r.m = 1;
 }
 
 #endif //GBEMU_OPCODES_H
