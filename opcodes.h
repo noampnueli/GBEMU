@@ -1391,7 +1391,7 @@ void opcode_0xE3(Z80& cpu)
 
 void opcode_0xE4(Z80& cpu)
 {
-    throw "Invalid instruction (0xE3)";
+    throw "Invalid instruction (0xE4)";
 }
 
 void opcode_0xE5(Z80& cpu)
@@ -1413,42 +1413,48 @@ void opcode_0xE7(Z80& cpu)
 
 void opcode_0xE8(Z80& cpu)
 {
-
+    cpu.add(cpu._r.sp, (sbyte) read_byte(cpu._r.pc++));
+    cpu._r.m = 4;
 }
 
 void opcode_0xE9(Z80& cpu)
 {
-
+    cpu._r.pc = (word) cpu._r.h << 8 + cpu._r.l;
+    cpu._r.m = 2;
 }
 
 void opcode_0xEA(Z80& cpu)
 {
-
+    write_byte(cpu._r.a, read_word(cpu._r.pc));
+    cpu._r.pc += 2;
+    cpu._r.m = 2;
 }
 
 void opcode_0xEB(Z80& cpu)
 {
-
+    throw "Invalid instruction (0xEB)";
 }
 
 void opcode_0xEC(Z80& cpu)
 {
-
+    throw "Invalid instruction (0xEC)";
 }
 
 void opcode_0xED(Z80& cpu)
 {
-
+    throw "Invalid instruction (0xED)";
 }
 
 void opcode_0xEE(Z80& cpu)
 {
-
+    cpu.xor_reg(read_byte(cpu._r.pc++));
 }
 
 void opcode_0xEF(Z80& cpu)
 {
-
+    cpu.push((word) (cpu._r.pc + 2));
+    cpu._r.pc = 0x28;
+    cpu._r.m = 3;
 }
 
 void opcode_0xF0(Z80& cpu)
