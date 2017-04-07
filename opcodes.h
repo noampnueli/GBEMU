@@ -122,7 +122,7 @@ void opcode_0x0F(Z80& cpu)
     cpu._r.m = 1;
 }
 
-void opcode_0x10()
+void opcode_0x10(Z80& cpu)
 {
     while(!gameboy_keys_pressed()) // TODO is this legit?
     {}
@@ -429,6 +429,41 @@ void opcode_0x39(Z80& cpu)
 {
     cpu.add(cpu._r.h, cpu._r.l, cpu._r.sp);
     cpu._r.m = 3;
+}
+
+void opcode_0x3A(Z80& cpu)
+{
+    cpu._r.a = read_byte((cpu._r.h << 8) + cpu._r.l);
+    cpu.sub(cpu._r.h, cpu._r.l, 1);
+}
+
+void opcode_0x3B(Z80& cpu)
+{
+    cpu.sub(cpu._r.sp, 1);
+    cpu._r.m = 1;
+}
+
+void opcode_0x3C(Z80& cpu)
+{
+    cpu.add(cpu._r.a, 1);
+    cpu._r.m = 1;
+}
+
+void opcode_0x3D(Z80& cpu)
+{
+    cpu.sub(cpu._r.a, 1);
+    cpu._r.m = 1;
+}
+
+void opcode_0x3E(Z80& cpu)
+{
+    cpu._r.a = read_byte(cpu._r.pc++);
+    cpu._r.m = 1;
+}
+
+void opcode_0x3F(Z80& cpu)
+{
+    cpu.set_carry(0);
 }
 
 
