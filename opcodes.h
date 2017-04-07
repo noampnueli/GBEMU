@@ -323,7 +323,8 @@ void opcode_0x2F(Z80& cpu)
 
 void opcode_0x30(Z80& cpu)
 {
-
+    if(!cpu.is_carry())
+        opcode_0x18(cpu);
 }
 
 void opcode_0x31(Z80& cpu)
@@ -337,7 +338,7 @@ void opcode_0x32(Z80& cpu)
 {
     word HL = (cpu._r.h << 8) + cpu._r.l;
     write_byte(cpu._r.a, HL);
-
+    cpu.sub(cpu._r.h, cpu._r.l, 1);
 }
 
 #endif //GBEMU_OPCODES_H
