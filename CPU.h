@@ -145,6 +145,16 @@ public:
         _r.m = 1;
     }
 
+    void compare(byte n)
+    {
+        set_zero(_r.a == n);
+        set_operation(1);
+        set_carry(_r.a > n);
+        if((_r.a ^ (_r.a - n) ^ n) & 0x10)
+            set_half_carry(1);
+        _r.m = 2;
+    }
+
     void reset_flags()
     {
         _r.f = 0;

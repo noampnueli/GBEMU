@@ -1101,5 +1101,84 @@ void opcode_0xAF(Z80& cpu)
     cpu.xor_reg(cpu._r.a);
 }
 
+void opcode_0xB0(Z80& cpu)
+{
+    cpu.or_reg(cpu._r.b);
+}
+
+void opcode_0xB1(Z80& cpu)
+{
+    cpu.or_reg(cpu._r.c);
+}
+
+void opcode_0xB2(Z80& cpu)
+{
+    cpu.or_reg(cpu._r.d);
+}
+
+void opcode_0xB3(Z80& cpu)
+{
+    cpu.or_reg(cpu._r.e);
+}
+
+void opcode_0xB4(Z80& cpu)
+{
+    cpu.or_reg(cpu._r.h);
+}
+
+void opcode_0xB5(Z80& cpu)
+{
+    cpu.or_reg(cpu._r.l);
+}
+
+void opcode_0xB6(Z80& cpu)
+{
+    cpu.or_reg(read_byte((word)cpu._r.h << 8 + cpu._r.l));
+}
+
+void opcode_0xB7(Z80& cpu)
+{
+    cpu.or_reg(cpu._r.a);
+}
+
+void opcode_0xB8(Z80& cpu)
+{
+    cpu.compare(cpu._r.b);
+}
+
+void opcode_0xB9(Z80& cpu)
+{
+    cpu.compare(cpu._r.c);
+}
+
+void opcode_0xBA(Z80& cpu)
+{
+    cpu.compare(cpu._r.d);
+}
+
+void opcode_0xBB(Z80& cpu)
+{
+    cpu.compare(cpu._r.e);
+}
+
+void opcode_0xBC(Z80& cpu)
+{
+    cpu.compare(cpu._r.h);
+}
+
+void opcode_0xBD(Z80& cpu)
+{
+    cpu.compare(cpu._r.l);
+}
+
+void opcode_0xBE(Z80& cpu)
+{
+    cpu.compare(read_byte((word)cpu._r.h << 8 + cpu._r.l));
+}
+
+void opcode_0xBF(Z80& cpu)
+{
+    cpu.compare(cpu._r.a);
+}
 
 #endif //GBEMU_OPCODES_H
