@@ -421,6 +421,7 @@ void opcode_0x40(Z80& cpu)
 
 void opcode_0x41(Z80& cpu)
 {
+    
 }
 
 void opcode_0x42(Z80& cpu)
@@ -489,6 +490,166 @@ void opcode_0x4E(Z80& cpu)
 }
 
 void opcode_0x4F(Z80& cpu)
+{
+
+}
+
+void opcode_0x50(Z80& cpu)
+{
+
+}
+
+void opcode_0x51(Z80& cpu)
+{
+
+}
+
+void opcode_0x52(Z80& cpu)
+{
+
+}
+
+void opcode_0x53(Z80& cpu)
+{
+
+}
+
+void opcode_0x54(Z80& cpu)
+{
+
+}
+
+void opcode_0x55(Z80& cpu)
+{
+
+}
+
+void opcode_0x56(Z80& cpu)
+{
+
+}
+
+void opcode_0x57(Z80& cpu)
+{
+
+}
+
+void opcode_0x58(Z80& cpu)
+{
+
+}
+
+void opcode_0x59(Z80& cpu)
+{
+
+}
+
+void opcode_0x5A(Z80& cpu)
+{
+
+}
+
+void opcode_0x5B(Z80& cpu)
+{
+
+}
+
+void opcode_0x5C(Z80& cpu)
+{
+
+}
+
+void opcode_0x5D(Z80& cpu)
+{
+
+}
+
+void opcode_0x5E(Z80& cpu)
+{
+
+}
+
+void opcode_0x5F(Z80& cpu)
+{
+
+}
+
+void opcode_0x60(Z80& cpu)
+{
+
+}
+
+void opcode_0x61(Z80& cpu)
+{
+
+}
+
+void opcode_0x62(Z80& cpu)
+{
+
+}
+
+void opcode_0x63(Z80& cpu)
+{
+
+}
+
+void opcode_0x64(Z80& cpu)
+{
+
+}
+
+void opcode_0x65(Z80& cpu)
+{
+
+}
+
+void opcode_0x66(Z80& cpu)
+{
+
+}
+
+void opcode_0x67(Z80& cpu)
+{
+
+}
+
+void opcode_0x68(Z80& cpu)
+{
+
+}
+
+void opcode_0x69(Z80& cpu)
+{
+
+}
+
+void opcode_0x6A(Z80& cpu)
+{
+
+}
+
+void opcode_0x6B(Z80& cpu)
+{
+
+}
+
+void opcode_0x6C(Z80& cpu)
+{
+
+}
+
+void opcode_0x6D(Z80& cpu)
+{
+
+}
+
+void opcode_0x6E(Z80& cpu)
+{
+
+}
+
+void opcode_0x6F(Z80& cpu)
 {
 
 }
