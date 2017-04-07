@@ -15,11 +15,17 @@ byte memory[MEM_SIZE];
 
 inline byte read_byte(word addr)
 {
+    if(addr > MEM_SIZE)
+        throw "Invalid memory access";
+
     return memory[addr];
 }
 
 inline word read_word(word addr)
 {
+    if(addr > MEM_SIZE)
+        throw "Invalid memory access";
+
     return (word) (memory[addr]) + (word) (memory[addr + 1] << 8); // little endian
 }
 
