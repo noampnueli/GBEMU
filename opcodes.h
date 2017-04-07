@@ -69,8 +69,20 @@ void opcode_0x07(Z80& cpu)
 
 void opcode_0x08(Z80& cpu)
 {
-    write_word(cpu._r.sp, cpu._r.pc);
+    write_word(cpu._r.sp, read_word(cpu._r.pc));
     cpu._r.pc += 2;
+    cpu._r.m = 3;
+}
+
+void opcode_0x09(Z80& cpu)
+{
+    word hl = (cpu._r.h << 8) + cpu._r.l;
+    hl += (cpu._r.b << 8) + cpu._r.c;
+    cpu._r.h = (byte) ((hl >> 8) & 0xFF);
+    cpu._r.l = (byte) (hl & 0xFF);
+    cpu.set_operation(0);
+    cpu.set_half_carry((bool) (cpu._r.l & 0x08));
+    cpu.set_carry((bool) (cpu._r.l & 0x80));
     cpu._r.m = 3;
 }
 
