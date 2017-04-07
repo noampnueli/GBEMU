@@ -460,4 +460,16 @@ void opcode_0x3D(Z80& cpu)
     cpu._r.m = 1;
 }
 
+void opcode_0x3E(Z80& cpu)
+{
+    cpu._r.a = read_byte(cpu._r.pc++);
+    cpu._r.m = 3;
+}
+
+void opcode_0x3F(Z80& cpu)
+{
+    cpu.set_carry(0);
+    cpu._r.m = 1;
+}
+
 #endif //GBEMU_OPCODES_H
