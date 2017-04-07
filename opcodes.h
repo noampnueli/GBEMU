@@ -315,4 +315,23 @@ void opcode_0x2F(Z80& cpu)
 
 }
 
+void opcode_0x30(Z80& cpu)
+{
+
+}
+
+void opcode_0x31(Z80& cpu)
+{
+    cpu._r.sp = read_word(cpu._r.pc);
+    cpu._r.pc += 2;
+    cpu._r.m = 3;
+}
+
+void opcode_0x32(Z80& cpu)
+{
+    word HL = (cpu._r.h << 8) + cpu._r.l;
+    write_byte(cpu._r.a, HL);
+
+}
+
 #endif //GBEMU_OPCODES_H
