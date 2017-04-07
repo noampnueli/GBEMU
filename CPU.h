@@ -71,7 +71,7 @@ public:
 
     void add(byte& high, byte& low, word value)
     {
-        word hl = (high << 8) + low;
+        word hl = ((word) high << 8) + (word) low;
         hl += value;
         high = (byte) ((hl >> 8) & 0xFF);
         low = (byte) (hl & 0xFF);
