@@ -269,12 +269,14 @@ void opcode_0x24(Z80& cpu)
 
 void opcode_0x25(Z80& cpu)
 {
-
+    cpu.sub(cpu._r.h, 1);
+    cpu._r.m = 1;
 }
 
 void opcode_0x26(Z80& cpu)
 {
-
+    cpu._r.h = read_byte(cpu._r.pc++);
+    cpu._r.m = 1;
 }
 
 void opcode_0x27(Z80& cpu)
