@@ -286,7 +286,16 @@ void opcode_0x27(Z80& cpu)
 
 void opcode_0x28(Z80& cpu)
 {
-
+    byte n = read_byte(cpu._r.pc);
+    if(n > 127)
+        n = (byte) -((!n + 1) & 255);
+    cpu._r.pc++;
+    cpu._r.m = 2;
+    if(cpu.is_zero())
+    {
+        cpu._r.pc += n;
+        cpu._r.m++;
+    }
 }
 
 void opcode_0x29(Z80& cpu)
@@ -384,6 +393,20 @@ void opcode_0x37(Z80& cpu)
 {
     cpu.set_carry(1);
     cpu._r.m = 1;
+}
+
+void opcode_0x38(Z80& cpu)
+{
+    byte n = read_byte(cpu._r.pc);
+    if(n > 127)
+        n = (byte) -((!n + 1) & 255);
+    cpu._r.pc++;
+    cpu._r.m = 2;
+    if(cpu.is_carry())
+    {
+        cpu._r.pc += n;
+        cpu._r.m++;
+    }
 }
 
 #endif //GBEMU_OPCODES_H
