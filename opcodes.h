@@ -1306,7 +1306,7 @@ void opcode_0xD4(Z80& cpu)
 
 void opcode_0xD5(Z80& cpu)
 {
-    cpu.push((word) cpu._r.d << 8 + cpu._r.e);
+    cpu.push(((word) cpu._r.d) << 8 + cpu._r.e);
 }
 
 void opcode_0xD6(Z80& cpu)
@@ -1318,7 +1318,7 @@ void opcode_0xD6(Z80& cpu)
 void opcode_0xD7(Z80& cpu)
 {
     cpu.push((word) (cpu._r.pc + 2));
-    cpu._r.pc = 10;
+    cpu._r.pc = 0x10;
 }
 
 void opcode_0xD8(Z80& cpu)
@@ -1454,37 +1454,41 @@ void opcode_0xF0(Z80& cpu)
 
 void opcode_0xF1(Z80& cpu)
 {
-
+    cpu.pop(cpu._r.a, cpu._r.f);
 }
 
 void opcode_0xF2(Z80& cpu)
 {
-
+    throw "Invalid instruction 0xF2";
 }
 
 void opcode_0xF3(Z80& cpu)
 {
-
+    throw "Disable Interrupts is not implemented"; // TODO
 }
 
 void opcode_0xF4(Z80& cpu)
 {
-
+    throw "Invalid instruction 0xF4";
 }
 
 void opcode_0xF5(Z80& cpu)
 {
-
+    cpu.push(((word) cpu._r.a) << 8 + cpu._r.f);
 }
 
 void opcode_0xF6(Z80& cpu)
 {
-
+    cpu._r.a |= read_byte(cpu._r.pc++);
+    cpu.reset_flags();
+    cpu.set_zero(cpu._r.a == 0);
+    cpu._r.m = 2;
 }
 
 void opcode_0xF7(Z80& cpu)
 {
-
+    cpu.push((word) (cpu._r.pc + 2));
+    cpu._r.pc = 0x30;
 }
 
 void opcode_0xF8(Z80& cpu)
