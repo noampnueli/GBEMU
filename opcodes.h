@@ -196,4 +196,43 @@ void opcode_0x1A(Z80& cpu)
     cpu._r.a = read_byte((cpu._r.d << 8) + cpu._r.e);
     cpu._r.m = 2;
 }
+
+void opcode_0x1B(Z80& cpu)
+{
+    if(!cpu._r.e)
+        cpu._r.d = (byte) ((cpu._r.b - 1) & 0xFF);
+    else
+        cpu._r.e = (byte) ((cpu._r.c - 1) & 0xFF);
+    cpu._r.m = 1;
+}
+
+void opcode_0x1C(Z80& cpu)
+{
+    cpu._r.e += 1;
+    cpu._r.m = 1;
+}
+
+void opcode_0x1D(Z80& cpu)
+{
+    cpu._r.e -= 1;
+    cpu._r.m = 1;
+}
+
+void opcode_0x1E(Z80& cpu)
+{
+    cpu._r.e = read_byte(cpu._r.pc++);
+    cpu._r.m = 3;
+}
+
+void opcode_0x1F(Z80& cpu)
+{
+    byte carry = (byte) (cpu._r.a & 0x01);
+    cpu.set_operation(0);
+    cpu.set_half_carry(0);
+    cpu._r.a = (cpu._r.a >> 1) + carry;
+    if(cpu._r.a == 0)
+        cpu.set_zero(1);
+    cpu._r.m = 1;
+}
+
 #endif //GBEMU_OPCODES_H
