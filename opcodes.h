@@ -1504,7 +1504,11 @@ void opcode_0xF7(Z80& cpu)
 
 void opcode_0xF8(Z80& cpu)
 {
-
+    word sum = cpu._r.sp + (sbyte) (cpu._r.pc++);
+    cpu._r.sp = sum;
+    cpu._r.h = (byte) (sum << 8);
+    cpu._r.l = (byte) sum;
+    cpu._r.m = 2;
 }
 
 void opcode_0xF9(Z80& cpu)
@@ -1536,7 +1540,7 @@ void opcode_0xFD(Z80& cpu)
 
 void opcode_0xFE(Z80& cpu)
 {
-
+    cpu.compare(read_byte(cpu._r.pc++));
 }
 
 void opcode_0xFF(Z80& cpu)
