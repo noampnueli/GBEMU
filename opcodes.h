@@ -341,12 +341,15 @@ void opcode_0x2D(Z80& cpu)
 
 void opcode_0x2E(Z80& cpu)
 {
-    
+    cpu._r.l = read_byte(cpu._r.pc++);
+    cpu._r.m = 1;
 }
 
 void opcode_0x2F(Z80& cpu)
 {
-
+    cpu._r.a = ~cpu._r.a;
+    cpu.set_operation(1);
+    cpu.set_half_carry(1);
 }
 
 void opcode_0x30(Z80& cpu)
