@@ -1264,12 +1264,14 @@ void opcode_0xCD(Z80& cpu)
 
 void opcode_0xCE(Z80& cpu)
 {
-
+    cpu.add(cpu._r.a, read_byte(cpu._r.pc++) + cpu.is_carry());
+    cpu._r.m = 4;
 }
 
 void opcode_0xCF(Z80& cpu)
 {
-
+    cpu.push((word) (cpu._r.pc + 2));
+    cpu._r.pc = 0x8;
 }
 
 void opcode_0xD0(Z80& cpu)
