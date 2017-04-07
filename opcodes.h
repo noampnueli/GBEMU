@@ -6,6 +6,7 @@
 #include "GUI.h"
 #include "MMU.h"
 #include <csignal>
+#include <iostream>
 
 void opcode_0x00()
 {
@@ -1267,6 +1268,96 @@ void opcode_0xCE(Z80& cpu)
 }
 
 void opcode_0xCF(Z80& cpu)
+{
+
+}
+
+void opcode_0xD0(Z80& cpu)
+{
+    if(!cpu.is_carry())
+        cpu.ret();
+    cpu._r.m = 2;
+}
+
+void opcode_0xD1(Z80& cpu)
+{
+    cpu.pop(cpu._r.d, cpu._r.e);
+    cpu._r.m = 3;
+}
+
+void opcode_0xD2(Z80& cpu)
+{
+    if(!cpu.is_carry())
+        opcode_0xC3(cpu);
+}
+
+void opcode_0xD3(Z80& cpu)
+{
+    std::cout << "Imran said op 0xD3 does not exist" << std::endl;
+}
+
+void opcode_0xD4(Z80& cpu)
+{
+    if(!cpu.is_carry())
+        cpu.call(read_word(cpu._r.pc));
+}
+
+void opcode_0xD5(Z80& cpu)
+{
+    cpu.push((word) cpu._r.d << 8 + cpu._r.e);
+}
+
+void opcode_0xD6(Z80& cpu)
+{
+    cpu.sub(cpu._r.a, read_byte(cpu._r.pc++));
+    cpu._r.m = 2;
+}
+
+void opcode_0xD7(Z80& cpu)
+{
+
+}
+
+void opcode_0xD8(Z80& cpu)
+{
+    if(cpu.is_carry())
+        cpu.ret();
+    cpu._r.m = 2;
+}
+
+void opcode_0xD9(Z80& cpu)
+{
+    // TODO complete this, as this requires to enable interrupts
+}
+
+void opcode_0xDA(Z80& cpu)
+{
+    if(cpu.is_carry())
+        opcode_0xC3(cpu);
+}
+
+void opcode_0xDB(Z80& cpu)
+{
+    std::cout << "Imran said op 0xDB does not exist" << std::endl;
+}
+
+void opcode_0xDC(Z80& cpu)
+{
+    if(cpu.is_carry())
+        cpu.call(read_word(cpu._r.pc));
+}
+
+void opcode_0xDD(Z80& cpu)
+{
+    std::cout << "Imran said op 0xDD does not exist" << std::endl;
+}
+
+void opcode_0xDE(Z80& cpu)
+{
+
+}
+
+void opcode_0xDF(Z80& cpu)
 {
 
 }
