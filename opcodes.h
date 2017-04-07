@@ -76,14 +76,7 @@ void opcode_0x08(Z80& cpu)
 
 void opcode_0x09(Z80& cpu)
 {
-    word hl = (cpu._r.h << 8) + cpu._r.l;
-    hl += (cpu._r.b << 8) + cpu._r.c;
-    cpu._r.h = (byte) ((hl >> 8) & 0xFF);
-    cpu._r.l = (byte) (hl & 0xFF);
-    cpu.set_operation(0);
-    cpu.set_half_carry((bool) (cpu._r.l & 0x08));
-    cpu.set_carry((bool) (cpu._r.l & 0x80));
-    cpu._r.m = 3;
+    cpu.add(cpu._r.h, cpu._r.l, (cpu._r.b << 8) + cpu._r.c);
 }
 
 void opcode_0x0A(Z80& cpu)
@@ -191,6 +184,11 @@ void opcode_0x18(Z80& cpu)
     cpu._r.m = 3;
 }
 
+void opcode_0x19(Z80& cpu)
+{
+    cpu.add(cpu._r.h, cpu._r.l, (cpu._r.d << 8) + cpu._r.e);
+}
+
 void opcode_0x1A(Z80& cpu)
 {
     cpu._r.a = read_byte((cpu._r.d << 8) + cpu._r.e);
@@ -237,22 +235,30 @@ void opcode_0x1F(Z80& cpu)
 
 void opcode_0x20(Z80& cpu)
 {
-
+    if(!cpu.is_zero())
+        opcode_0x18(cpu);
 }
 
 void opcode_0x21(Z80& cpu)
 {
-
+    cpu._r.l = read_byte(cpu._r.pc);
+    cpu._r.h = read_byte((word) (cpu._r.pc + 1));
+    cpu._r.pc += 2;
+    cpu._r.m = 3;
 }
 
 void opcode_0x22(Z80& cpu)
 {
-
+    write_byte(cpu._r.a, (cpu._r.h << 8) + cpu._r.l);
+    cpu._r.m = 3;
 }
 
 void opcode_0x23(Z80& cpu)
 {
-
+    cpu.add(cpu._r.l, 1);
+    if(!cpu._r.l)
+        cpu.add(cpu._r.h, 1);
+    cpu._r.m = 1;
 }
 
 void opcode_0x24(Z80& cpu)
