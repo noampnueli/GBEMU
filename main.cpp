@@ -6,6 +6,20 @@
 Z80 cpu;
 char* rom_file_name = (char *) "Tetris.gb";
 
+// TODO finish and test
+void dispatcher()
+{
+    while(1)
+    {
+        byte op = read_byte(cpu._r.pc++);
+        cpu._r.pc &= 0xFFFF; // TODO check if needed
+        opmap[op](cpu);
+
+        cpu._clock.m += cpu._r.m; // add time to CPU clock
+        cpu._clock.t += cpu._r.t;
+    }
+}
+
 void boot()
 {
     cpu._r.pc = 0x100;

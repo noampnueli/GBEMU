@@ -3,7 +3,6 @@
 
 #include "definitions.h"
 #include "MMU.h"
-//#include "opmap.h"
 
 class Z80
 {
@@ -27,20 +26,6 @@ public:
     {
         _r = {};
         _clock = {};
-    }
-
-    // TODO finish and test
-    void dispatcher()
-    {
-        while(1)
-        {
-            byte op = read_byte(_r.pc++);
-            _r.pc &= 0xFFFF; // TODO check if needed
-//            opmap[op](*this);
-
-            _clock.m += _r.m; // add time to CPU clock
-            _clock.t += _r.t;
-        }
     }
 
     void add(byte& reg1, byte reg2)
@@ -235,6 +220,5 @@ public:
     }
 
 };
-
 
 #endif //GBEMU_CPU_H
