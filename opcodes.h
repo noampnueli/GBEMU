@@ -1364,46 +1364,51 @@ void opcode_0xDF(Z80& cpu)
 {
     cpu.push((word) (cpu._r.pc + 2));
     cpu._r.pc = 0x18;
+    cpu._r.m = 3;
 }
 
 void opcode_0xE0(Z80& cpu)
 {
-
+    write_byte(cpu._r.a, (word) (0xFF00 + read_byte(cpu._r.pc++)));
+    cpu._r.m = 2;
 }
 
 void opcode_0xE1(Z80& cpu)
 {
-
+    cpu.pop(cpu._r.h, cpu._r.l);
 }
 
 void opcode_0xE2(Z80& cpu)
 {
-
+    write_byte(cpu._r.a, (word) (0xFF00 + cpu._r.c));
+    cpu._r.m = 2;
 }
 
 void opcode_0xE3(Z80& cpu)
 {
-
+    throw "Invalid instruction (0xE3)";
 }
 
 void opcode_0xE4(Z80& cpu)
 {
-
+    throw "Invalid instruction (0xE3)";
 }
 
 void opcode_0xE5(Z80& cpu)
 {
-
+    cpu.push((word) cpu._r.h << 8 + cpu._r.l);
 }
 
 void opcode_0xE6(Z80& cpu)
 {
-
+    cpu.and_reg(read_byte(cpu._r.pc++));
 }
 
 void opcode_0xE7(Z80& cpu)
 {
-
+    cpu.push((word) (cpu._r.pc + 2));
+    cpu._r.pc = 0x20;
+    cpu._r.m = 3;
 }
 
 void opcode_0xE8(Z80& cpu)
