@@ -472,4 +472,84 @@ void opcode_0x3F(Z80& cpu)
     cpu._r.m = 1;
 }
 
+void opcode_0x40(Z80& cpu)
+{
+
+}
+
+void opcode_0x41(Z80& cpu)
+{
+}
+
+void opcode_0x42(Z80& cpu)
+{
+
+}
+
+void opcode_0x43(Z80& cpu)
+{
+
+}
+
+void opcode_0x44(Z80& cpu)
+{
+
+}
+
+void opcode_0x45(Z80& cpu)
+{
+
+}
+
+void opcode_0x46(Z80& cpu)
+{
+
+}
+
+void opcode_0x47(Z80& cpu)
+{
+
+}
+
+void opcode_0x48(Z80& cpu)
+{
+
+}
+
+void opcode_0x49(Z80& cpu)
+{
+
+}
+
+void opcode_0x4A(Z80& cpu)
+{
+
+}
+
+void opcode_0x4B(Z80& cpu)
+{
+
+}
+
+void opcode_0x4C(Z80& cpu)
+{
+
+}
+
+void opcode_0x4D(Z80& cpu)
+{
+
+}
+
+void opcode_0x4E(Z80& cpu)
+{
+
+}
+
+void opcode_0x4F(Z80& cpu)
+{
+
+}
+
+
 #endif //GBEMU_OPCODES_H
