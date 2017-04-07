@@ -69,6 +69,30 @@ public:
         set_operation(0);
     }
 
+    void add(byte& high, byte& low, word value)
+    {
+        word hl = (high << 8) + low;
+        hl += value;
+        high = (byte) ((hl >> 8) & 0xFF);
+        low = (byte) (hl & 0xFF);
+        set_operation(0);
+        set_half_carry((bool) (low & 0x08));
+        set_carry((bool) (low & 0x80));
+        m = 3;
+    }
+
+    void sub(byte& high, byte& low, word value)
+    {
+        word hl = (high << 8) + low;
+        hl -= value;
+        high = (byte) ((hl >> 8) & 0xFF);
+        low = (byte) (hl & 0xFF);
+        set_operation(0);
+        set_half_carry((bool) (low & 0x08));
+        set_carry((bool) (low & 0x80));
+        m = 3;
+    }
+
     void sub(byte& reg1, byte reg2)
     {
         if (reg1 < 0 && reg2 > (255 + reg1))
