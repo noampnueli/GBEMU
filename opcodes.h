@@ -424,4 +424,10 @@ void opcode_0x38(Z80& cpu)
     }
 }
 
+void opcode_0x39(Z80& cpu)
+{
+    cpu.add(cpu._r.h, cpu._r.l, cpu._r.sp);
+    cpu._r.m = 3;
+}
+
 #endif //GBEMU_OPCODES_H
