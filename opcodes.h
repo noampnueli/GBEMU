@@ -335,12 +335,13 @@ void opcode_0x2C(Z80& cpu)
 
 void opcode_0x2D(Z80& cpu)
 {
-
+    cpu.sub(cpu._r.l, 1);
+    cpu._r.m = 1;
 }
 
 void opcode_0x2E(Z80& cpu)
 {
-
+    
 }
 
 void opcode_0x2F(Z80& cpu)
