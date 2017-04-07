@@ -430,4 +430,30 @@ void opcode_0x39(Z80& cpu)
     cpu._r.m = 3;
 }
 
+void opcode_0x3A(Z80& cpu)
+{
+    word HL = (cpu._r.h << 8) + cpu._r.l;
+    cpu._r.a = read_byte(HL);
+    cpu.sub(cpu._r.h, cpu._r.l, 1);
+    cpu._r.m = 4; // TODO unable to find m so guessed it is m(12) + m(0B)
+}
+
+void opcode_0x3B(Z80& cpu)
+{
+    cpu.sub(cpu._r.sp, 1);
+    cpu._r.m = 1;
+}
+
+void opcode_0x3C(Z80& cpu)
+{
+    cpu.add(cpu._r.a, 1);
+    cpu._r.m = 1;
+}
+
+void opcode_0x3D(Z80& cpu)
+{
+    cpu.sub(cpu._r.a, 1);
+    cpu._r.m = 1;
+}
+
 #endif //GBEMU_OPCODES_H
