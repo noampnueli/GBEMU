@@ -263,7 +263,8 @@ void opcode_0x23(Z80& cpu)
 
 void opcode_0x24(Z80& cpu)
 {
-
+    cpu.add(cpu._r.h, 1);
+    cpu._r.m = 1;
 }
 
 void opcode_0x25(Z80& cpu)
