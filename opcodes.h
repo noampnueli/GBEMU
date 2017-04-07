@@ -1182,4 +1182,87 @@ void opcode_0xBF(Z80& cpu)
     cpu.compare(cpu._r.a);
 }
 
+void opcode_0xC0(Z80& cpu)
+{
+    if(!cpu.is_zero())
+        cpu.ret();
+}
+
+void opcode_0xC1(Z80& cpu)
+{
+    cpu.pop(cpu._r.b, cpu._r.c);
+}
+
+void opcode_0xC3(Z80& cpu)
+{
+    cpu._r.pc = read_word(cpu._r.pc);
+    cpu._r.m = 3;
+}
+
+void opcode_0xC2(Z80& cpu)
+{
+    if(!cpu.is_zero())
+        opcode_0xC3(cpu);
+}
+
+void opcode_0xC4(Z80& cpu)
+{
+
+}
+
+void opcode_0xC5(Z80& cpu)
+{
+
+}
+
+void opcode_0xC6(Z80& cpu)
+{
+
+}
+
+void opcode_0xC7(Z80& cpu)
+{
+
+}
+
+void opcode_0xC8(Z80& cpu)
+{
+
+}
+
+void opcode_0xC9(Z80& cpu)
+{
+
+}
+
+void opcode_0xCA(Z80& cpu)
+{
+
+}
+
+void opcode_0xCB(Z80& cpu)
+{
+
+}
+
+void opcode_0xCC(Z80& cpu)
+{
+
+}
+
+void opcode_0xCD(Z80& cpu)
+{
+
+}
+
+void opcode_0xCE(Z80& cpu)
+{
+
+}
+
+void opcode_0xCF(Z80& cpu)
+{
+
+}
+
 #endif //GBEMU_OPCODES_H

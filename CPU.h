@@ -155,6 +155,27 @@ public:
         _r.m = 2;
     }
 
+    void ret()
+    {
+        _r.pc = read_word(_r.sp);
+        _r.sp += 2;
+        _r.m = 3;
+    }
+
+    void pop(byte& high, byte& low)
+    {
+        low = read_byte(_r.sp++);
+        high = read_bte(_r.sp++);
+        _r.m = 3;
+    }
+
+    void push(word nn)
+    {
+        write_word(nn, cpu._r.sp);
+        cpu._r.sp -= 2;
+        cpu._r.m = 3;
+    }
+
     void reset_flags()
     {
         _r.f = 0;
