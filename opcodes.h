@@ -57,7 +57,21 @@ void opcode_0x06(Z80& cpu)
 
 void opcode_0x07(Z80& cpu)
 {
-    cpu.set_carry((bool) (cpu._r.a & 0x80));
+    byte carry = (byte) (cpu._r.a & 0x80);
+    cpu.set_carry(carry);
+    cpu.set_operation(0);
+    cpu.set_half_carry(0);
+    cpu._r.a = (cpu._r.a << 1) + carry;
+    if(cpu._r.a == 0)
+        cpu.set_zero(1);
+    cpu._r.m = 1;
+}
+
+void opcode_0x08(Z80& cpu)
+{
+    write_word(cpu._r.sp, cpu._r.pc);
+    cpu._r.pc += 2;
+    cpu._r.m = 3;
 }
 
 void opcode_0x10()
