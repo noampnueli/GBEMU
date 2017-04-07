@@ -724,5 +724,245 @@ void opcode_0x6F(Z80& cpu)
     cpu._r.m = 1;
 }
 
+void opcode_0x70(Z80& cpu)
+{
+    
+}
+
+void opcode_0x71(Z80& cpu)
+{
+    
+}
+
+void opcode_0x72(Z80& cpu)
+{
+    
+}
+
+void opcode_0x73(Z80& cpu)
+{
+    
+}
+
+void opcode_0x74(Z80& cpu)
+{
+    
+}
+
+void opcode_0x75(Z80& cpu)
+{
+    
+}
+
+void opcode_0x76(Z80& cpu)
+{
+    
+}
+
+void opcode_0x77(Z80& cpu)
+{
+    
+}
+
+void opcode_0x78(Z80& cpu)
+{
+    
+}
+
+void opcode_0x79(Z80& cpu)
+{
+    
+}
+
+void opcode_0x7A(Z80& cpu)
+{
+    
+}
+
+void opcode_0x7B(Z80& cpu)
+{
+    
+}
+
+void opcode_0x7C(Z80& cpu)
+{
+    
+}
+
+void opcode_0x7D(Z80& cpu)
+{
+    
+}
+
+void opcode_0x7E(Z80& cpu)
+{
+    
+}
+
+void opcode_0x7F(Z80& cpu)
+{
+    
+}
+
+void opcode_0x80(Z80& cpu)
+{
+
+}
+
+void opcode_0x81(Z80& cpu)
+{
+
+}
+
+void opcode_0x82(Z80& cpu)
+{
+
+}
+
+void opcode_0x83(Z80& cpu)
+{
+
+}
+
+void opcode_0x84(Z80& cpu)
+{
+
+}
+
+void opcode_0x85(Z80& cpu)
+{
+
+}
+
+void opcode_0x86(Z80& cpu)
+{
+
+}
+
+void opcode_0x87(Z80& cpu)
+{
+
+}
+
+void opcode_0x88(Z80& cpu)
+{
+
+}
+
+void opcode_0x89(Z80& cpu)
+{
+
+}
+
+void opcode_0x8A(Z80& cpu)
+{
+
+}
+
+void opcode_0x8B(Z80& cpu)
+{
+
+}
+
+void opcode_0x8C(Z80& cpu)
+{
+
+}
+
+void opcode_0x8D(Z80& cpu)
+{
+
+}
+
+void opcode_0x8E(Z80& cpu)
+{
+
+}
+
+void opcode_0x8F(Z80& cpu)
+{
+
+}
+
+void opcode_0x90(Z80& cpu)
+{
+
+}
+
+void opcode_0x91(Z80& cpu)
+{
+
+}
+
+void opcode_0x92(Z80& cpu)
+{
+
+}
+
+void opcode_0x93(Z80& cpu)
+{
+
+}
+
+void opcode_0x94(Z80& cpu)
+{
+
+}
+
+void opcode_0x95(Z80& cpu)
+{
+
+}
+
+void opcode_0x96(Z80& cpu)
+{
+
+}
+
+void opcode_0x97(Z80& cpu)
+{
+
+}
+
+void opcode_0x98(Z80& cpu)
+{
+
+}
+
+void opcode_0x99(Z80& cpu)
+{
+
+}
+
+void opcode_0x9A(Z80& cpu)
+{
+
+}
+
+void opcode_0x9B(Z80& cpu)
+{
+
+}
+
+void opcode_0x9C(Z80& cpu)
+{
+
+}
+
+void opcode_0x9D(Z80& cpu)
+{
+
+}
+
+void opcode_0x9E(Z80& cpu)
+{
+
+}
+
+void opcode_0x9F(Z80& cpu)
+{
+
+}
+
 
 #endif //GBEMU_OPCODES_H
