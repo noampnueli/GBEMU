@@ -106,4 +106,12 @@ void opcode_0x16(Z80& cpu)
     cpu._r.m = 1;
 }
 
+void opcode_0x18(Z80& cpu)
+{
+    byte b = read_byte(cpu._r.pc);
+    if(b > 127)
+        b = (byte) -((!b + 1) & 255);
+    cpu._r.pc += b + 1;
+    cpu._r.m = 3;
+}
 #endif //GBEMU_OPCODES_H
