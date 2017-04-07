@@ -2,10 +2,12 @@
 #ifndef GBEMU_OPCODES_H
 #define GBEMU_OPCODES_H
 
+
 #include "CPU.h"
 #include "GUI.h"
 #include "MMU.h"
 #include <csignal>
+#include <iostream>
 
 void opcode_0x00(Z80& cpu)
 {
@@ -1279,7 +1281,8 @@ void opcode_0xCA(Z80& cpu)
 
 void opcode_0xCB(Z80& cpu)
 {
-    throw "Not implemented!";
+    std::cout <<  "Not implemented!";
+    exit(-1);
 }
 
 void opcode_0xCC(Z80& cpu)
@@ -1326,7 +1329,8 @@ void opcode_0xD2(Z80& cpu)
 
 void opcode_0xD3(Z80& cpu)
 {
-    throw "Invalid instruction (0xD3)";
+    std::cout <<  "Invalid instruction (0xD3)";
+    exit(-1);
 }
 
 void opcode_0xD4(Z80& cpu)
@@ -1372,7 +1376,8 @@ void opcode_0xDA(Z80& cpu)
 
 void opcode_0xDB(Z80& cpu)
 {
-    throw "Invalid instruction 0xDB";
+    std::cout <<  "Invalid instruction 0xDB";
+    exit(-1);
 }
 
 void opcode_0xDC(Z80& cpu)
@@ -1383,7 +1388,8 @@ void opcode_0xDC(Z80& cpu)
 
 void opcode_0xDD(Z80& cpu)
 {
-    throw "Invalid instruction 0xDD";
+    std::cout <<  "Invalid instruction 0xDD";
+    exit(-1);
 }
 
 void opcode_0xDE(Z80& cpu)
@@ -1418,12 +1424,14 @@ void opcode_0xE2(Z80& cpu)
 
 void opcode_0xE3(Z80& cpu)
 {
-    throw "Invalid instruction (0xE3)";
+    std::cout <<  "Invalid instruction (0xE3)";
+    exit(-1);
 }
 
 void opcode_0xE4(Z80& cpu)
 {
-    throw "Invalid instruction (0xE4)";
+    std::cout <<  "Invalid instruction (0xE4)";
+    exit(-1);
 }
 
 void opcode_0xE5(Z80& cpu)
@@ -1464,17 +1472,20 @@ void opcode_0xEA(Z80& cpu)
 
 void opcode_0xEB(Z80& cpu)
 {
-    throw "Invalid instruction (0xEB)";
+    std::cout <<  "Invalid instruction (0xEB)";
+    exit(-1);
 }
 
 void opcode_0xEC(Z80& cpu)
 {
-    throw "Invalid instruction (0xEC)";
+    std::cout <<  "Invalid instruction (0xEC)";
+    exit(-1);
 }
 
 void opcode_0xED(Z80& cpu)
 {
-    throw "Invalid instruction (0xED)";
+    std::cout <<  "Invalid instruction (0xED)";
+    exit(-1);
 }
 
 void opcode_0xEE(Z80& cpu)
@@ -1502,17 +1513,20 @@ void opcode_0xF1(Z80& cpu)
 
 void opcode_0xF2(Z80& cpu)
 {
-    throw "Invalid instruction 0xF2";
+    std::cout <<  "Invalid instruction 0xF2";
+    exit(-1);
 }
 
 void opcode_0xF3(Z80& cpu)
 {
-    throw "Disable Interrupts is not implemented"; // TODO
+    std::cout <<  "Disable Interrupts is not implemented" << std::endl; // TODO
+    exit(-1);
 }
 
 void opcode_0xF4(Z80& cpu)
 {
-    throw "Invalid instruction 0xF4";
+    std::cout <<  "Invalid instruction 0xF4";
+    exit(-1);
 }
 
 void opcode_0xF5(Z80& cpu)
@@ -1557,17 +1571,20 @@ void opcode_0xFA(Z80& cpu)
 
 void opcode_0xFB(Z80& cpu)
 {
-    throw "Enable interrupts not here yet"; // TODO
+    std::cout <<  "Enable interrupts not here yet"; // TODO
+    exit(-1);
 }
 
 void opcode_0xFC(Z80& cpu)
 {
-    throw "Invalid instruction 0xFC";
+    std::cout <<  "Invalid instruction 0xFC" << std::endl;
+//    exit(-1);
 }
 
 void opcode_0xFD(Z80& cpu)
 {
-    throw "Invalid instruction 0xFD";
+    std::cout <<  "Invalid instruction 0xFD";
+    exit(-1);
 }
 
 void opcode_0xFE(Z80& cpu)
