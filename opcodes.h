@@ -1021,5 +1021,85 @@ void opcode_0x9F(Z80& cpu)
     cpu._r.m = 1;
 }
 
+void opcode_0xA0(Z80& cpu)
+{
+
+}
+
+void opcode_0xA1(Z80& cpu)
+{
+
+}
+
+void opcode_0xA2(Z80& cpu)
+{
+
+}
+
+void opcode_0xA3(Z80& cpu)
+{
+
+}
+
+void opcode_0xA4(Z80& cpu)
+{
+
+}
+
+void opcode_0xA5(Z80& cpu)
+{
+
+}
+
+void opcode_0xA6(Z80& cpu)
+{
+
+}
+
+void opcode_0xA7(Z80& cpu)
+{
+
+}
+
+void opcode_0xA8(Z80& cpu)
+{
+
+}
+
+void opcode_0xA9(Z80& cpu)
+{
+
+}
+
+void opcode_0xAA(Z80& cpu)
+{
+
+}
+
+void opcode_0xAB(Z80& cpu)
+{
+
+}
+
+void opcode_0xAC(Z80& cpu)
+{
+
+}
+
+void opcode_0xAD(Z80& cpu)
+{
+
+}
+
+void opcode_0xAE(Z80& cpu)
+{
+
+}
+
+void opcode_0xAF(Z80& cpu)
+{
+
+}
+
 
 #endif //GBEMU_OPCODES_H
