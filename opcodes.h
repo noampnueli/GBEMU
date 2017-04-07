@@ -1299,7 +1299,7 @@ void opcode_0xD3(Z80& cpu)
 void opcode_0xD4(Z80& cpu)
 {
     if(!cpu.is_carry())
-        cpu.call(read_word(cpu._r.pc));
+        cpu.call();
 }
 
 void opcode_0xD5(Z80& cpu)
@@ -1315,7 +1315,8 @@ void opcode_0xD6(Z80& cpu)
 
 void opcode_0xD7(Z80& cpu)
 {
-
+    cpu.push((word) (cpu._r.pc + 2));
+    cpu._r.pc = 10;
 }
 
 void opcode_0xD8(Z80& cpu)
@@ -1344,7 +1345,7 @@ void opcode_0xDB(Z80& cpu)
 void opcode_0xDC(Z80& cpu)
 {
     if(cpu.is_carry())
-        cpu.call(read_word(cpu._r.pc));
+        cpu.call();
 }
 
 void opcode_0xDD(Z80& cpu)
