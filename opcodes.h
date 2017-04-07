@@ -806,82 +806,98 @@ void opcode_0x7F(Z80& cpu)
 
 void opcode_0x80(Z80& cpu)
 {
-
+    cpu.add(cpu._r.a, cpu._r.b);
+    cpu._r.m = 1;
 }
 
 void opcode_0x81(Z80& cpu)
 {
-
+    cpu.add(cpu._r.a, cpu._r.c);
+    cpu._r.m = 1;
 }
 
 void opcode_0x82(Z80& cpu)
 {
-
+    cpu.add(cpu._r.a, cpu._r.d);
+    cpu._r.m = 1;
 }
 
 void opcode_0x83(Z80& cpu)
 {
-
+    cpu.add(cpu._r.a, cpu._r.e);
+    cpu._r.m = 1;
 }
 
 void opcode_0x84(Z80& cpu)
 {
-
+    cpu.add(cpu._r.a, cpu._r.h);
+    cpu._r.m = 1;
 }
 
 void opcode_0x85(Z80& cpu)
 {
-
+    cpu.add(cpu._r.a, cpu._r.l);
+    cpu._r.m = 1;
 }
 
 void opcode_0x86(Z80& cpu)
 {
-
+    cpu.add(cpu._r.a, read_byte((word) cpu._r.h >> 8 + cpu._r.l));
+    cpu._r.m = 4;
 }
 
 void opcode_0x87(Z80& cpu)
 {
-
+    opcode_0x00();
+    cpu._r.m = 1;
 }
 
 void opcode_0x88(Z80& cpu)
 {
-
+    cpu.add(cpu._r.a, cpu._r.b + cpu.is_carry());
+    cpu._r.m = 2;
 }
 
 void opcode_0x89(Z80& cpu)
 {
-
+    cpu.add(cpu._r.a, cpu._r.c + cpu.is_carry());
+    cpu._r.m = 2;
 }
 
 void opcode_0x8A(Z80& cpu)
 {
-
+    cpu.add(cpu._r.a, cpu._r.d + cpu.is_carry());
+    cpu._r.m = 2;
 }
 
 void opcode_0x8B(Z80& cpu)
 {
-
+    cpu.add(cpu._r.a, cpu._r.e + cpu.is_carry());
+    cpu._r.m = 2;
 }
 
 void opcode_0x8C(Z80& cpu)
 {
-
+    cpu.add(cpu._r.a, cpu._r.h + cpu.is_carry());
+    cpu._r.m = 2;
 }
 
 void opcode_0x8D(Z80& cpu)
 {
-
+    cpu.add(cpu._r.a, cpu._r.l + cpu.is_carry());
+    cpu._r.m = 2;
 }
 
 void opcode_0x8E(Z80& cpu)
 {
-
+    cpu.add(cpu._r.a, read_byte((word) cpu._r.h >> 8 + cpu._r.l) + cpu.is_carry());
+    cpu._r.m = 5;
 }
 
 void opcode_0x8F(Z80& cpu)
 {
-
+    opcode_0x00();
+    cpu._r.m = 1;
 }
 
 void opcode_0x90(Z80& cpu)
