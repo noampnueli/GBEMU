@@ -1341,7 +1341,7 @@ void opcode_0xDA(Z80& cpu)
 
 void opcode_0xDB(Z80& cpu)
 {
-    throw "Invalid instruction";
+    throw "Invalid instruction 0xDB";
 }
 
 void opcode_0xDC(Z80& cpu)
@@ -1352,17 +1352,19 @@ void opcode_0xDC(Z80& cpu)
 
 void opcode_0xDD(Z80& cpu)
 {
-    throw "Invalid instruction";
+    throw "Invalid instruction 0xDD";
 }
 
 void opcode_0xDE(Z80& cpu)
 {
-
+    cpu.sub(cpu._r.a, read_byte(cpu._r.pc++) + cpu.is_carry());
+    cpu._r.m = 4;
 }
 
 void opcode_0xDF(Z80& cpu)
 {
-
+    cpu.push((word) (cpu._r.pc + 2));
+    cpu._r.pc = 0x18;
 }
 
 #endif //GBEMU_OPCODES_H
