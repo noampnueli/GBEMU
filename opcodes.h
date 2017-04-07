@@ -1208,7 +1208,7 @@ void opcode_0xC2(Z80& cpu)
 void opcode_0xC4(Z80& cpu)
 {
     if(!cpu.is_zero())
-        cpu.call(read_word(cpu._r.pc));
+        cpu.call();
 }
 
 void opcode_0xC5(Z80& cpu)
@@ -1218,43 +1218,47 @@ void opcode_0xC5(Z80& cpu)
 
 void opcode_0xC6(Z80& cpu)
 {
-    cpu._r.a += read_byte(cpu._r.pc++);
+    cpu.add(cpu._r.a, read_byte(cpu._r.pc++));
     cpu._r.m = 2;
 }
 
 void opcode_0xC7(Z80& cpu)
 {
-
+    cpu.push((word) (cpu._r.pc + 2));
+    cpu._r.pc = 0;
 }
 
 void opcode_0xC8(Z80& cpu)
 {
-
+    if(cpu.is_zero())
+        cpu.ret();
 }
 
 void opcode_0xC9(Z80& cpu)
 {
-
+    cpu.ret();
 }
 
 void opcode_0xCA(Z80& cpu)
 {
-
+    if(cpu.is_zero())
+        opcode_0xC3(cpu);
 }
 
 void opcode_0xCB(Z80& cpu)
 {
-
+    throw "Not implemented!";
 }
 
 void opcode_0xCC(Z80& cpu)
 {
-
+    if(cpu.is_zero())
+        cpu.call();
 }
 
 void opcode_0xCD(Z80& cpu)
 {
-
+    cpu.call();
 }
 
 void opcode_0xCE(Z80& cpu)
