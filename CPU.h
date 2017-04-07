@@ -176,6 +176,13 @@ public:
         cpu._r.m = 3;
     }
 
+    void call(word nn)
+    {
+        push(++cpu._r.pc);
+        cpu._r.pc = read_word(cpu._r.pc);
+        cpu._r.m += 3;
+    }
+
     void reset_flags()
     {
         _r.f = 0;
