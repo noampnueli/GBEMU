@@ -69,7 +69,7 @@ void opcode_0x07(Z80& cpu)
 
 void opcode_0x08(Z80& cpu)
 {
-    write_word(cpu._r.sp, cpu._r.pc);
+    write_word(cpu._r.sp, read_word(cpu._r.pc));
     cpu._r.pc += 2;
     cpu._r.m = 3;
 }
