@@ -438,6 +438,7 @@ void opcode_0x39(Z80& cpu)
 void opcode_0x40(Z80& cpu)
 {
     opcode_0x00(); // y u du dis Z80 ?
+    cpu._r.m = 1;
 }
 
 void opcode_0x41(Z80& cpu)
