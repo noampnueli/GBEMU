@@ -6,7 +6,6 @@
 #include "GUI.h"
 #include "MMU.h"
 #include <csignal>
-#include <iostream>
 
 void opcode_0x00()
 {
@@ -1295,7 +1294,7 @@ void opcode_0xD2(Z80& cpu)
 
 void opcode_0xD3(Z80& cpu)
 {
-    std::cout << "Imran said op 0xD3 does not exist" << std::endl;
+    throw "Invalid instruction (0xD3)";
 }
 
 void opcode_0xD4(Z80& cpu)
