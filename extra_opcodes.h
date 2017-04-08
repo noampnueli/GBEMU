@@ -972,27 +972,27 @@ void ext_0xC0(Z80& cpu)
 
 void ext_0xC1(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.c, 0);
 }
 
 void ext_0xC2(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.d, 0);
 }
 
 void ext_0xC3(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.e, 0);
 }
 
 void ext_0xC4(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.h, 0);
 }
 
 void ext_0xC5(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.l, 0);
 }
 
 void ext_0xC6(Z80& cpu)
@@ -1002,37 +1002,37 @@ void ext_0xC6(Z80& cpu)
 
 void ext_0xC7(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.a, 0);
 }
 
 void ext_0xC8(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.b, 1);
 }
 
 void ext_0xC9(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.c, 1);
 }
 
 void ext_0xCA(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.d, 1);
 }
 
 void ext_0xCB(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.e, 1);
 }
 
 void ext_0xCC(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.h, 1);
 }
 
 void ext_0xCD(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.l, 1);
 }
 
 void ext_0xCE(Z80& cpu)
@@ -1042,37 +1042,37 @@ void ext_0xCE(Z80& cpu)
 
 void ext_0xCF(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.a, 1);
 }
 
 void ext_0xD0(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.b, 2);
 }
 
 void ext_0xD1(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.c, 2);
 }
 
 void ext_0xD2(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.d, 2);
 }
 
 void ext_0xD3(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.e, 2);
 }
 
 void ext_0xD4(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.h, 2);
 }
 
 void ext_0xD5(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.l, 2);
 }
 
 void ext_0xD6(Z80& cpu)
@@ -1082,37 +1082,37 @@ void ext_0xD6(Z80& cpu)
 
 void ext_0xD7(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.a, 2);
 }
 
 void ext_0xD8(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.b, 3);
 }
 
 void ext_0xD9(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.c, 3);
 }
 
 void ext_0xDA(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.d, 3);
 }
 
 void ext_0xDB(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.e, 3);
 }
 
 void ext_0xDC(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.h, 3);
 }
 
 void ext_0xDD(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.l, 3);
 }
 
 void ext_0xDE(Z80& cpu)
@@ -1122,37 +1122,37 @@ void ext_0xDE(Z80& cpu)
 
 void ext_0xDF(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.a, 3);
 }
 
 void ext_0xE0(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.b, 4);
 }
 
 void ext_0xE1(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.c, 4);
 }
 
 void ext_0xE2(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.d, 4);
 }
 
 void ext_0xE3(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.e, 4);
 }
 
 void ext_0xE4(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.h, 4);
 }
 
 void ext_0xE5(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.l, 4);
 }
 
 void ext_0xE6(Z80& cpu)
@@ -1162,37 +1162,37 @@ void ext_0xE6(Z80& cpu)
 
 void ext_0xE7(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.a, 4);
 }
 
 void ext_0xE8(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.b, 5);
 }
 
 void ext_0xE9(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.c, 5);
 }
 
 void ext_0xEA(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.d, 5);
 }
 
 void ext_0xEB(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.e, 5);
 }
 
 void ext_0xEC(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.h, 5);
 }
 
 void ext_0xED(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.l, 5);
 }
 
 void ext_0xEE(Z80& cpu)
@@ -1202,37 +1202,37 @@ void ext_0xEE(Z80& cpu)
 
 void ext_0xEF(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.a, 5);
 }
 
 void ext_0xF0(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.b, 6);
 }
 
 void ext_0xF1(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.c, 6);
 }
 
 void ext_0xF2(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.d, 6);
 }
 
 void ext_0xF3(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.e, 6);
 }
 
 void ext_0xF4(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.h, 6);
 }
 
 void ext_0xF5(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.l, 6);
 }
 
 void ext_0xF6(Z80& cpu)
@@ -1242,37 +1242,37 @@ void ext_0xF6(Z80& cpu)
 
 void ext_0xF7(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.a, 6);
 }
 
 void ext_0xF8(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.b, 7);
 }
 
 void ext_0xF9(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.c, 7);
 }
 
 void ext_0xFA(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.d, 7);
 }
 
 void ext_0xFB(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.e, 7);
 }
 
 void ext_0xFC(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.h, 7);
 }
 
 void ext_0xFD(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.l, 7);
 }
 
 void ext_0xFE(Z80& cpu)
@@ -1282,7 +1282,7 @@ void ext_0xFE(Z80& cpu)
 
 void ext_0xFF(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.a, 7);
 }
 
 
