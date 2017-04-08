@@ -145,6 +145,26 @@ public:
         _r.m = 1;
     }
 
+    void SLA(byte& reg)
+    {
+        reg = (sbyte) reg << 1;
+        _r.m = 1;
+    }
+
+    void SRA(byte& reg)
+    {
+        reg = (sbyte) reg >> 1;
+        _r.m = 1;
+    }
+
+    void swap(byte& reg)
+    {
+        byte tmp = reg & 0xF;
+        reg >>= 4;
+        reg += tmp << 4;
+        _r.m = 1;
+    }
+
     void RL(byte& reg, bool carry)
     {
         byte carry = (byte) (reg & 0xFF);

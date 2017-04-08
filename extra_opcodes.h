@@ -7,32 +7,32 @@
 
 void ext_0x00(Z80& cpu)
 {
-
+    cpu.RL(cpu._r.b, 1);
 }
 
 void ext_0x01(Z80& cpu)
 {
-
+    cpu.RL(cpu._r.c, 1);
 }
 
 void ext_0x02(Z80& cpu)
 {
-
+    cpu.RL(cpu._r.d, 1);
 }
 
 void ext_0x03(Z80& cpu)
 {
-
+    cpu.RL(cpu._r.e, 1);
 }
 
 void ext_0x04(Z80& cpu)
 {
-
+    cpu.RL(cpu._r.h, 1);
 }
 
 void ext_0x05(Z80& cpu)
 {
-
+    cpu.RL(cpu._r.l, 1);
 }
 
 void ext_0x06(Z80& cpu)
@@ -42,37 +42,37 @@ void ext_0x06(Z80& cpu)
 
 void ext_0x07(Z80& cpu)
 {
-
+    cpu.RL(cpu._r.a, 1);
 }
 
 void ext_0x08(Z80& cpu)
 {
-
+    cpu.RR(cpu._r.b, 1);
 }
 
 void ext_0x09(Z80& cpu)
 {
-
+    cpu.RR(cpu._r.c, 1);
 }
 
 void ext_0x0A(Z80& cpu)
 {
-
+    cpu.RR(cpu._r.d, 1);
 }
 
 void ext_0x0B(Z80& cpu)
 {
-
+    cpu.RR(cpu._r.e, 1);
 }
 
 void ext_0x0C(Z80& cpu)
 {
-
+    cpu.RR(cpu._r.h, 1);
 }
 
 void ext_0x0D(Z80& cpu)
 {
-
+    cpu.RR(cpu._r.l, 1);
 }
 
 void ext_0x0E(Z80& cpu)
@@ -82,37 +82,37 @@ void ext_0x0E(Z80& cpu)
 
 void ext_0x0F(Z80& cpu)
 {
-
+    cpu.RR(cpu._r.a, 1);
 }
 
 void ext_0x10(Z80& cpu)
 {
-
+    cpu.RL(cpu._r.b, 0);
 }
 
 void ext_0x11(Z80& cpu)
 {
-
+    cpu.RL(cpu._r.c, 0);
 }
 
 void ext_0x12(Z80& cpu)
 {
-
+    cpu.RL(cpu._r.d, 0);
 }
 
 void ext_0x13(Z80& cpu)
 {
-
+    cpu.RL(cpu._r.e, 0);
 }
 
 void ext_0x14(Z80& cpu)
 {
-
+    cpu.RL(cpu._r.h, 0);
 }
 
 void ext_0x15(Z80& cpu)
 {
-
+    cpu.RL(cpu._r.l, 0);
 }
 
 void ext_0x16(Z80& cpu)
@@ -122,37 +122,37 @@ void ext_0x16(Z80& cpu)
 
 void ext_0x17(Z80& cpu)
 {
-
+    cpu.RL(cpu._r.a, 0);
 }
 
 void ext_0x18(Z80& cpu)
 {
-
+    cpu.RR(cpu._r.b, 0);
 }
 
 void ext_0x19(Z80& cpu)
 {
-
+    cpu.RR(cpu._r.c, 0);
 }
 
 void ext_0x1A(Z80& cpu)
 {
-
+    cpu.RR(cpu._r.d, 0);
 }
 
 void ext_0x1B(Z80& cpu)
 {
-
+    cpu.RR(cpu._r.e, 0);
 }
 
 void ext_0x1C(Z80& cpu)
 {
-
+    cpu.RR(cpu._r.h, 0);
 }
 
 void ext_0x1D(Z80& cpu)
 {
-
+    cpu.RR(cpu._r.l, 0);
 }
 
 void ext_0x1E(Z80& cpu)
@@ -162,37 +162,37 @@ void ext_0x1E(Z80& cpu)
 
 void ext_0x1F(Z80& cpu)
 {
-
+    cpu.RR(cpu._r.a, 0);
 }
 
 void ext_0x20(Z80& cpu)
 {
-
+    cpu.SLA(cpu._r.b);
 }
 
 void ext_0x21(Z80& cpu)
 {
-
+    cpu.SLA(cpu._r.c);
 }
 
 void ext_0x22(Z80& cpu)
 {
-
+    cpu.SLA(cpu._r.d);
 }
 
 void ext_0x23(Z80& cpu)
 {
-
+    cpu.SLA(cpu._r.e);
 }
 
 void ext_0x24(Z80& cpu)
 {
-
+    cpu.SLA(cpu._r.h);
 }
 
 void ext_0x25(Z80& cpu)
 {
-
+    cpu.SLA(cpu._r.l);
 }
 
 void ext_0x26(Z80& cpu)
@@ -202,37 +202,37 @@ void ext_0x26(Z80& cpu)
 
 void ext_0x27(Z80& cpu)
 {
-
+    cpu.SLA(cpu._r.a);
 }
 
 void ext_0x28(Z80& cpu)
 {
-
+    cpu.SRA(cpu._r.b);
 }
 
 void ext_0x29(Z80& cpu)
 {
-
+    cpu.SRA(cpu._r.c);
 }
 
 void ext_0x2A(Z80& cpu)
 {
-
+    cpu.SRA(cpu._r.d);
 }
 
 void ext_0x2B(Z80& cpu)
 {
-
+    cpu.SRA(cpu._r.e);
 }
 
 void ext_0x2C(Z80& cpu)
 {
-
+    cpu.SRA(cpu._r.h);
 }
 
 void ext_0x2D(Z80& cpu)
 {
-
+    cpu.SRA(cpu._r.l);
 }
 
 void ext_0x2E(Z80& cpu)
@@ -242,37 +242,37 @@ void ext_0x2E(Z80& cpu)
 
 void ext_0x2F(Z80& cpu)
 {
-
+    cpu.SRA(cpu._r.a);
 }
 
 void ext_0x30(Z80& cpu)
 {
-
+    cpu.swap(cpu._r.b);
 }
 
 void ext_0x31(Z80& cpu)
 {
-
+    cpu.swap(cpu._r.c);
 }
 
 void ext_0x32(Z80& cpu)
 {
-
+    cpu.swap(cpu._r.d);
 }
 
 void ext_0x33(Z80& cpu)
 {
-
+    cpu.swap(cpu._r.e);
 }
 
 void ext_0x34(Z80& cpu)
 {
-
+    cpu.swap(cpu._r.h);
 }
 
 void ext_0x35(Z80& cpu)
 {
-
+    cpu.swap(cpu._r.l);
 }
 
 void ext_0x36(Z80& cpu)
@@ -282,37 +282,43 @@ void ext_0x36(Z80& cpu)
 
 void ext_0x37(Z80& cpu)
 {
-
+    cpu.swap(cpu._r.a);
 }
 
 void ext_0x38(Z80& cpu)
 {
-
+    cpu._r.b >>= 1;
+    cpu._r.m = 1;
 }
 
 void ext_0x39(Z80& cpu)
 {
-
+    cpu._r.c >>= 1;
+    cpu._r.m = 1;
 }
 
 void ext_0x3A(Z80& cpu)
 {
-
+    cpu._r.d >>= 1;
+    cpu._r.m = 1;
 }
 
 void ext_0x3B(Z80& cpu)
 {
-
+    cpu._r.e >>= 1;
+    cpu._r.m = 1;
 }
 
 void ext_0x3C(Z80& cpu)
 {
-
+    cpu._r.h >>= 1;
+    cpu._r.m = 1;
 }
 
 void ext_0x3D(Z80& cpu)
 {
-
+    cpu._r.l >>= 1;
+    cpu._r.m = 1;
 }
 
 void ext_0x3E(Z80& cpu)
@@ -322,7 +328,8 @@ void ext_0x3E(Z80& cpu)
 
 void ext_0x3F(Z80& cpu)
 {
-
+    cpu._r.a >>= 1;
+    cpu._r.m = 1;
 }
 
 void ext_0x40(Z80& cpu)
