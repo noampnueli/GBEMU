@@ -30,19 +30,18 @@ void dispatcher()
         byte op = read_byte(cpu._r.pc++);
         cpu._r.pc &= 0xFFFF; // TODO check if needed
 
-        printf("OPCODE: %x\n", op);
+//        printf("OPCODE: %x\n", op);
 
         if(op == 0xCB)
             extra_opmap[read_byte(cpu._r.pc++)](cpu);
         else
             opmap[op](cpu);
 
-        print_registers();
+//        print_registers();
         cpu._clock.m += cpu._r.m; // add time to CPU clock
         cpu._clock.t += cpu._r.t;
 
         gpu.step(cpu);
-        usleep(10000);
     }
 }
 
