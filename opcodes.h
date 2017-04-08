@@ -1515,19 +1515,19 @@ void opcode_0xF1(Z80& cpu)
 void opcode_0xF2(Z80& cpu)
 {
     std::cout <<  "Invalid instruction 0xF2";
-    exit(-1);
+//    exit(-1);
 }
 
 void opcode_0xF3(Z80& cpu)
 {
     std::cout <<  "Disable Interrupts is not implemented" << std::endl; // TODO
-    exit(-1);
+//    exit(-1);
 }
 
 void opcode_0xF4(Z80& cpu)
 {
     std::cout <<  "Invalid instruction 0xF4";
-    exit(-1);
+//    exit(-1);
 }
 
 void opcode_0xF5(Z80& cpu)
@@ -1573,7 +1573,7 @@ void opcode_0xFA(Z80& cpu)
 void opcode_0xFB(Z80& cpu)
 {
     std::cout <<  "Enable interrupts not here yet"; // TODO
-    exit(-1);
+//    exit(-1);
 }
 
 void opcode_0xFC(Z80& cpu)
@@ -1585,7 +1585,7 @@ void opcode_0xFC(Z80& cpu)
 void opcode_0xFD(Z80& cpu)
 {
     std::cout <<  "Invalid instruction 0xFD";
-    exit(-1);
+//    exit(-1);
 }
 
 void opcode_0xFE(Z80& cpu)

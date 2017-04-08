@@ -1,8 +1,12 @@
-
 #ifndef GBEMU_GPU_H
 #define GBEMU_GPU_H
 
-#include <SDL2/SDL.h>
+#include "GUI.h"
+#include "CPU.h"
+#include "MMU.h"
+
+#define height 144
+#define width 160
 
 static typedef struct color
 {
@@ -17,6 +21,8 @@ class GPU
 private:
     color palette[4];
 
+    byte frame_buffer[height * width];
+
     void init_palette()
     {
         palette[0] = {255, 255, 255};
@@ -25,10 +31,70 @@ private:
         palette[3] = {0, 0, 0};
     }
 
+    void draw_frame()
+    {
+        for(word i = 0; i < height * width; i++)
+        {
+            color c = palette[frame_buffer[i]]; // TODO: implement actual way to find the colour
+            set_pixel(i % width, i / (height - 1), c.red, c.green, c.blue, 1); // Not sure if correct
+        }
+    }
+
+    void scan_line()
+    {
+        for(word i = (word) (VRAM + (line * width)); i < VRAM + (line * width) + width; i++) // Not sure about this too
+        {
+            frame_buffer[i] = read_byte((word) (VRAM + i));
+        }
+    }
+
+    int mode;
+    int clock;
+    int line;
+
 public:
+    /*
+     *  0 = Hblank
+     *  1 = Vblank
+     *  2 = Scan OAM
+     *  3 = Scan VRAM
+     */
     GPU()
     {
         init_palette();
+        mode = 0;
+        clock = 0;
+        line = 0;
+    }
+
+    void step(Z80& cpu)
+    {
+        clock += cpu._r.t;
+
+        // Hblank (new line)
+        if(mode == 0)
+        {
+            // Check if num of clocks has passed
+            if(clock >= 204)
+            {
+                clock = 0;
+                line++;
+
+                if(line == height - 1) // End of screen! Time for vblank
+                {
+                    mode = 1;
+                    draw_frame();
+                }
+                else
+                {
+                    mode = 2;
+                }
+            }
+        }
+        else if(mode == 1)
+        {
+            
+        }
     }
 };
 #endif //GBEMU_GPU_H
