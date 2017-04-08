@@ -44,7 +44,7 @@ private:
     {
         for(word i = (word) (VRAM + (line * width)); i < VRAM + (line * width) + width; i++) // Not sure about this too
         {
-            frame_buffer[i] = read_byte((word) i);
+            frame_buffer[i] = read_byte(i);
         }
     }
 
