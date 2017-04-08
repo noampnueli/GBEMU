@@ -26,7 +26,8 @@ void boot()
     cpu._r.sp = 0xFFFE;
     std::cout << "[*] Registers are set" << std::endl;
     load_ROM(rom_file_name);
-    std::cout << "[*] ROM is loaded" << std::endl;
+    std::cout << "[*] ROM is loaded" << std::endl << std::endl;
+    dispatcher();
 }
 
 int main() {
