@@ -147,21 +147,48 @@ public:
 
     void SLA(byte& reg)
     {
+        byte tmp = reg;
         reg = (sbyte) reg << 1;
+        if(reg == 0)
+            set_zero(1);
+        set_half_carry(0);
+        set_operation(0);
+        set_carry(tmp & 0x80);
         _r.m = 1;
     }
 
     void SRA(byte& reg)
     {
+        byte tmp = reg;
         reg = (sbyte) reg >> 1;
+        if(reg == 0)
+            set_zero(1);
+        set_half_carry(0);
+        set_operation(0);
+        set_carry(tmp & 0x01);
+        _r.m = 1;
+    }
+
+    void SRL(byte& reg)
+    {
+        byte tmp = reg;
+        reg = reg >> 1;
+        if(reg == 0)
+            set_zero(1);
+        set_half_carry(0);
+        set_operation(0);
+        set_carry(tmp & 0x01);
         _r.m = 1;
     }
 
     void swap(byte& reg)
     {
+        reset_flags();
         byte tmp = reg & 0xF;
         reg >>= 4;
         reg += tmp << 4;
+        if(reg == 0)
+            set_zero(1);
         _r.m = 1;
     }
 
@@ -175,6 +202,14 @@ public:
         reg = (reg << 1) + carry;
         if(reg == 0)
             set_zero(1);
+        _r.m = 1;
+    }
+
+    void BIT(byte reg, byte bit)
+    {
+        set_zero((reg & (1 << bit)) >> bit);
+        set_operation(0);
+        set_half_carry(1);
         _r.m = 1;
     }
 
