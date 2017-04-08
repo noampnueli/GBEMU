@@ -28,19 +28,6 @@ public:
         _clock = {};
     }
 
-    // TODO finish and test
-    void dispatcher()
-    {
-        while(1)
-        {
-            byte op = read_byte(_r.pc++);
-            _r.pc &= 0xFFFF; // TODO check if needed
-
-            _clock.m += _r.m; // add time to CPU clock
-            _clock.t += _r.t;
-        }
-    }
-
     void add(byte& reg1, byte reg2)
     {
         if ((((reg1 & 0x0F) + (reg2 & 0x0F)) & 0x10) == 0x10)
@@ -233,6 +220,5 @@ public:
     }
 
 };
-
 
 #endif //GBEMU_CPU_H
