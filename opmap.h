@@ -264,4 +264,9 @@ void (*opmap[])(Z80&) =
         opcode_0xFF
 };
 
+void (*extra_opmap[])(Z80&) =
+        {
+
+        };
+
 #endif //GBEMU_OPMAP_H

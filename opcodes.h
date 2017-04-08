@@ -7,6 +7,7 @@
 #include "GUI.h"
 #include "MMU.h"
 #include "CPU.h"
+#include "opmap.h"
 #include <csignal>
 #include <iostream>
 
@@ -1283,7 +1284,7 @@ void opcode_0xCA(Z80& cpu)
 
 void opcode_0xCB(Z80& cpu)
 {
-    std::cout <<  "Not implemented!";
+
 }
 
 void opcode_0xCC(Z80& cpu)
