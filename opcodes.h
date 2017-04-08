@@ -1282,11 +1282,6 @@ void opcode_0xCA(Z80& cpu)
         opcode_0xC3(cpu);
 }
 
-void opcode_0xCB(Z80& cpu)
-{
-
-}
-
 void opcode_0xCC(Z80& cpu)
 {
     if(cpu.is_zero())

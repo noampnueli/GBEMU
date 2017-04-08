@@ -209,7 +209,7 @@ void (*opmap[])(Z80&) =
         opcode_0xC8,
         opcode_0xC9,
         opcode_0xCA,
-        opcode_0xCB,
+        NULL,
         opcode_0xCC,
         opcode_0xCD,
         opcode_0xCE,
