@@ -647,32 +647,32 @@ void ext_0x7F(Z80& cpu)
 
 void ext_0x80(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.b, 0);
 }
 
 void ext_0x81(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.c, 0);
 }
 
 void ext_0x82(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.d, 0);
 }
 
 void ext_0x83(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.e, 0);
 }
 
 void ext_0x84(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.h, 0);
 }
 
 void ext_0x85(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.l, 0);
 }
 
 void ext_0x86(Z80& cpu)
@@ -682,37 +682,37 @@ void ext_0x86(Z80& cpu)
 
 void ext_0x87(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.a, 0);
 }
 
 void ext_0x88(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.b, 1);
 }
 
 void ext_0x89(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.c, 1);
 }
 
 void ext_0x8A(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.d, 1);
 }
 
 void ext_0x8B(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.e, 1);
 }
 
 void ext_0x8C(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.h, 1);
 }
 
 void ext_0x8D(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.l, 1);
 }
 
 void ext_0x8E(Z80& cpu)
@@ -722,37 +722,37 @@ void ext_0x8E(Z80& cpu)
 
 void ext_0x8F(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.a, 1);
 }
 
 void ext_0x90(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.b, 2);
 }
 
 void ext_0x91(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.c, 2);
 }
 
 void ext_0x92(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.d, 2);
 }
 
 void ext_0x93(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.e, 2);
 }
 
 void ext_0x94(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.h, 2);
 }
 
 void ext_0x95(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.l, 2);
 }
 
 void ext_0x96(Z80& cpu)
@@ -762,37 +762,37 @@ void ext_0x96(Z80& cpu)
 
 void ext_0x97(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.a, 2);
 }
 
 void ext_0x98(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.b, 3);
 }
 
 void ext_0x99(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.c, 3);
 }
 
 void ext_0x9A(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.d, 3);
 }
 
 void ext_0x9B(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.e, 3);
 }
 
 void ext_0x9C(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.h, 3);
 }
 
 void ext_0x9D(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.l, 3);
 }
 
 void ext_0x9E(Z80& cpu)
@@ -802,37 +802,37 @@ void ext_0x9E(Z80& cpu)
 
 void ext_0x9F(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.a, 3);
 }
 
 void ext_0xA0(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.b, 4);
 }
 
 void ext_0xA1(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.c, 4);
 }
 
 void ext_0xA2(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.d, 4);
 }
 
 void ext_0xA3(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.e, 4);
 }
 
 void ext_0xA4(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.h, 4);
 }
 
 void ext_0xA5(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.l, 4);
 }
 
 void ext_0xA6(Z80& cpu)
@@ -842,37 +842,37 @@ void ext_0xA6(Z80& cpu)
 
 void ext_0xA7(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.a, 4);
 }
 
 void ext_0xA8(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.b, 5);
 }
 
 void ext_0xA9(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.c, 5);
 }
 
 void ext_0xAA(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.d, 5);
 }
 
 void ext_0xAB(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.e, 5);
 }
 
 void ext_0xAC(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.h, 5);
 }
 
 void ext_0xAD(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.l, 5);
 }
 
 void ext_0xAE(Z80& cpu)
@@ -882,37 +882,37 @@ void ext_0xAE(Z80& cpu)
 
 void ext_0xAF(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.a, 5);
 }
 
 void ext_0xB0(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.b, 6);
 }
 
 void ext_0xB1(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.c, 6);
 }
 
 void ext_0xB2(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.d, 6);
 }
 
 void ext_0xB3(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.e, 6);
 }
 
 void ext_0xB4(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.h, 6);
 }
 
 void ext_0xB5(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.l, 6);
 }
 
 void ext_0xB6(Z80& cpu)
@@ -922,37 +922,37 @@ void ext_0xB6(Z80& cpu)
 
 void ext_0xB7(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.a, 6);
 }
 
 void ext_0xB8(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.b, 7);
 }
 
 void ext_0xB9(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.c, 7);
 }
 
 void ext_0xBA(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.d, 7);
 }
 
 void ext_0xBB(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.e, 7);
 }
 
 void ext_0xBC(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.h, 7);
 }
 
 void ext_0xBD(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.l, 7);
 }
 
 void ext_0xBE(Z80& cpu)
@@ -962,12 +962,12 @@ void ext_0xBE(Z80& cpu)
 
 void ext_0xBF(Z80& cpu)
 {
-
+    cpu.RES(cpu._r.a, 7);
 }
 
 void ext_0xC0(Z80& cpu)
 {
-
+    cpu.SET(cpu._r.b, 0);
 }
 
 void ext_0xC1(Z80& cpu)

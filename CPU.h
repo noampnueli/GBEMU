@@ -213,6 +213,18 @@ public:
         _r.m = 1;
     }
 
+    void RES(byte& reg, byte bit)
+    {
+        reg &= ~(1 << bit);
+        _r.m = 1;
+    }
+
+    void SET(byte& reg, byte bit)
+    {
+        reg |= (1 << bit);
+        _r.m = 1;
+    }
+
     void compare(byte n)
     {
         set_zero(_r.a == n);
