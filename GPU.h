@@ -8,17 +8,17 @@
 #define height 144
 #define width 160
 
-static typedef struct color
-{
-    int red;
-    int green;
-    int blue;
-
-} color;
-
 class GPU
 {
 private:
+    typedef struct color
+    {
+        int red;
+        int green;
+        int blue;
+
+    } color;
+
     color palette[4];
 
     byte frame_buffer[height * width];
@@ -36,7 +36,7 @@ private:
         for(word i = 0; i < height * width; i++)
         {
             color c = palette[frame_buffer[i]]; // TODO: implement actual way to find the colour
-            set_pixel(i % width, i / (height - 1), c.red, c.green, c.blue, 1); // Not sure if correct
+            set_pixel(i % width, i / (width - 1), c.red, c.green, c.blue, 1); // Not sure if correct
         }
     }
 
@@ -65,6 +65,8 @@ public:
         mode = 0;
         clock = 0;
         line = 0;
+
+        create_window(width, height);
     }
 
     void step(Z80& cpu)
@@ -91,9 +93,35 @@ public:
                 }
             }
         }
+        // Vblank end of the ends
         else if(mode == 1)
         {
-            
+            if(clock >= 456)
+            {
+                clock = 0;
+                line = 0;
+                mode = 2;
+            }
+        }
+        // Scan OAM
+        else if(mode == 2)
+        {
+            if(clock >= 80)
+            {
+                clock = 0;
+                mode = 3;
+            }
+        }
+        // Scan VRAM
+        else if(mode == 3)
+        {
+            if(clock >= 172)
+            {
+                clock = 0;
+                mode = 0;
+
+                scan_line();
+            }
         }
     }
 };

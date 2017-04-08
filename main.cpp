@@ -3,8 +3,10 @@
 #include "CPU.h"
 #include "GUI.h"
 #include "opmap.h"
+#include "GPU.h"
 
 Z80 cpu;
+GPU gpu;
 char* rom_file_name = (char *) "Tetris.gb";
 
 
@@ -28,11 +30,13 @@ void dispatcher()
         byte op = read_byte(cpu._r.pc++);
         cpu._r.pc &= 0xFFFF; // TODO check if needed
         opmap[op](cpu);
-        printf("OPCODE: %x\n", op);
-        print_registers();
+//        printf("OPCODE: %x\n", op);
+//        print_registers();
         cpu._clock.m += cpu._r.m; // add time to CPU clock
         cpu._clock.t += cpu._r.t;
-//        usleep(10000);
+
+        gpu.step(cpu);
+        usleep(10000);
     }
 }
 
@@ -50,12 +54,6 @@ int main() {
 
     std::cout << "[*] Welcome to Gameboy EMU" << std::endl << std::endl;
     boot();
-    opmap[0](cpu);
-
-//    create_window(160, 144);
-//    while(1){
-//        SDL_RenderPresent(renderer);
-//    }
 
     return 0;
 }
