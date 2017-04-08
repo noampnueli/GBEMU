@@ -132,6 +132,32 @@ public:
         _r.m = 1;
     }
 
+    void RR(byte& reg, bool carry)
+    {
+        byte carry = (byte) (reg & 0x01);
+        if(carry)
+            cpu.set_carry(carry);
+        set_operation(0);
+        set_half_carry(0);
+        reg = (reg >> 1) + carry;
+        if(reg == 0)
+            set_zero(1);
+        _r.m = 1;
+    }
+
+    void RL(byte& reg, bool carry)
+    {
+        byte carry = (byte) (reg & 0xFF);
+        if(carry)
+            cpu.set_carry(carry);
+        set_operation(0);
+        set_half_carry(0);
+        reg = (reg << 1) + carry;
+        if(reg == 0)
+            set_zero(1);
+        _r.m = 1;
+    }
+
     void compare(byte n)
     {
         set_zero(_r.a == n);

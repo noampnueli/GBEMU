@@ -116,14 +116,7 @@ void opcode_0x0E(Z80& cpu)
 
 void opcode_0x0F(Z80& cpu)
 {
-    byte carry = (byte) (cpu._r.a & 0x01);
-    cpu.set_carry(carry);
-    cpu.set_operation(0);
-    cpu.set_half_carry(0);
-    cpu._r.a = (cpu._r.a >> 1) + carry;
-    if(cpu._r.a == 0)
-        cpu.set_zero(1);
-    cpu._r.m = 1;
+    cpu.RR(cpu._r.a, 1);
 }
 
 void opcode_0x10(Z80& cpu)
