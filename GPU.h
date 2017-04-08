@@ -1,6 +1,7 @@
 #ifndef GBEMU_GPU_H
 #define GBEMU_GPU_H
 
+#include <iostream>
 #include "GUI.h"
 #include "CPU.h"
 #include "MMU.h"
@@ -36,13 +37,13 @@ private:
         for(word i = 0; i < height * width; i++)
         {
             color c = palette[frame_buffer[i]]; // TODO: implement actual way to find the colour
-            set_pixel(i % width, i / (width - 1), c.red, c.green, c.blue, 1); // Not sure if correct
+            set_pixel(i % width, i / (width - 1), c.red, c.green, c.blue, 1);
         }
     }
 
     void scan_line()
     {
-        for(word i = (word) (VRAM + (line * width)); i < VRAM + (line * width) + width; i++) // Not sure about this too
+        for(word i = (word) (VRAM + (line * width)); i < VRAM + (line * width) + width; i++)
         {
             frame_buffer[i] = read_byte(i);
         }
@@ -72,6 +73,7 @@ public:
     void step(Z80& cpu)
     {
         clock += cpu._r.t;
+//        std::cout << clock << std::endl;
 
         // Hblank (new line)
         if(mode == 0)

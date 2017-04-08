@@ -30,8 +30,8 @@ void dispatcher()
         byte op = read_byte(cpu._r.pc++);
         cpu._r.pc &= 0xFFFF; // TODO check if needed
         opmap[op](cpu);
-//        printf("OPCODE: %x\n", op);
-//        print_registers();
+        printf("OPCODE: %x\n", op);
+        print_registers();
         cpu._clock.m += cpu._r.m; // add time to CPU clock
         cpu._clock.t += cpu._r.t;
 
