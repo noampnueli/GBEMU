@@ -134,12 +134,12 @@ public:
 
     void RR(byte& reg, bool carry)
     {
-        byte carry = (byte) (reg & 0x01);
+        byte carr = (byte) (reg & 0x01);
         if(carry)
-            cpu.set_carry(carry);
+            set_carry(carr);
         set_operation(0);
         set_half_carry(0);
-        reg = (reg >> 1) + carry;
+        reg = (reg >> 1) + carr;
         if(reg == 0)
             set_zero(1);
         _r.m = 1;
@@ -194,12 +194,12 @@ public:
 
     void RL(byte& reg, bool carry)
     {
-        byte carry = (byte) (reg & 0xFF);
+        byte carr = (byte) (reg & 0xFF);
         if(carry)
-            cpu.set_carry(carry);
+            set_carry(carr);
         set_operation(0);
         set_half_carry(0);
-        reg = (reg << 1) + carry;
+        reg = (reg << 1) + carr;
         if(reg == 0)
             set_zero(1);
         _r.m = 1;
