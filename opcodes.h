@@ -1284,7 +1284,6 @@ void opcode_0xCA(Z80& cpu)
 void opcode_0xCB(Z80& cpu)
 {
     std::cout <<  "Not implemented!";
-    exit(-1);
 }
 
 void opcode_0xCC(Z80& cpu)
