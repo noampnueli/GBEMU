@@ -72,7 +72,7 @@ public:
 
     void step(Z80& cpu)
     {
-        clock += cpu._r.t;
+        clock += cpu._r.m;
 //        std::cout << clock << std::endl;
 
         // Hblank (new line)
