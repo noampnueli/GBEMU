@@ -407,32 +407,32 @@ void ext_0x4F(Z80& cpu)
 
 void ext_0x50(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.b, 2);
 }
 
 void ext_0x51(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.c, 2);
 }
 
 void ext_0x52(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.d, 2);
 }
 
 void ext_0x53(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.e, 2);
 }
 
 void ext_0x54(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.h, 2);
 }
 
 void ext_0x55(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.l, 2);
 }
 
 void ext_0x56(Z80& cpu)
@@ -442,37 +442,37 @@ void ext_0x56(Z80& cpu)
 
 void ext_0x57(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.a, 2);
 }
 
 void ext_0x58(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.b, 3);
 }
 
 void ext_0x59(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.c, 3);
 }
 
 void ext_0x5A(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.d, 3);
 }
 
 void ext_0x5B(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.e, 3);
 }
 
 void ext_0x5C(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.h, 3);
 }
 
 void ext_0x5D(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.l, 3);
 }
 
 void ext_0x5E(Z80& cpu)
@@ -482,37 +482,37 @@ void ext_0x5E(Z80& cpu)
 
 void ext_0x5F(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.a, 3);
 }
 
 void ext_0x60(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.b, 4);
 }
 
 void ext_0x61(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.c, 4);
 }
 
 void ext_0x62(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.d, 4);
 }
 
 void ext_0x63(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.e, 4);
 }
 
 void ext_0x64(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.h, 4);
 }
 
 void ext_0x65(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.l, 4);
 }
 
 void ext_0x66(Z80& cpu)
@@ -522,37 +522,37 @@ void ext_0x66(Z80& cpu)
 
 void ext_0x67(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.a, 4);
 }
 
 void ext_0x68(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.b, 5);
 }
 
 void ext_0x69(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.c, 5);
 }
 
 void ext_0x6A(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.d, 5);
 }
 
 void ext_0x6B(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.e, 5);
 }
 
 void ext_0x6C(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.h, 5);
 }
 
 void ext_0x6D(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.l, 5);
 }
 
 void ext_0x6E(Z80& cpu)
@@ -562,37 +562,37 @@ void ext_0x6E(Z80& cpu)
 
 void ext_0x6F(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.a, 5);
 }
 
 void ext_0x70(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.b, 6);
 }
 
 void ext_0x71(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.c, 6);
 }
 
 void ext_0x72(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.d, 6);
 }
 
 void ext_0x73(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.e, 6);
 }
 
 void ext_0x74(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.h, 6);
 }
 
 void ext_0x75(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.l, 6);
 }
 
 void ext_0x76(Z80& cpu)
@@ -602,37 +602,37 @@ void ext_0x76(Z80& cpu)
 
 void ext_0x77(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.a, 6);
 }
 
 void ext_0x78(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.b, 7);
 }
 
 void ext_0x79(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.c, 7);
 }
 
 void ext_0x7A(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.d, 7);
 }
 
 void ext_0x7B(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.e, 7);
 }
 
 void ext_0x7C(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.h, 7);
 }
 
 void ext_0x7D(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.l, 7);
 }
 
 void ext_0x7E(Z80& cpu)
@@ -642,7 +642,7 @@ void ext_0x7E(Z80& cpu)
 
 void ext_0x7F(Z80& cpu)
 {
-
+    cpu.BIT(cpu._r.a, 7);
 }
 
 void ext_0x80(Z80& cpu)
