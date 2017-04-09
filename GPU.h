@@ -9,6 +9,8 @@
 #define height 144
 #define width 160
 
+#define tile_num 384
+
 class GPU
 {
 private:
@@ -23,6 +25,8 @@ private:
     color palette[4];
 
     byte frame_buffer[height * width];
+
+    byte tileset[tile_num][64];
 
     void init_palette()
     {
@@ -68,6 +72,29 @@ public:
         line = 0;
 
         create_window(width, height);
+    }
+
+    void update_tile(word addr, byte data)
+    {
+        // Get base address
+        addr &= 0x1FFE;
+
+        word tile = (word) ((addr >> 4) & 511);
+        byte y = (byte) ((addr >> 1) & 7);
+        byte sx;
+
+        for(byte x = 0; x < 8; x++)
+        {
+            // Get bit index
+            sx = (byte) (1 << (7 - x));
+
+            byte lower = read_byte((word) (VRAM + addr)) & sx;
+            byte upper = read_byte((word) (VRAM + addr + 1) & sx);
+
+            if(upper) upper = 2;
+
+            tileset[tile][y * 8 + x] = lower + upper;
+        }
     }
 
     void step(Z80& cpu)
