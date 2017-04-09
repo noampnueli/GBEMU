@@ -25,7 +25,8 @@ void print_registers()
 // TODO finish and test
 void dispatcher()
 {
-    while(1)
+    bool run = true;
+    while(run)
     {
         byte op = read_byte(cpu._r.pc++);
         cpu._r.pc &= 0xFFFF; // TODO check if needed
@@ -33,9 +34,16 @@ void dispatcher()
         printf("OPCODE: %x\n", op);
 
         if(op == 0xCB)
-            extra_opmap[read_byte(cpu._r.pc++)](cpu);
+        {
+            byte extra = read_byte(cpu._r.pc++);
+            printf("extra OP: %x\n", extra);
+            extra_opmap[extra](cpu);
+        }
+
         else
+        {
             opmap[op](cpu);
+        }
 
         print_registers();
         cpu._clock.m += cpu._r.m; // add time to CPU clock
@@ -43,6 +51,7 @@ void dispatcher()
 
         gpu.step(cpu);
     }
+    std::cout << "bye?" << std::endl;
 }
 
 void boot()

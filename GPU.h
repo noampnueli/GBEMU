@@ -22,7 +22,7 @@ private:
 
     color palette[4];
 
-    byte frame_buffer[height * width];
+    byte frame_buffer[height * width] = {};
 
     void init_palette()
     {
@@ -45,7 +45,7 @@ private:
     {
         for(word i = (word) (VRAM + (line * width)); i < VRAM + (line * width) + width; i++)
         {
-            frame_buffer[i] = read_byte(i);
+            frame_buffer[i - VRAM] = read_byte(i); // TODO Noam check!
         }
     }
 
@@ -121,7 +121,6 @@ public:
             {
                 clock = 0;
                 mode = 0;
-
                 scan_line();
             }
         }

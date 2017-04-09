@@ -16,7 +16,10 @@ byte memory[MEM_SIZE];
 inline byte read_byte(word addr)
 {
     if(addr > MEM_SIZE)
-        throw "Invalid memory access";
+    {
+        std::cout << "Invalid memory access" << std::endl;
+        exit(-1);
+    }
 
     return memory[addr];
 }
@@ -24,7 +27,10 @@ inline byte read_byte(word addr)
 inline word read_word(word addr)
 {
     if(addr > MEM_SIZE)
-        throw "Invalid memory access";
+    {
+        std::cout << "Invalid memory access" << std::endl;
+        exit(-1);
+    }
 
     return (word) (memory[addr]) + (word) (memory[addr + 1] << 8); // little endian
 }
@@ -32,14 +38,20 @@ inline word read_word(word addr)
 void write_byte(byte data, word addr)
 {
     if(addr > MEM_SIZE)
-        throw "Invalid memory access";
+    {
+        std::cout << "Invalid memory access" << std::endl;
+        exit(-1);
+    }
     memory[addr] = data;
 }
 
 void write_word(word data, word addr)
 {
     if(addr > MEM_SIZE - 1)
-        throw "Invalid memory access";
+    {
+        std::cout << "Invalid memory access" << std::endl;
+        exit(-1);
+    }
     memory[addr] = (byte) (data);   // little endian once again
     memory[addr + 1] = (byte) (data >> 8);
 }
