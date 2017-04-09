@@ -43,7 +43,7 @@ private:
     {
         for(int i = 0; i < 64; i++)
         {
-            std::cout << (int) tileset[tile][i];
+            std::cout << " 0x" << std::hex << (int) tileset[tile][i];
             if(i % 8 == 0)
                 std::cout << std::endl;
         }
@@ -79,13 +79,16 @@ private:
         word x = (word) (scroll_x & 7);
 
         word tile = read_word((word) (VRAM + map_offset + line_offset));
+        std::cout << "tile #" << std::hex << tile << std::endl;
 
         print_tile(tile);
 
         word canvas_offset = (word) (line * width);
 
         if(bgmap && tile < 128)
+        {
             tile += 256;
+        }
 
         for(byte i = 0; i < 160; i++)
         {
@@ -137,6 +140,7 @@ public:
     {
         // Get base address
         addr &= 0x1FFE;
+        if(addr & 1) addr--;
 
         word tile = (word) ((addr >> 4) & 511);
         byte y = (byte) ((addr >> 1) & 7);
@@ -147,12 +151,12 @@ public:
             // Get bit index
             sx = (byte) (1 << (7 - x));
 
-            byte lower = read_byte((word) (VRAM + addr)) & sx;
-            byte upper = read_byte((word) (VRAM + addr + 1) & sx);
+            byte lower = (byte) ((read_byte((word) (VRAM + addr)) & sx) ? 1 : 0);
+            byte upper = (byte) ((read_byte((word) (VRAM + addr + 1)) & sx) ? 2 : 0);
 
-            if(upper) upper = 2;
+//            if(upper) upper = 2;
 
-            tileset[tile][y * 8 + x] = lower + upper;
+            tileset[tile][y * 8 + x] = (lower | upper);
         }
     }
 
