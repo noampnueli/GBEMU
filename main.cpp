@@ -50,7 +50,10 @@ void dispatcher()
         cpu._clock.t += cpu._r.t;
 
         if(access_vram)
+        {
             gpu.update_tile((word) (access_vram & 0x1000));
+            access_vram = 0;
+        }
 
         gpu.step(cpu);
     }
