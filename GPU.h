@@ -28,6 +28,11 @@ private:
 
     byte tileset[tile_num][64];
 
+    bool bgmap;
+
+    word scroll_x = 0;
+    word scroll_y = 0;
+
     void init_palette()
     {
         palette[0] = {255, 255, 255};
@@ -38,19 +43,56 @@ private:
 
     void draw_frame()
     {
-        for(word i = 0; i < height * width; i++)
-        {
-            color c = palette[frame_buffer[i]]; // TODO: implement actual way to find the colour
-            set_pixel(i % width, i / (width - 1), c.red, c.green, c.blue, 1);
-        }
+//        for(word i = 0; i < height * width; i++)
+//        {
+//            color c = palette[frame_buffer[i]]; // TODO: implement actual way to find the colour
+//            set_pixel(i % width, i / (width - 1), c.red, c.green, c.blue, 1);
+//        }
     }
 
-    void scan_line()
+    void render_line()
     {
-        for(word i = (word) (VRAM + (line * width)); i < VRAM + (line * width) + width; i++)
+//        for(word i = (word) (VRAM + (line * width)); i < VRAM + (line * width) + width; i++)
+//        {
+//            frame_buffer[i - VRAM] = read_byte(i);
+//        }
+        word map_offset = 0;
+        if(bgmap)
+            map_offset = 0x1C00;
+        else
+            map_offset = 0x1800;
+
+        map_offset += ((line + scroll_y) & 0xFF) >> 3;
+
+        word line_offset = scroll_x >> 3;
+
+        word y = (word) ((line + scroll_y) & 7);
+        word x = (word) (scroll_x & 7);
+
+        byte tile = read_byte((word) (VRAM + map_offset + line_offset));
+
+        if(bgmap && tile < 128)
+            tile += 256;
+
+        for(byte i = 0; i < 160; i++)
         {
-            frame_buffer[i - VRAM] = read_byte(i);
+            color c = palette[tileset[tile][y * 8 + x]];
+
+            set_pixel(x, y, c.red, c.green, c.blue, 1);
+
+            x++;
+
+            if(x == 8)
+            {
+                x = 0;
+                line_offset = (word) ((line_offset + 1) & 31);
+                tile = read_byte((word) (VRAM + line_offset + map_offset));
+
+                if(bgmap && tile < 128)
+                    tile += 256;
+            }
         }
+
     }
 
     int mode;
@@ -148,7 +190,7 @@ public:
             {
                 clock = 0;
                 mode = 0;
-                scan_line();
+                render_line();
             }
         }
     }
