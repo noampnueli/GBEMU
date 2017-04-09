@@ -13,6 +13,8 @@
 
 byte memory[MEM_SIZE];
 
+word access_vram = 0;
+
 inline byte read_byte(word addr)
 {
     if(addr > MEM_SIZE)
@@ -42,6 +44,9 @@ void write_byte(byte data, word addr)
         std::cout << "Invalid memory access" << std::endl;
         exit(-1);
     }
+
+    if(addr > VRAM && addr < EXT_RAM)
+        access_vram = addr;
     memory[addr] = data;
 }
 
@@ -52,6 +57,10 @@ void write_word(word data, word addr)
         std::cout << "Invalid memory access" << std::endl;
         exit(-1);
     }
+
+    if(addr > VRAM && addr < EXT_RAM)
+        access_vram = addr;
+
     memory[addr] = (byte) (data);   // little endian once again
     memory[addr + 1] = (byte) (data >> 8);
 }
