@@ -24,8 +24,6 @@ private:
 
     color palette[4];
 
-    byte frame_buffer[height * width];
-
     byte tileset[tile_num][64];
 
     bool bgmap;
@@ -39,6 +37,17 @@ private:
         palette[1] = {192, 192, 192};
         palette[2] = {96, 96, 96};
         palette[3] = {0, 0, 0};
+    }
+
+    void print_tile(word tile)
+    {
+        for(int i = 0; i < 64; i++)
+        {
+            std::cout << (int) tileset[tile][i];
+            if(i % 8 == 0)
+                std::cout << std::endl;
+        }
+        std::cout << std::endl;
     }
 
     void draw_frame()
@@ -69,9 +78,11 @@ private:
         word y = (word) ((line + scroll_y) & 7);
         word x = (word) (scroll_x & 7);
 
-        byte tile = read_byte((word) (VRAM + map_offset + line_offset));
+        word tile = read_word((word) (VRAM + map_offset + line_offset));
 
-        word canvas_offset = (word) (line * 160 * 4);
+        print_tile(tile);
+
+        word canvas_offset = (word) (line * width);
 
         if(bgmap && tile < 128)
             tile += 256;
@@ -80,12 +91,11 @@ private:
         {
             color c = palette[tileset[tile][y * 8 + x]];
 
+//            std::cout << canvas_offset << std::endl;
+
             set_pixel(canvas_offset % width, canvas_offset / (width - 1), c.red, c.green, c.blue, 255);
-            set_pixel((canvas_offset + 1) % width, (canvas_offset + 1) / (width - 1), c.red, c.green, c.blue, 255);
-            set_pixel((canvas_offset + 2) % width, (canvas_offset + 2) / (width - 1), c.red, c.green, c.blue, 255);
-            set_pixel((canvas_offset + 3) % width, (canvas_offset + 3) / (width - 1), c.red, c.green, c.blue, 255);
-            canvas_offset += 4;
-//            std::cout << "pixel at (" << x << ", " << y << ")" << std::endl;
+            canvas_offset++;
+//            std::cout << "pixel at (" << canvas_offset % width << ", " << canvas_offset / (width - 1) << ")" << std::endl;
 //            std::cout << "(" << c.red << ", " << c.green << ", " << c.blue << std::endl;
             x++;
 
@@ -99,6 +109,7 @@ private:
                     tile += 256;
             }
         }
+        render();
     }
 
     int mode;
@@ -162,7 +173,7 @@ public:
                 if(line == height - 1) // End of screen! Time for vblank
                 {
                     mode = 1;
-                    draw_frame();
+//                    draw_frame();
                 }
                 else
                 {
