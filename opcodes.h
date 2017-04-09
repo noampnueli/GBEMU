@@ -292,10 +292,9 @@ void opcode_0x27(Z80& cpu)
 
 void opcode_0x28(Z80& cpu)
 {
-    byte n = read_byte(cpu._r.pc);
+    byte n = read_byte(cpu._r.pc++);
     if(n > 127)
         n = (byte) -((!n + 1) & 255);
-    cpu._r.pc++;
     cpu._r.m = 2;
     if(cpu.is_zero())
     {
@@ -353,6 +352,7 @@ void opcode_0x30(Z80& cpu)
 {
     if(!cpu.is_carry())
         opcode_0x18(cpu);
+    else cpu._r.pc++;
     cpu._r.m = 3;
 }
 
@@ -413,10 +413,9 @@ void opcode_0x37(Z80& cpu)
 
 void opcode_0x38(Z80& cpu)
 {
-    byte n = read_byte(cpu._r.pc);
+    byte n = read_byte(cpu._r.pc++);
     if(n > 127)
         n = (byte) -((!n + 1) & 255);
-    cpu._r.pc++;
     cpu._r.m = 2;
     if(cpu.is_carry())
     {
@@ -1236,6 +1235,7 @@ void opcode_0xC2(Z80& cpu)
 {
     if(!cpu.is_zero())
         opcode_0xC3(cpu);
+    else cpu._r.pc++;
 }
 
 void opcode_0xC4(Z80& cpu)
@@ -1276,6 +1276,7 @@ void opcode_0xCA(Z80& cpu)
 {
     if(cpu.is_zero())
         opcode_0xC3(cpu);
+    else cpu._r.pc++;
 }
 
 void opcode_0xCC(Z80& cpu)
@@ -1318,6 +1319,7 @@ void opcode_0xD2(Z80& cpu)
 {
     if(!cpu.is_carry())
         opcode_0xC3(cpu);
+    else cpu._r.pc++;
 }
 
 void opcode_0xD3(Z80& cpu)
@@ -1365,6 +1367,7 @@ void opcode_0xDA(Z80& cpu)
 {
     if(cpu.is_carry())
         opcode_0xC3(cpu);
+    else cpu._r.pc++;
 }
 
 void opcode_0xDB(Z80& cpu)
