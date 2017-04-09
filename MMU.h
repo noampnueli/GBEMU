@@ -13,6 +13,8 @@
 
 byte memory[MEM_SIZE];
 
+word update_tile_needed = 0;
+
 inline byte read_byte(word addr)
 {
     if(addr > MEM_SIZE)
@@ -43,6 +45,7 @@ void write_byte(byte data, word addr)
         exit(-1);
     }
     memory[addr] = data;
+    update_tile_needed = (addr & 0xF000) == 0x9000 ? addr : (word) 0;
 }
 
 void write_word(word data, word addr)
@@ -54,6 +57,7 @@ void write_word(word data, word addr)
     }
     memory[addr] = (byte) (data);   // little endian once again
     memory[addr + 1] = (byte) (data >> 8);
+    update_tile_needed = (addr & 0xF000) == 0x9000 ? addr : (word) 0;
 }
 
 void load_ROM(const char* file_name) // TODO: Test when time has come

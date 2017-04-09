@@ -74,7 +74,7 @@ public:
         create_window(width, height);
     }
 
-    void update_tile(word addr, byte data)
+    void update_tile(word addr)
     {
         // Get base address
         addr &= 0x1FFE;
@@ -91,7 +91,9 @@ public:
             byte lower = read_byte((word) (VRAM + addr)) & sx;
             byte upper = read_byte((word) (VRAM + addr + 1) & sx);
 
-            if(upper) upper = 2;
+            if(upper)
+                upper = 2;
+            std::cout << "OK " << std::hex << tile << std::endl;
 
             tileset[tile][y * 8 + x] = lower + upper;
         }

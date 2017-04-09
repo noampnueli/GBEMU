@@ -49,6 +49,12 @@ void dispatcher()
         cpu._clock.m += cpu._r.m; // add time to CPU clock
         cpu._clock.t += cpu._r.t;
 
+        if(update_tile_needed != 0)
+        {
+            std::cout << "Updated tile at " << std::hex << update_tile_needed << std::endl;
+            gpu.update_tile(update_tile_needed);
+        }
+
         gpu.step(cpu);
     }
     std::cout << "bye?" << std::endl;
