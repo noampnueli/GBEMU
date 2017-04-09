@@ -260,7 +260,7 @@ public:
     {
         push(_r.pc + 2);
         _r.pc = read_word(_r.pc);
-        _r.m += 3;
+        _r.m += 2;
     }
 
     void reset_flags()
