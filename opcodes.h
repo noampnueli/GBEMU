@@ -233,6 +233,8 @@ void opcode_0x20(Z80& cpu)
 {
     if(!cpu.is_zero())
         opcode_0x18(cpu);
+    else
+        cpu._r.pc++;
 }
 
 void opcode_0x21(Z80& cpu)
