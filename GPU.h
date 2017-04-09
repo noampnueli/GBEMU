@@ -87,7 +87,6 @@ private:
             canvas_offset += 4;
 //            std::cout << "pixel at (" << x << ", " << y << ")" << std::endl;
 //            std::cout << "(" << c.red << ", " << c.green << ", " << c.blue << std::endl;
-
             x++;
 
             if(x == 8)
