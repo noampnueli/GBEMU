@@ -71,16 +71,22 @@ private:
 
         byte tile = read_byte((word) (VRAM + map_offset + line_offset));
 
+        word canvas_offset = (word) (line * 160 * 4);
+
         if(bgmap && tile < 128)
             tile += 256;
 
         for(byte i = 0; i < 160; i++)
         {
-            color c = palette[tileset[tile][y * 8 + x] + 1];
+            color c = palette[tileset[tile][y * 8 + x]];
 
-            set_pixel(x, y, c.red, c.green, c.blue, 255);
-            std::cout << "pixel at (" << x << ", " << y << ")" << std::endl;
-            std::cout << "(" << c.red << ", " << c.green << ", " << c.blue << std::endl;
+            set_pixel(canvas_offset % width, canvas_offset / (width - 1), c.red, c.green, c.blue, 255);
+            set_pixel((canvas_offset + 1) % width, (canvas_offset + 1) / (width - 1), c.red, c.green, c.blue, 255);
+            set_pixel((canvas_offset + 2) % width, (canvas_offset + 2) / (width - 1), c.red, c.green, c.blue, 255);
+            set_pixel((canvas_offset + 3) % width, (canvas_offset + 3) / (width - 1), c.red, c.green, c.blue, 255);
+            canvas_offset += 4;
+//            std::cout << "pixel at (" << x << ", " << y << ")" << std::endl;
+//            std::cout << "(" << c.red << ", " << c.green << ", " << c.blue << std::endl;
 
             x++;
 
