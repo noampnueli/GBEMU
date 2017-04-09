@@ -49,10 +49,10 @@ void dispatcher()
         cpu._clock.m += cpu._r.m; // add time to CPU clock
         cpu._clock.t += cpu._r.t;
 
-        if(access_vram)
+        if(update_tile_address)
         {
-            gpu.update_tile((word) (access_vram & 0x1000));
-            access_vram = 0;
+            gpu.update_tile((word) (update_tile_address & 0x1000));
+            update_tile_address = 0;
         }
 
         gpu.step(cpu);
