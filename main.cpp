@@ -7,7 +7,7 @@
 
 Z80 cpu;
 GPU gpu;
-char* rom_file_name = (char *) "Tetris.gb";
+char* rom_file_name = (char *) "Pacman.gb";
 
 
 void print_registers()
