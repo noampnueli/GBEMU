@@ -45,7 +45,7 @@ void dispatcher()
             opmap[op](cpu);
         }
 
-        print_registers();
+//        print_registers();
         cpu._clock.m += cpu._r.m; // add time to CPU clock
         cpu._clock.t += cpu._r.t;
 
