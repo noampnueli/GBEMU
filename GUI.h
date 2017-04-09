@@ -23,6 +23,11 @@ void create_window(const int width, const int height)
     SDL_RenderClear(renderer);
 }
 
+void render()
+{
+    SDL_RenderPresent(renderer);
+}
+
 /**
  * set a pixel on the SDL windows
  * @param x x location

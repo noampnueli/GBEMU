@@ -56,6 +56,7 @@ void dispatcher()
         }
 
         gpu.step(cpu);
+        render();
     }
     std::cout << "bye?" << std::endl;
 }

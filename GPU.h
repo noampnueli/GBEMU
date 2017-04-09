@@ -76,9 +76,11 @@ private:
 
         for(byte i = 0; i < 160; i++)
         {
-            color c = palette[tileset[tile][y * 8 + x]];
+            color c = palette[tileset[tile][y * 8 + x] + 1];
 
-            set_pixel(x, y, c.red, c.green, c.blue, 1);
+            set_pixel(x, y, c.red, c.green, c.blue, 255);
+            std::cout << "pixel at (" << x << ", " << y << ")" << std::endl;
+            std::cout << "(" << c.red << ", " << c.green << ", " << c.blue << std::endl;
 
             x++;
 
@@ -92,7 +94,6 @@ private:
                     tile += 256;
             }
         }
-
     }
 
     int mode;
