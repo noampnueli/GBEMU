@@ -74,7 +74,7 @@ public:
         create_window(width, height);
     }
 
-    void update_tile(word addr, byte data)
+    void update_tile(word addr)
     {
         // Get base address
         addr &= 0x1FFE;
