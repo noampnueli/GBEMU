@@ -124,8 +124,7 @@ void opcode_0x10(Z80& cpu)
     std::cout << "Waiting for key press" << std::endl;
     while(!gameboy_keys_pressed()) // TODO is this legit?
     {}
-    std::cout << "Key pressed" << std::endl;
-    }
+}
 
 void opcode_0x11(Z80& cpu)
 {
