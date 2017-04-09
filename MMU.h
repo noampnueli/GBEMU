@@ -13,7 +13,7 @@
 
 byte memory[MEM_SIZE];
 
-word access_vram = 0;
+word update_tile_address = 0;
 
 inline byte read_byte(word addr)
 {
@@ -45,8 +45,7 @@ void write_byte(byte data, word addr)
         exit(-1);
     }
 
-    if(addr > VRAM && addr < EXT_RAM)
-        access_vram = addr;
+    update_tile_address = (addr & 0xF000) == 0x9000 ? addr : (word) 0;
     memory[addr] = data;
 }
 
@@ -58,8 +57,7 @@ void write_word(word data, word addr)
         exit(-1);
     }
 
-    if(addr > VRAM && addr < EXT_RAM)
-        access_vram = addr;
+    update_tile_address = (addr & 0xF000) == 0x9000 ? addr : (word) 0;
 
     memory[addr] = (byte) (data);   // little endian once again
     memory[addr + 1] = (byte) (data >> 8);
