@@ -51,11 +51,13 @@ void dispatcher()
 
         if(update_tile_address)
         {
-            gpu.update_tile((word) (update_tile_address & 0x1000));
+            gpu.update_tile((word) (update_tile_address));
+//            printf("VRAM OP: %x %x\n", op, update_tile_address);
             update_tile_address = 0;
         }
 
         gpu.step(cpu);
+//        usleep(1000);
     }
     std::cout << "bye?" << std::endl;
 }

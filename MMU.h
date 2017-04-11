@@ -45,7 +45,11 @@ void write_byte(byte data, word addr)
         exit(-1);
     }
 
-    update_tile_address = (addr & 0xF000) == 0x9000 ? addr : (word) 0;
+    if(addr >= VRAM && addr < EXT_RAM) {
+        if (addr <= 0x97ff)
+            update_tile_address = addr;
+//        std::cout << data << std::endl;
+    }
     memory[addr] = data;
 }
 
@@ -57,8 +61,12 @@ void write_word(word data, word addr)
         exit(-1);
     }
 
-    update_tile_address = (addr & 0xF000) == 0x9000 ? addr : (word) 0;
-
+//    update_tile_address = (addr & 0xF000) == 0x9000 ? addr : (word) 0;
+    if(addr >= VRAM && addr < EXT_RAM) {
+        if (addr <= 0x97ff)
+            update_tile_address = addr;
+//        std::cout << data << std::endl;
+    }
     memory[addr] = (byte) (data);   // little endian once again
     memory[addr + 1] = (byte) (data >> 8);
 }
