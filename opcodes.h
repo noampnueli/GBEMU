@@ -797,8 +797,8 @@ void opcode_0x75(Z80& cpu)
 
 void opcode_0x76(Z80& cpu)
 {
-    std::cout << "ABORT! HALT" << std::endl;
-    std::raise(SIGABRT); // lel
+//    std::cout << "ABORT! HALT" << std::endl;
+//    std::raise(SIGABRT); // lel
 }
 
 void opcode_0x77(Z80& cpu)
