@@ -1499,7 +1499,7 @@ void opcode_0xEF(Z80& cpu)
 
 void opcode_0xF0(Z80& cpu)
 {
-    cpu._r.a = read_byte((word) (0xFF00 + cpu._r.pc++));
+    cpu._r.a = read_byte((word) (0xFF00 + read_byte(cpu._r.pc++)));
     cpu._r.m = 2;
 }
 
