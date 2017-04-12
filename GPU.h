@@ -45,21 +45,8 @@ private:
         std::cout << std::endl;
     }
 
-    void draw_frame()
-    {
-//        for(word i = 0; i < height * width; i++)
-//        {
-//            color c = palette[frame_buffer[i]]; // TODO: implement actual way to find the colour
-//            set_pixel(i % width, i / (width - 1), c.red, c.green, c.blue, 1);
-//        }
-    }
-
     void render_line()
     {
-//        for(word i = (word) (VRAM + (line * width)); i < VRAM + (line * width) + width; i++)
-//        {
-//            frame_buffer[i - VRAM] = read_byte(i);
-//        }
         word map_offset = 0;
         if(control & (1 << 3))
             map_offset = 0x1C00;
@@ -89,7 +76,7 @@ private:
         {
             color c = palette[tileset[tile][y * 8 + x]];
 
-            set_pixel(pixel_offset % screen_width, pixel_offset / (screen_width - 1), c.red, c.green, c.blue, 255);
+            set_pixel(pixel_offset % screen_width, pixel_offset / (screen_width), c.red, c.green, c.blue, 255);
             pixel_offset++;
 //            std::cout << "pixel at (" << canvas_offset % width << ", " << canvas_offset / (width - 1) << ")" << std::endl;
 //            std::cout << "(" << c.red << ", " << c.green << ", " << c.blue << std::endl;

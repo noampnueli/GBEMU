@@ -59,10 +59,6 @@ void dispatcher()
 //            printf("VRAM OP: %x %x\n", op, update_tile_address);
             update_tile_address = 0;
         }
-        if(cpu._r.pc == 0x3027)
-        {
-            printf("ahah");
-        }
 
         gpu.control = gpu_control;
         gpu.scroll_x = gpu_scroll_x;
