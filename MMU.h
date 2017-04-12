@@ -11,7 +11,7 @@
 #define EXT_RAM 0xA000
 #define INTERNAL_RAM 0xC000
 
-byte memory[MEM_SIZE];
+byte memory[MEM_SIZE] = {0};
 
 word update_tile_address = 0;
 

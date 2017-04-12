@@ -7,7 +7,7 @@
 
 Z80 cpu;
 GPU gpu;
-char* rom_file_name = (char *) "opus5.gb";
+char* rom_file_name = (char *) "Tennis.gb";
 
 
 void print_registers()
@@ -47,7 +47,7 @@ void dispatcher()
             opmap[op](cpu);
         }
 
-        printf("OPCODE: %x %x\n", op, old_pc - 1);
+//        printf("OPCODE: %x %x\n", op, old_pc - 1);
 
 //        print_registers();
         cpu._clock.m += cpu._r.m; // add time to CPU clock
@@ -58,10 +58,6 @@ void dispatcher()
             gpu.update_tile((word) (update_tile_address));
 //            printf("VRAM OP: %x %x\n", op, update_tile_address);
             update_tile_address = 0;
-        }
-        if(cpu._r.pc == 0x300a)
-        {
-            printf("ho");
         }
 
         gpu.control = gpu_control;
@@ -77,6 +73,7 @@ void dispatcher()
 
 void boot()
 {
+    cpu.reset();
     cpu._r.pc = 0x100;
     cpu._r.sp = 0xFFFE;
     std::cout << "[*] Registers are set" << std::endl;

@@ -1380,7 +1380,7 @@ void opcode_0xDC(Z80& cpu)
 
 void opcode_0xDD(Z80& cpu)
 {
-    std::cout <<  "Invalid instruction 0xDD";
+    std::cout <<  "Invalid instruction 0xDD at " << std::hex << cpu._r.pc;
     exit(-1);
 }
 
@@ -1557,7 +1557,8 @@ void opcode_0xF9(Z80& cpu)
 
 void opcode_0xFA(Z80& cpu)
 {
-    cpu._r.a = read_byte(cpu._r.pc++);
+    cpu._r.a = read_byte(cpu._r.pc);
+    cpu._r.pc += 2;
     cpu._r.m = 2;
 }
 
