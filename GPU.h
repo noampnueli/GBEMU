@@ -6,8 +6,8 @@
 #include "CPU.h"
 #include "MMU.h"
 
-#define height 144
-#define width 160
+#define screen_height 144
+#define screen_width 160
 
 #define tile_num 384
 
@@ -25,11 +25,6 @@ private:
     color palette[4];
 
     byte tileset[tile_num][64];
-
-    bool bgmap = 1;
-
-    word scroll_x = 0;
-    word scroll_y = 0;
 
     void init_palette()
     {
@@ -170,7 +165,7 @@ private:
 //            frame_buffer[i - VRAM] = read_byte(i);
 //        }
         word map_offset = 0;
-        if(bgmap)
+        if(control & (1 << 3))
             map_offset = 0x1C00;
         else
             map_offset = 0x1800;
@@ -182,23 +177,23 @@ private:
         word y = (word) ((line + scroll_y) & 7);
         word x = (word) (scroll_x & 7);
 
-        word tile = read_byte((word) (VRAM + map_offset + line_offset));
+        word tile = read_word((word) (VRAM + map_offset + line_offset - 1));
 //        std::cout << "tile #" << std::hex << tile << std::endl;
 
 //        print_tile(tile);
 
-        word pixel_offset = (word) (line * width);
+        word pixel_offset = (word) (line * screen_width);
 
-//        if(bgmap && tile < 128)
-//        {
-//            tile += 256;
-//        }
+        if(control & (1 << 3) && tile < 128)
+        {
+            tile += 256;
+        }
 
         for(byte i = 0; i < 160; i++)
         {
             color c = palette[tileset[tile][y * 8 + x]];
 
-            set_pixel(pixel_offset % width, pixel_offset / (width - 1), c.red, c.green, c.blue, 255);
+            set_pixel(pixel_offset % screen_width, pixel_offset / (screen_width - 1), c.red, c.green, c.blue, 255);
             pixel_offset++;
 //            std::cout << "pixel at (" << canvas_offset % width << ", " << canvas_offset / (width - 1) << ")" << std::endl;
 //            std::cout << "(" << c.red << ", " << c.green << ", " << c.blue << std::endl;
@@ -210,7 +205,7 @@ private:
                 line_offset = (word) ((line_offset + 1) & 31);
                 tile = read_byte((word) (VRAM + line_offset + map_offset));
 
-                if(bgmap && tile < 128)
+                if(control & (1 << 3) && tile < 128)
                     tile += 256;
             }
         }
@@ -219,9 +214,14 @@ private:
 
     int mode;
     int clock;
-    int line;
 
 public:
+    // GPU control registers
+    byte control = 0;
+    word scroll_x = 0;
+    word scroll_y = 0;
+    byte line = 0;
+
     /*
      *  0 = Hblank
      *  1 = Vblank
@@ -235,7 +235,7 @@ public:
         clock = 0;
         line = 0;
 
-        create_window(width, height);
+        create_window(screen_width, screen_height);
     }
 
     void update_tile(word addr)
@@ -265,6 +265,7 @@ public:
     void step(Z80& cpu)
     {
         clock += cpu._r.m;
+
 //        std::cout << clock << std::endl;
 
         // Hblank (new line)
@@ -276,10 +277,9 @@ public:
                 clock = 0;
                 line++;
 
-                if(line == height - 1) // End of screen! Time for vblank
+                if(line == screen_height - 1) // End of screen! Time for vblank
                 {
                     mode = 1;
-//                    draw_frame();
                 }
                 else
                 {

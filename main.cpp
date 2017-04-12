@@ -7,7 +7,7 @@
 
 Z80 cpu;
 GPU gpu;
-char* rom_file_name = (char *) "Tetris.gb";
+char* rom_file_name = (char *) "Tennis.gb";
 
 
 void print_registers()
@@ -31,12 +31,12 @@ void dispatcher()
         byte op = read_byte(cpu._r.pc++);
         cpu._r.pc &= 0xFFFF; // TODO check if needed
 
-//        printf("OPCODE: %x %x\n", op, cpu._r.pc);
+        printf("OPCODE: %x %x\n", op, cpu._r.pc - 1);
 
         if(op == 0xCB)
         {
             byte extra = read_byte(cpu._r.pc++);
-//            printf("extra OP: %x %x\n", extra, cpu._r.pc);
+            printf("extra OP: %x %x\n", extra, cpu._r.pc - 1);
             extra_opmap[extra](cpu);
         }
 
@@ -56,8 +56,12 @@ void dispatcher()
             update_tile_address = 0;
         }
 
+        gpu.control = gpu_control;
+        gpu.scroll_x = gpu_scroll_x;
+        gpu.scroll_y = gpu_scroll_y;
+
         gpu.step(cpu);
-//        usleep(1000);
+        usleep(1000);
     }
     std::cout << "bye?" << std::endl;
 }

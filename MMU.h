@@ -15,6 +15,11 @@ byte memory[MEM_SIZE];
 
 word update_tile_address = 0;
 
+byte gpu_control = 0;
+word gpu_scroll_x = 0;
+word gpu_scroll_y = 0;
+byte gpu_line = 0;
+
 inline byte read_byte(word addr)
 {
     if(addr > MEM_SIZE)
@@ -22,6 +27,10 @@ inline byte read_byte(word addr)
         std::cout << "Invalid memory access" << std::endl;
         exit(-1);
     }
+
+    if(addr == 0xFF40) return gpu_control;
+    else if(addr == 0xFF42) return (byte) gpu_scroll_x;
+    else if(addr == 0xFF43) return (byte) gpu_scroll_y;
 
     return memory[addr];
 }
@@ -33,6 +42,10 @@ inline word read_word(word addr)
         std::cout << "Invalid memory access" << std::endl;
         exit(-1);
     }
+
+    if(addr == 0xFF40) return gpu_control;
+    else if(addr == 0xFF42) return gpu_scroll_x;
+    else if(addr == 0xFF43) return gpu_scroll_y;
 
     return (word) (memory[addr]) + (word) (memory[addr + 1] << 8); // little endian
 }
@@ -50,6 +63,11 @@ void write_byte(byte data, word addr)
             update_tile_address = addr;
 //        std::cout << data << std::endl;
     }
+
+    if(addr == 0xFF40) gpu_control = (byte) data;
+    else if(addr == 0xFF42) gpu_scroll_x = (byte) data;
+    else if(addr == 0xFF43) gpu_scroll_y = (byte) data;
+
     memory[addr] = data;
 }
 
@@ -67,6 +85,11 @@ void write_word(word data, word addr)
             update_tile_address = addr;
 //        std::cout << data << std::endl;
     }
+
+    if(addr == 0xFF40) gpu_control = (byte) data;
+    else if(addr == 0xFF42) gpu_scroll_x = (byte) data;
+    else if(addr == 0xFF43) gpu_scroll_y = (byte) data;
+
     memory[addr] = (byte) (data);   // little endian once again
     memory[addr + 1] = (byte) (data >> 8);
 }

@@ -176,7 +176,7 @@ void opcode_0x18(Z80& cpu)
 {
     byte b = read_byte(cpu._r.pc);
     if(b > 127)
-        b = (byte) -((!b + 1) & 255);
+        b = (byte) ((byte) -(~b + 1) & 255);
     cpu._r.pc += b + 1;
     cpu._r.m = 3;
 }
@@ -1591,7 +1591,7 @@ void opcode_0xFE(Z80& cpu)
 
 void opcode_0xFF(Z80& cpu)
 {
-    cpu.push((word) (cpu._r.pc + 2));
+    cpu.push((word) (cpu._r.pc));
     cpu._r.pc = 0x38;
     cpu._r.m = 3;
 }
