@@ -41,7 +41,6 @@ void dispatcher()
             printf("extra OP: %x %x\n", extra, cpu._r.pc - 1);
             extra_opmap[extra](cpu);
         }
-
         else
         {
             opmap[op](cpu);
@@ -69,7 +68,7 @@ void dispatcher()
         gpu.step(cpu);
         usleep(100);
     }
-    std::cout << "bye?" << std::endl;
+    std::cout << "hue(?)" << std::endl;
 }
 
 void boot()
