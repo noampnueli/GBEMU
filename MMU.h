@@ -65,6 +65,10 @@ void write_byte(byte data, word addr)
             update_tile_address = addr;
 //        std::cout << data << std::endl;
     }
+    if(addr == 8)
+    {
+        printf("aaaa");
+    }
 
     if(addr == 0xFF40) gpu_control = (byte) data;
     else if(addr == 0xFF42) gpu_scroll_x = (byte) data;
@@ -86,6 +90,10 @@ void write_word(word data, word addr)
         if (addr <= 0x97ff)
             update_tile_address = addr;
 //        std::cout << data << std::endl;
+    }
+    if(addr == 8)
+    {
+        printf("aaaa");
     }
 
     if(addr == 0xFF40) gpu_control = (byte) data;

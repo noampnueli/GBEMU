@@ -140,9 +140,7 @@ void opcode_0x12(Z80& cpu)
 
 void opcode_0x13(Z80& cpu)
 {
-    cpu.add(cpu._r.e, 1);
-    if(!cpu._r.e)
-        cpu.add(cpu._r.d, 1);
+    cpu.add(cpu._r.d, cpu._r.e, 1);
     cpu._r.m = 1;
 }
 

@@ -47,7 +47,7 @@ void dispatcher()
             opmap[op](cpu);
         }
 
-        printf("OPCODE: %x %x BC: %x%x\n", op, old_pc - 1, cpu._r.b, cpu._r.c);
+        printf("OPCODE: %x %x\n", op, old_pc - 1);
 
 //        print_registers();
         cpu._clock.m += cpu._r.m; // add time to CPU clock
@@ -58,6 +58,10 @@ void dispatcher()
             gpu.update_tile((word) (update_tile_address));
 //            printf("VRAM OP: %x %x\n", op, update_tile_address);
             update_tile_address = 0;
+        }
+        if(cpu._r.pc < 0x30 && cpu._r.d == 0xFF && cpu._r.e > 0xFC)
+        {
+            printf("ho");
         }
 
         gpu.control = gpu_control;
