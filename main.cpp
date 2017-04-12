@@ -30,9 +30,9 @@ void dispatcher()
     {
         byte op = read_byte(cpu._r.pc++);
         cpu._r.pc &= 0xFFFF; // TODO check if needed
-        
-        printf("OPCODE: %x %x\n", op, cpu._r.pc - 1);
-//        printf("OPCODE: %x %x\n", op, cpu._r.pc);
+
+//        printf("OPCODE: %x %x\n", op, cpu._r.pc - 1);
+        printf("register: %x\n", cpu._r.a);
         if(op == 0xff)
         {
             std::cout << "";
