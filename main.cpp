@@ -31,8 +31,9 @@ void dispatcher()
         byte op = read_byte(cpu._r.pc++);
         cpu._r.pc &= 0xFFFF; // TODO check if needed
 
-//        printf("OPCODE: %x %x\n", op, cpu._r.pc - 1);
-        printf("register: %x\n", cpu._r.a);
+        word old_pc = cpu._r.pc;
+
+//        printf("register: %x\n", cpu._r.a);
 
         if(op == 0xCB)
         {
@@ -45,6 +46,8 @@ void dispatcher()
         {
             opmap[op](cpu);
         }
+
+        printf("OPCODE: %x %x B: %x\n", op, old_pc - 1, cpu._r.b);
 
 //        print_registers();
         cpu._clock.m += cpu._r.m; // add time to CPU clock
@@ -63,7 +66,7 @@ void dispatcher()
         gpu_line = gpu.line;
 
         gpu.step(cpu);
-        usleep(100);
+//        usleep(100);
     }
     std::cout << "bye?" << std::endl;
 }
