@@ -32,7 +32,7 @@ void dispatcher()
         cpu._r.pc &= 0xFFFF; // TODO check if needed
 
 //        printf("OPCODE: %x %x\n", op, cpu._r.pc - 1);
-        printf("register: %x\n", cpu._r.a);
+//        printf("register: %x\n", cpu._r.a);
 
         if(op == 0xCB)
         {
@@ -63,7 +63,7 @@ void dispatcher()
         gpu_line = gpu.line;
 
         gpu.step(cpu);
-        usleep(100);
+//        usleep(100);
     }
     std::cout << "bye?" << std::endl;
 }

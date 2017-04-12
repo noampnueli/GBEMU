@@ -215,7 +215,7 @@ public:
 
     void RES(byte& reg, byte bit)
     {
-        reg &= ~(1 << bit);
+        reg &= ~(1 << (bit - 1));
         _r.m = 1;
     }
 
