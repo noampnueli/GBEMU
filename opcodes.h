@@ -1415,7 +1415,7 @@ void opcode_0xE1(Z80& cpu)
 
 void opcode_0xE2(Z80& cpu)
 {
-    write_byte(cpu._r.a, (word) (0xFF00 + cpu._r.c));
+    write_byte(cpu._r.a, (word) (0xFF00 + read_byte(cpu._r.c)));
     cpu._r.m = 2;
 }
 
@@ -1547,7 +1547,7 @@ void opcode_0xF7(Z80& cpu)
 
 void opcode_0xF8(Z80& cpu)
 {
-    word sum = cpu._r.sp + (sbyte) (cpu._r.pc++);
+    word sum = cpu._r.sp + (sbyte) read_byte(cpu._r.pc++);
     cpu._r.sp = sum;
     cpu._r.h = (byte) (sum << 8);
     cpu._r.l = (byte) sum;
