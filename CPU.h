@@ -251,8 +251,8 @@ public:
 
     void push(word nn)
     {
-        write_word(nn, _r.sp);
         _r.sp -= 2;
+        write_word(nn, _r.sp);
         _r.m = 3;
     }
 

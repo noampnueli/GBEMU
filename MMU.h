@@ -47,7 +47,7 @@ inline word read_word(word addr)
     else if(addr == 0xFF42) return gpu_scroll_x;
     else if(addr == 0xFF43) return gpu_scroll_y;
 
-    return (word) (memory[addr]) + (word) (memory[addr + 1] << 8); // little endian
+    return (word) (memory[addr]) | (word) (memory[addr + 1] << 8); // little endian
 }
 
 void write_byte(byte data, word addr)
