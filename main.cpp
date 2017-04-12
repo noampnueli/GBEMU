@@ -70,7 +70,7 @@ void dispatcher()
         gpu_line = gpu.line;
 
         gpu.step(cpu);
-//        usleep(100);
+        usleep(100);
     }
     std::cout << "bye?" << std::endl;
 }

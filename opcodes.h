@@ -1253,7 +1253,7 @@ void opcode_0xC6(Z80& cpu)
 
 void opcode_0xC7(Z80& cpu)
 {
-    cpu.push((word) (cpu._r.pc + 2));
+    cpu.push((word) (cpu._r.pc));
     cpu._r.pc = 0;
 }
 
@@ -1294,7 +1294,7 @@ void opcode_0xCE(Z80& cpu)
 
 void opcode_0xCF(Z80& cpu)
 {
-    cpu.push((word) (cpu._r.pc + 2));
+    cpu.push((word) (cpu._r.pc));
     cpu._r.pc = 0x8;
 }
 
@@ -1343,7 +1343,7 @@ void opcode_0xD6(Z80& cpu)
 
 void opcode_0xD7(Z80& cpu)
 {
-    cpu.push((word) (cpu._r.pc + 2));
+    cpu.push((word) (cpu._r.pc));
     cpu._r.pc = 0x10;
 }
 
@@ -1392,7 +1392,7 @@ void opcode_0xDE(Z80& cpu)
 
 void opcode_0xDF(Z80& cpu)
 {
-    cpu.push((word) (cpu._r.pc + 2));
+    cpu.push((word) (cpu._r.pc));
     cpu._r.pc = 0x18;
     cpu._r.m = 3;
 }
@@ -1438,7 +1438,7 @@ void opcode_0xE6(Z80& cpu)
 
 void opcode_0xE7(Z80& cpu)
 {
-    cpu.push((word) (cpu._r.pc + 2));
+    cpu.push((word) (cpu._r.pc));
     cpu._r.pc = 0x20;
     cpu._r.m = 3;
 }
@@ -1487,7 +1487,7 @@ void opcode_0xEE(Z80& cpu)
 
 void opcode_0xEF(Z80& cpu)
 {
-    cpu.push((word) (cpu._r.pc + 2));
+    cpu.push((word) (cpu._r.pc));
     cpu._r.pc = 0x28;
     cpu._r.m = 3;
 }
@@ -1536,7 +1536,7 @@ void opcode_0xF6(Z80& cpu)
 
 void opcode_0xF7(Z80& cpu)
 {
-    cpu.push((word) (cpu._r.pc + 2));
+    cpu.push((word) (cpu._r.pc));
     cpu._r.pc = 0x30;
 }
 
