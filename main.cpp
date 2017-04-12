@@ -38,7 +38,7 @@ void dispatcher()
         if(op == 0xCB)
         {
             byte extra = read_byte(cpu._r.pc++);
-            printf("extra OP: %x %x\n", extra, cpu._r.pc - 1);
+//            printf("extra OP: %x %x\n", extra, cpu._r.pc - 1);
             extra_opmap[extra](cpu);
         }
         else

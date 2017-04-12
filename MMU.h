@@ -61,9 +61,8 @@ void write_byte(byte data, word addr)
     }
 
     if(addr >= VRAM && addr < EXT_RAM) {
-        if (addr <= 0x97ff)
+        if(addr <= 0x97ff)
             update_tile_address = addr;
-//        std::cout << data << std::endl;
     }
 
     if(addr == 0xFF40) gpu_control = (byte) data;
@@ -83,13 +82,8 @@ void write_word(word data, word addr)
 
 //    update_tile_address = (addr & 0xF000) == 0x9000 ? addr : (word) 0;
     if(addr >= VRAM && addr < EXT_RAM) {
-        if (addr <= 0x97ff)
+        if(addr <= 0x97ff)
             update_tile_address = addr;
-//        std::cout << data << std::endl;
-    }
-    if(addr == 8)
-    {
-        printf("aaaa");
     }
 
     if(addr == 0xFF40) gpu_control = (byte) data;

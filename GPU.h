@@ -60,7 +60,8 @@ private:
         word y = (word) ((line + scroll_y) & 7);
         word x = (word) (scroll_x & 7);
 
-        word tile = read_word((word) (VRAM + map_offset + line_offset - 1));
+        word tile = read_byte((word) (VRAM + map_offset + line_offset));
+
 //        std::cout << "tile #" << std::hex << tile << std::endl;
 
 //        print_tile(tile);
@@ -74,9 +75,10 @@ private:
 
         for(byte i = 0; i < 160; i++)
         {
+//            std::cout << tile << std::endl;
             color c = palette[tileset[tile][y * 8 + x]];
 
-            set_pixel(pixel_offset % screen_width, pixel_offset / (screen_width), c.red, c.green, c.blue, 255);
+            set_pixel(pixel_offset % screen_width, pixel_offset / screen_width, c.red, c.green, c.blue, 255);
             pixel_offset++;
 //            std::cout << "pixel at (" << canvas_offset % width << ", " << canvas_offset / (width - 1) << ")" << std::endl;
 //            std::cout << "(" << c.red << ", " << c.green << ", " << c.blue << std::endl;
