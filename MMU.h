@@ -31,6 +31,7 @@ inline byte read_byte(word addr)
     if(addr == 0xFF40) return gpu_control;
     else if(addr == 0xFF42) return (byte) gpu_scroll_x;
     else if(addr == 0xFF43) return (byte) gpu_scroll_y;
+    else if(addr == 0xFF44) return gpu_line;
 
     return memory[addr];
 }
@@ -46,6 +47,7 @@ inline word read_word(word addr)
     if(addr == 0xFF40) return gpu_control;
     else if(addr == 0xFF42) return gpu_scroll_x;
     else if(addr == 0xFF43) return gpu_scroll_y;
+    else if(addr == 0xFF44) return gpu_line;
 
     return (word) (memory[addr]) | (word) (memory[addr + 1] << 8); // little endian
 }

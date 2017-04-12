@@ -68,8 +68,10 @@ void dispatcher()
         gpu.control = gpu_control;
         gpu.scroll_x = gpu_scroll_x;
         gpu.scroll_y = gpu_scroll_y;
+        gpu_line = gpu.line;
 
         gpu.step(cpu);
+        usleep(1000);
     }
     std::cout << "bye?" << std::endl;
 }
