@@ -31,9 +31,8 @@ void dispatcher()
         byte op = read_byte(cpu._r.pc++);
         cpu._r.pc &= 0xFFFF; // TODO check if needed
 
-//        printf("OPCODE: %x %x\n", op, cpu._r.pc - 1);
+        printf("OPCODE: %x %x\n", op, cpu._r.pc - 1);
 //        printf("register: %x\n", cpu._r.a);
-
         if(op == 0xCB)
         {
             byte extra = read_byte(cpu._r.pc++);
@@ -44,6 +43,12 @@ void dispatcher()
         else
         {
             opmap[op](cpu);
+        }
+        if(cpu._r.pc > 0x3635)
+        {
+            printf("");
+            printf("*b: %x *\n", cpu._r.b);
+            printf("");
         }
 
 //        print_registers();

@@ -30,6 +30,7 @@ public:
 
     void add(byte& reg1, byte reg2)
     {
+        reset_flags();
         if ((((reg1 & 0x0F) + (reg2 & 0x0F)) & 0x10) == 0x10)
             set_half_carry(1);
         if (reg1 > 0 && reg2 > (0xFF - reg1))
@@ -44,6 +45,7 @@ public:
 
     void add(word& reg1, word reg2)
     {
+        reset_flags();
         if ((((reg1 & 0xFF) + (reg2 & 0xFF)) & 0x10) == 0x10)
             set_half_carry(1);
         if (reg1 > 0 && reg2 > (0xFF - reg1))
@@ -71,7 +73,7 @@ public:
 
     void sub(byte& high, byte& low, word value)
     {
-        word hl = ((word) high << 8) + (word) low;
+        word hl = (((word) high) << 8) + (word) low;
         hl -= value;
         high = (byte) ((hl >> 8) & 0xFF);
         low = (byte) (hl & 0xFF);
@@ -79,6 +81,7 @@ public:
 
     void sub(byte& reg1, byte reg2)
     {
+        reset_flags();
         if (reg1 < 0 && reg2 > (255 + reg1))
             set_carry(1);
 
@@ -91,6 +94,7 @@ public:
 
     void sub(word& reg1, word reg2)
     {
+        reset_flags();
         if (reg1 < 0 && reg2 > (0xFF + reg1))
             set_carry(1);
 
@@ -270,7 +274,9 @@ public:
 
     bool is_zero()
     {
-        return (_r.f & 0x80) > 0; // remove non-related bits, check if zero is on
+        byte binval = _r.f & 0x80;
+        bool is_zero = binval > 0;
+        return is_zero; // remove non-related bits, check if zero is on
     }
 
     void set_zero(bool state)
