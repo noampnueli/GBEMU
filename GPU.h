@@ -127,7 +127,7 @@ public:
     GPU()
     {
         init_palette();
-        mode = 0;
+        mode = 2;
         clock = 0;
         line = 0;
 

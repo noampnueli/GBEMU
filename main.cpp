@@ -46,8 +46,8 @@ void dispatcher()
             opmap[op](cpu);
         }
 
-        printf("OPCODE: %x PC: %x DE: %x%x B: %x HL: %x%x\n", op, old_pc - 1, cpu._r.d, cpu._r.e, cpu._r.b,
-               cpu._r.h, cpu._r.l);
+//        printf("OPCODE: %x PC: %x DE: %x%x B: %x HL: %x%x\n", op, old_pc - 1, cpu._r.d, cpu._r.e, cpu._r.b,
+//               cpu._r.h, cpu._r.l);
 
 //        print_registers();
         cpu._clock.m += cpu._r.m; // add time to CPU clock
@@ -66,13 +66,14 @@ void dispatcher()
         gpu_line = gpu.line;
 
         gpu.step(cpu);
-        usleep(100);
+//        usleep(100);
     }
     std::cout << "hue(?)" << std::endl;
 }
 
 void boot()
 {
+    cpu.reset();
     cpu._r.pc = 0x100;
     cpu._r.sp = 0xFFFE;
     std::cout << "[*] Registers are set" << std::endl;
