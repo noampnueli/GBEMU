@@ -293,13 +293,13 @@ void opcode_0x27(Z80& cpu)
 
 void opcode_0x28(Z80& cpu)
 {
-    byte n = read_byte(cpu._r.pc++);
-    if(n > 127)
-        n = (byte) -((!n + 1) & 255);
+    sbyte b = read_byte(cpu._r.pc++);
+    if(b > 127)
+        b = (sbyte) ((sbyte) -(~b + 1) & 255);
     cpu._r.m = 2;
     if(cpu.is_zero())
     {
-        cpu._r.pc += n;
+        cpu._r.pc += b;
         cpu._r.m++;
     }
 }
