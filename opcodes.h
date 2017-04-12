@@ -26,7 +26,7 @@ void opcode_0x01(Z80& cpu)
 
 void opcode_0x02(Z80& cpu)
 {
-    write_byte(cpu._r.a, (word) cpu._r.b << 8 + cpu._r.c);
+    write_byte(cpu._r.a, (((word) cpu._r.b) << 8) + cpu._r.c);
     cpu._r.m = 2;
 }
 
@@ -78,12 +78,12 @@ void opcode_0x08(Z80& cpu)
 
 void opcode_0x09(Z80& cpu)
 {
-    cpu.add(cpu._r.h, cpu._r.l, ((word) cpu._r.b << 8) + cpu._r.c);
+    cpu.add(cpu._r.h, cpu._r.l, (((word) cpu._r.b) << 8) + cpu._r.c);
 }
 
 void opcode_0x0A(Z80& cpu)
 {
-    cpu._r.a = read_byte((word) ((word) cpu._r.b << 8) + cpu._r.c);
+    cpu._r.a = read_byte((word) (((word) cpu._r.b) << 8) + cpu._r.c);
     cpu._r.m = 2;
 }
 
@@ -137,7 +137,7 @@ void opcode_0x11(Z80& cpu)
 
 void opcode_0x12(Z80& cpu)
 {
-    write_byte(cpu._r.a, ((word) cpu._r.d << 8) + cpu._r.e);
+    write_byte(cpu._r.a, (((word) cpu._r.d) << 8) + cpu._r.e);
     cpu._r.m = 3;
 }
 
@@ -183,12 +183,12 @@ void opcode_0x18(Z80& cpu)
 
 void opcode_0x19(Z80& cpu)
 {
-    cpu.add(cpu._r.h, cpu._r.l, ((word) cpu._r.d << 8) + cpu._r.e);
+    cpu.add(cpu._r.h, cpu._r.l, (((word) cpu._r.d) << 8) + cpu._r.e);
 }
 
 void opcode_0x1A(Z80& cpu)
 {
-    cpu._r.a = read_byte((word) (cpu._r.d << 8) + cpu._r.e);
+    cpu._r.a = read_byte((word) (((word) cpu._r.d) << 8) + cpu._r.e);
     cpu._r.m = 2;
 }
 
@@ -248,7 +248,7 @@ void opcode_0x21(Z80& cpu)
 
 void opcode_0x22(Z80& cpu)
 {
-    write_byte(cpu._r.a, ((word) cpu._r.h << 8) + cpu._r.l);
+    write_byte(cpu._r.a, (((word) cpu._r.h) << 8) + cpu._r.l);
     cpu._r.m = 3;
 }
 
@@ -306,12 +306,12 @@ void opcode_0x28(Z80& cpu)
 
 void opcode_0x29(Z80& cpu)
 {
-    cpu.add(cpu._r.h, cpu._r.l, (cpu._r.h << 8) + cpu._r.l);
+    cpu.add(cpu._r.h, cpu._r.l, (((word)cpu._r.h) << 8) + cpu._r.l);
 }
 
 void opcode_0x2A(Z80& cpu)
 {
-    cpu._r.a = read_byte((cpu._r.h << 8) + cpu._r.l);
+    cpu._r.a = read_byte((((word)cpu._r.h) << 8) + cpu._r.l);
     cpu.add(cpu._r.h, cpu._r.l, 1);
 }
 
@@ -366,7 +366,7 @@ void opcode_0x31(Z80& cpu)
 
 void opcode_0x32(Z80& cpu)
 {
-    word HL = ((word) cpu._r.h << 8) + cpu._r.l;
+    word HL = (((word) cpu._r.h) << 8) + cpu._r.l;
     write_byte(cpu._r.a, HL);
     cpu.sub(cpu._r.h, cpu._r.l, 1);
     cpu._r.m = 4; // TODO unable to find m so guessed it is m(12) + m(0B)
@@ -380,7 +380,7 @@ void opcode_0x33(Z80& cpu)
 
 void opcode_0x34(Z80& cpu)
 {
-    word addr = ((word) cpu._r.h << 8) + cpu._r.l;
+    word addr = (((word) cpu._r.h) << 8) + cpu._r.l;
     byte val = (byte) ((read_byte(addr) + 1) & 255);
     write_byte(val, addr);
     cpu.reset_flags();
@@ -390,7 +390,7 @@ void opcode_0x34(Z80& cpu)
 
 void opcode_0x35(Z80& cpu)
 {
-    word addr = ((word) cpu._r.h << 8) + cpu._r.l;
+    word addr = (((word) cpu._r.h) << 8) + cpu._r.l;
     byte val = (byte) ((read_byte(addr) - 1) & 255);
     write_byte(val, addr);
     cpu.reset_flags();
@@ -400,7 +400,7 @@ void opcode_0x35(Z80& cpu)
 
 void opcode_0x36(Z80& cpu)
 {
-    word addr = ((word) cpu._r.h << 8) + cpu._r.l;
+    word addr = (((word) cpu._r.h) << 8) + cpu._r.l;
     write_byte(read_byte(cpu._r.pc), addr);
     cpu._r.pc++;
     cpu._r.m = 3;
@@ -433,7 +433,7 @@ void opcode_0x39(Z80& cpu)
 
 void opcode_0x3A(Z80& cpu)
 {
-    cpu._r.a = read_byte((cpu._r.h << 8) + cpu._r.l);
+    cpu._r.a = read_byte((((word)cpu._r.h) << 8) + cpu._r.l);
     cpu.sub(cpu._r.h, cpu._r.l, 1);
 }
 
@@ -505,7 +505,7 @@ void opcode_0x45(Z80& cpu)
 
 void opcode_0x46(Z80& cpu)
 {
-    word addr = ((word) cpu._r.h << 8) + cpu._r.l;
+    word addr = (((word) cpu._r.h) << 8) + cpu._r.l;
     cpu._r.b = read_byte(addr);
     cpu._r.m = 2;
 }
@@ -553,7 +553,7 @@ void opcode_0x4D(Z80& cpu)
 
 void opcode_0x4E(Z80& cpu)
 {
-    word addr = ((word) cpu._r.h << 8) + cpu._r.l;
+    word addr = (((word) cpu._r.h) << 8) + cpu._r.l;
     cpu._r.c = read_byte(addr);
     cpu._r.m = 2;
 }
@@ -602,7 +602,7 @@ void opcode_0x55(Z80& cpu)
 
 void opcode_0x56(Z80& cpu)
 {
-    cpu._r.d = read_byte((word) cpu._r.h << 8 + cpu._r.l);
+    cpu._r.d = read_byte(((word) cpu._r.h) << 8 + cpu._r.l);
     cpu._r.m = 2;
 }
 
@@ -650,7 +650,7 @@ void opcode_0x5D(Z80& cpu)
 
 void opcode_0x5E(Z80& cpu)
 {
-    cpu._r.e = read_byte((word) cpu._r.h << 8 + cpu._r.l);
+    cpu._r.e = read_byte(((word) cpu._r.h) << 8 + cpu._r.l);
     cpu._r.m = 2;
 }
 
@@ -698,7 +698,7 @@ void opcode_0x65(Z80& cpu)
 
 void opcode_0x66(Z80& cpu)
 {
-    word addr = ((word) cpu._r.h << 8) + cpu._r.l;
+    word addr = (((word) cpu._r.h) << 8) + cpu._r.l;
     cpu._r.h = read_byte(addr);
     cpu._r.m = 2;
 }
@@ -747,7 +747,7 @@ void opcode_0x6D(Z80& cpu)
 
 void opcode_0x6E(Z80& cpu)
 {
-    word addr = ((word) cpu._r.h << 8) + cpu._r.l;
+    word addr = (((word) cpu._r.h) << 8) + cpu._r.l;
     cpu._r.l = read_byte(addr);
     cpu._r.m = 2;
 }
@@ -760,42 +760,42 @@ void opcode_0x6F(Z80& cpu)
 
 void opcode_0x70(Z80& cpu)
 {
-    word addr = ((word) cpu._r.h << 8) + cpu._r.l;
+    word addr = (((word) cpu._r.h) << 8) + cpu._r.l;
     write_word(addr, cpu._r.b);
     cpu._r.m = 2;
 }
 
 void opcode_0x71(Z80& cpu)
 {
-    word addr = ((word) cpu._r.h << 8) + cpu._r.l;
+    word addr = (((word) cpu._r.h) << 8) + cpu._r.l;
     write_word(addr, cpu._r.c);
     cpu._r.m = 2;
 }
 
 void opcode_0x72(Z80& cpu)
 {
-    word addr = ((word) cpu._r.h << 8) + cpu._r.l;
+    word addr = (((word) cpu._r.h) << 8) + cpu._r.l;
     write_word(addr, cpu._r.d);
     cpu._r.m = 2;
 }
 
 void opcode_0x73(Z80& cpu)
 {
-    word addr = ((word) cpu._r.h << 8) + cpu._r.l;
+    word addr = (((word) cpu._r.h) << 8) + cpu._r.l;
     write_word(addr, cpu._r.e);
     cpu._r.m = 2;
 }
 
 void opcode_0x74(Z80& cpu)
 {
-    word addr = ((word) cpu._r.h << 8) + cpu._r.l;
+    word addr = (((word) cpu._r.h) << 8) + cpu._r.l;
     write_word(addr, cpu._r.h);
     cpu._r.m = 2;
 }
 
 void opcode_0x75(Z80& cpu)
 {
-    word addr = ((word) cpu._r.h << 8) + cpu._r.l;
+    word addr = (((word) cpu._r.h) << 8) + cpu._r.l;
     write_word(addr, cpu._r.l);
     cpu._r.m = 2;
 }
@@ -808,7 +808,7 @@ void opcode_0x76(Z80& cpu)
 
 void opcode_0x77(Z80& cpu)
 {
-    word addr = ((word) cpu._r.h << 8) + cpu._r.l;
+    word addr = (((word) cpu._r.h) << 8) + cpu._r.l;
     write_word(addr, cpu._r.a);
     cpu._r.m = 2;
 }
@@ -851,7 +851,7 @@ void opcode_0x7D(Z80& cpu)
 
 void opcode_0x7E(Z80& cpu)
 {
-    word addr = ((word) cpu._r.h << 8) + cpu._r.l;
+    word addr = (((word) cpu._r.h) << 8) + cpu._r.l;
     cpu._r.a = read_byte(addr);
     cpu._r.m = 2;
 }
@@ -899,7 +899,7 @@ void opcode_0x85(Z80& cpu)
 
 void opcode_0x86(Z80& cpu)
 {
-    cpu.add(cpu._r.a, read_byte((word) cpu._r.h >> 8 + cpu._r.l));
+    cpu.add(cpu._r.a, read_byte(((word) cpu._r.h) >> 8 + cpu._r.l));
     cpu._r.m = 4;
 }
 
@@ -947,7 +947,7 @@ void opcode_0x8D(Z80& cpu)
 
 void opcode_0x8E(Z80& cpu)
 {
-    cpu.add(cpu._r.a, read_byte((word) cpu._r.h >> 8 + cpu._r.l) + cpu.is_carry());
+    cpu.add(cpu._r.a, read_byte(((word) cpu._r.h) >> 8 + cpu._r.l) + cpu.is_carry());
     cpu._r.m = 5;
 }
 
@@ -995,7 +995,7 @@ void opcode_0x95(Z80& cpu)
 
 void opcode_0x96(Z80& cpu)
 {
-    word addr = ((word) cpu._r.h << 8) + cpu._r.l;
+    word addr = (((word) cpu._r.h) << 8) + cpu._r.l;
     cpu.sub(cpu._r.a, read_byte(addr));
     cpu._r.m = 2;
 }
@@ -1044,7 +1044,7 @@ void opcode_0x9D(Z80& cpu)
 
 void opcode_0x9E(Z80& cpu)
 {
-    word addr = ((word) cpu._r.h << 8) + cpu._r.l;
+    word addr = (((word) cpu._r.h) << 8) + cpu._r.l;
     cpu.sub(cpu._r.a, read_byte(addr) + (byte)(cpu.is_carry()));
     cpu._r.m = 1;
 }
@@ -1087,7 +1087,7 @@ void opcode_0xA5(Z80& cpu)
 
 void opcode_0xA6(Z80& cpu)
 {
-    cpu.and_reg(read_byte((word)cpu._r.h << 8 + cpu._r.l));
+    cpu.and_reg(read_byte(((word)cpu._r.h) << 8 + cpu._r.l));
 }
 
 void opcode_0xA7(Z80& cpu)
@@ -1127,7 +1127,7 @@ void opcode_0xAD(Z80& cpu)
 
 void opcode_0xAE(Z80& cpu)
 {
-    cpu.xor_reg(read_byte((word)cpu._r.h << 8 + cpu._r.l));
+    cpu.xor_reg(read_byte(((word)cpu._r.h) << 8 + cpu._r.l));
 }
 
 void opcode_0xAF(Z80& cpu)
@@ -1167,7 +1167,7 @@ void opcode_0xB5(Z80& cpu)
 
 void opcode_0xB6(Z80& cpu)
 {
-    cpu.or_reg(read_byte((word)cpu._r.h << 8 + cpu._r.l));
+    cpu.or_reg(read_byte(((word)cpu._r.h) << 8 + cpu._r.l));
 }
 
 void opcode_0xB7(Z80& cpu)
@@ -1207,7 +1207,7 @@ void opcode_0xBD(Z80& cpu)
 
 void opcode_0xBE(Z80& cpu)
 {
-    cpu.compare(read_byte((word)cpu._r.h << 8 + cpu._r.l));
+    cpu.compare(read_byte(((word)cpu._r.h) << 8 + cpu._r.l));
 }
 
 void opcode_0xBF(Z80& cpu)
@@ -1247,7 +1247,7 @@ void opcode_0xC4(Z80& cpu)
 
 void opcode_0xC5(Z80& cpu)
 {
-    cpu.push((word) cpu._r.b << 8 + cpu._r.c);
+    cpu.push(((word) cpu._r.b) << 8 + cpu._r.c);
 }
 
 void opcode_0xC6(Z80& cpu)
@@ -1433,7 +1433,7 @@ void opcode_0xE4(Z80& cpu)
 
 void opcode_0xE5(Z80& cpu)
 {
-    cpu.push((word) cpu._r.h << 8 + cpu._r.l);
+    cpu.push(((word) cpu._r.h) << 8 + cpu._r.l);
 }
 
 void opcode_0xE6(Z80& cpu)
@@ -1456,7 +1456,7 @@ void opcode_0xE8(Z80& cpu)
 
 void opcode_0xE9(Z80& cpu)
 {
-    cpu._r.pc = (word) cpu._r.h << 8 + cpu._r.l;
+    cpu._r.pc = (((word) cpu._r.h) << 8) + cpu._r.l;
     cpu._r.m = 2;
 }
 
@@ -1528,7 +1528,7 @@ void opcode_0xF4(Z80& cpu)
 
 void opcode_0xF5(Z80& cpu)
 {
-    cpu.push(((word) cpu._r.a) << 8 + cpu._r.f);
+    cpu.push((((word) cpu._r.a) << 8) + cpu._r.f);
 }
 
 void opcode_0xF6(Z80& cpu)
@@ -1556,7 +1556,7 @@ void opcode_0xF8(Z80& cpu)
 
 void opcode_0xF9(Z80& cpu)
 {
-    cpu._r.sp = ((word) cpu._r.h) << 8 + cpu._r.l;
+    cpu._r.sp = (((word) cpu._r.h) << 8) + cpu._r.l;
     cpu._r.m = 3;
 }
 

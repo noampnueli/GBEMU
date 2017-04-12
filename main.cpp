@@ -30,8 +30,17 @@ void dispatcher()
     {
         byte op = read_byte(cpu._r.pc++);
         cpu._r.pc &= 0xFFFF; // TODO check if needed
-
+        
         printf("OPCODE: %x %x\n", op, cpu._r.pc - 1);
+//        printf("OPCODE: %x %x\n", op, cpu._r.pc);
+        if(op == 0xff)
+        {
+            std::cout << "";
+        }
+        if(cpu._r.sp < 0x40)
+        {
+            std::cout << "";
+        }
 
         if(op == 0xCB)
         {
