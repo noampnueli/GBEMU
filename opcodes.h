@@ -89,10 +89,7 @@ void opcode_0x0A(Z80& cpu)
 
 void opcode_0x0B(Z80& cpu)
 {
-    if(!cpu._r.c)
-        cpu._r.b = (byte) ((cpu._r.b - 1) & 0xFF);
-    else
-        cpu._r.c = (byte) ((cpu._r.c - 1) & 0xFF);
+    cpu.sub(cpu._r.b, cpu._r.c, 1);
     cpu._r.m = 1;
 }
 

@@ -47,7 +47,7 @@ void dispatcher()
             opmap[op](cpu);
         }
 
-        printf("OPCODE: %x %x B: %x\n", op, old_pc - 1, cpu._r.b);
+        printf("OPCODE: %x %x BC: %x%x\n", op, old_pc - 1, cpu._r.b, cpu._r.c);
 
 //        print_registers();
         cpu._clock.m += cpu._r.m; // add time to CPU clock
