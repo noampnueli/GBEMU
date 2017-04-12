@@ -189,8 +189,14 @@ public:
             if(clock >= 456)
             {
                 clock = 0;
-                line = 0;
-                mode = 2;
+
+                line++;
+
+                if(line > 153)
+                {
+                    line = 0;
+                    mode = 2;
+                }
             }
         }
         // Scan OAM
