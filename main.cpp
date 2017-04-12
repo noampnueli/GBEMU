@@ -7,7 +7,7 @@
 
 Z80 cpu;
 GPU gpu;
-char* rom_file_name = (char *) "Tennis.gb";
+char* rom_file_name = (char *) "opus5.gb";
 
 
 void print_registers()
@@ -59,7 +59,7 @@ void dispatcher()
 //            printf("VRAM OP: %x %x\n", op, update_tile_address);
             update_tile_address = 0;
         }
-        if(cpu._r.pc < 0x30 && cpu._r.d == 0xFF && cpu._r.e > 0xFC)
+        if(cpu._r.pc == 0x300a)
         {
             printf("ho");
         }
@@ -70,7 +70,7 @@ void dispatcher()
         gpu_line = gpu.line;
 
         gpu.step(cpu);
-        usleep(100);
+//        usleep(100);
     }
     std::cout << "bye?" << std::endl;
 }
