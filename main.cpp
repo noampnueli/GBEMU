@@ -7,7 +7,7 @@
 
 Z80 cpu;
 GPU gpu;
-char* rom_file_name = (char *) "Tennis.gb";
+char* rom_file_name = (char *) "roms/ttt.gb";
 
 
 void print_registers()

@@ -111,7 +111,7 @@ void write_byte(byte data, word addr)
     // Joypad I/O
     if(addr == 0xFF00)
     {
-        std::cout << "I/O party!" << std::endl;
+//        std::cout << "I/O party!" << std::endl;
         // Is scan requested
         if(!(data & 0x10) || !(data & 0x20))
         {
