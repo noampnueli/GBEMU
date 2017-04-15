@@ -10,6 +10,7 @@
 #define screen_width 160
 
 #define tile_num 384
+#define sprite_num 40
 
 class GPU
 {
@@ -22,9 +23,19 @@ private:
 
     } color;
 
+    typedef struct sprite
+    {
+        byte y;
+        byte x;
+        byte tile;
+        byte options;
+    } sprite;
+
     color palette[4];
 
     byte tileset[tile_num][64];
+
+    sprite oam[sprite_num];
 
     void init_palette()
     {
@@ -92,6 +103,33 @@ private:
 
                 if(control & (1 << 3) && tile < 128)
                     tile += 256;
+            }
+        }
+
+        for(byte i = 0; i < sprite_num; i++)
+        {
+            // Copy from memory to sprite table
+            sprite tmp_sprite[4];
+            memcpy(tmp_sprite, memory + OAM + i, 4);
+
+            sprite sprt = *tmp_sprite;
+
+            byte sprite_x = (byte) (sprite.x - 8);
+            byte sprite_y = (byte) (sprite.y - 16);
+
+            pixel_offset = (word) (line * 160 + sprite_x);
+
+            byte tile_row;
+
+            // Y flip
+            if(sprite.options & 0x40)
+                tile_row = (byte) (7 - line - sprite_y);
+            else
+                tile_row = (byte) (line - sprite_y);
+
+            for(byte _x = 0; _x < 8; _x++)
+            {
+                
             }
         }
         render();

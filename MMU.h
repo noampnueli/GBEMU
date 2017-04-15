@@ -11,6 +11,7 @@
 #define VRAM 0x8000
 #define EXT_RAM 0xA000
 #define INTERNAL_RAM 0xC000
+#define OAM 0xFE00
 
 byte memory[MEM_SIZE] = {0};
 
@@ -146,7 +147,7 @@ void write_word(word data, word addr)
     memory[addr + 1] = (byte) (data >> 8);
 }
 
-void load_ROM(const char* file_name) // TODO: Test when time has come
+void load_ROM(const char* file_name)
 {
     std::ifstream rom_file;
     rom_file.open(file_name);
