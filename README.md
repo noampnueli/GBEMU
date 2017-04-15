@@ -1,10 +1,8 @@
-# GBEMU
-GameBoy classic emulator.
+# GBEMU (W.I.P)
+***Work in progress*** GameBoy Classic emulator.
 
-Graphics powered by SDL 2.
+>Graphics powered by SDL 2.
 
-Noam Pnueli
+## Credits
 
-Shahar Rosenberg
-
-Alon Hadar(?)
+Noam Pnueli and Shahar Rosenberg
