@@ -244,6 +244,7 @@ void opcode_0x21(Z80& cpu)
 void opcode_0x22(Z80& cpu)
 {
     write_byte(cpu._r.a, (((word) cpu._r.h) << 8) + cpu._r.l);
+    cpu.add(cpu._r.h, cpu._r.l, 1);
     cpu._r.m = 3;
 }
 
