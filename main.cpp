@@ -48,7 +48,6 @@ void dispatcher()
 
         printf("OPCODE: %x PC: %x DE: %x%x BC: %x%x HL: %x%x\n", op, old_pc - 1, cpu._r.d, cpu._r.e, cpu._r.b, cpu._r.c,
                cpu._r.h, cpu._r.l);
-
 //        print_registers();
         cpu._clock.m += cpu._r.m; // add time to CPU clock
         cpu._clock.t += cpu._r.t;
@@ -66,7 +65,7 @@ void dispatcher()
         gpu_line = gpu.line;
 
         gpu.step(cpu);
-        usleep(100);
+//        usleep(100);
     }
     std::cout << "hue(?)" << std::endl;
 }
