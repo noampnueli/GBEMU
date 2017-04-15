@@ -46,8 +46,8 @@ void dispatcher()
             opmap[op](cpu);
         }
 
-//        printf("OPCODE: %x PC: %x DE: %x%x B: %x HL: %x%x\n", op, old_pc - 1, cpu._r.d, cpu._r.e, cpu._r.b,
-//               cpu._r.h, cpu._r.l);
+        printf("OPCODE: %x PC: %x DE: %x%x BC: %x%x HL: %x%x\n", op, old_pc - 1, cpu._r.d, cpu._r.e, cpu._r.b, cpu._r.c,
+               cpu._r.h, cpu._r.l);
 
 //        print_registers();
         cpu._clock.m += cpu._r.m; // add time to CPU clock
@@ -66,7 +66,7 @@ void dispatcher()
         gpu_line = gpu.line;
 
         gpu.step(cpu);
-//        usleep(100);
+        usleep(100);
     }
     std::cout << "hue(?)" << std::endl;
 }
@@ -79,6 +79,12 @@ void boot()
     std::cout << "[*] Registers are set" << std::endl;
     load_ROM(rom_file_name);
     std::cout << "[*] ROM is loaded" << std::endl << std::endl;
+    cpu._r.a = 01;
+    cpu._r.f = 0xB0;
+    cpu._r.c = 0x13;
+    cpu._r.e = 0xD8;
+    cpu._r.h = 0x01;
+    cpu._r.l = 0x4D;
     dispatcher();
 }
 

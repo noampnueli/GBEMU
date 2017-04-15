@@ -597,7 +597,7 @@ void opcode_0x55(Z80& cpu)
 
 void opcode_0x56(Z80& cpu)
 {
-    cpu._r.d = read_byte(((word) cpu._r.h) << 8 + cpu._r.l);
+    cpu._r.d = read_byte((((word) cpu._r.h) << 8) + cpu._r.l);
     cpu._r.m = 2;
 }
 
@@ -645,7 +645,7 @@ void opcode_0x5D(Z80& cpu)
 
 void opcode_0x5E(Z80& cpu)
 {
-    cpu._r.e = read_byte(((word) cpu._r.h) << 8 + cpu._r.l);
+    cpu._r.e = read_byte((((word) cpu._r.h) << 8) + cpu._r.l);
     cpu._r.m = 2;
 }
 
@@ -1082,7 +1082,7 @@ void opcode_0xA5(Z80& cpu)
 
 void opcode_0xA6(Z80& cpu)
 {
-    cpu.and_reg(read_byte(((word)cpu._r.h) << 8 + cpu._r.l));
+    cpu.and_reg(read_byte((((word)cpu._r.h) << 8) + cpu._r.l));
 }
 
 void opcode_0xA7(Z80& cpu)
@@ -1122,7 +1122,7 @@ void opcode_0xAD(Z80& cpu)
 
 void opcode_0xAE(Z80& cpu)
 {
-    cpu.xor_reg(read_byte(((word)cpu._r.h) << 8 + cpu._r.l));
+    cpu.xor_reg(read_byte((((word)cpu._r.h) << 8) + cpu._r.l));
 }
 
 void opcode_0xAF(Z80& cpu)
@@ -1162,7 +1162,7 @@ void opcode_0xB5(Z80& cpu)
 
 void opcode_0xB6(Z80& cpu)
 {
-    cpu.or_reg(read_byte(((word)cpu._r.h) << 8 + cpu._r.l));
+    cpu.or_reg(read_byte((((word)cpu._r.h) << 8) + cpu._r.l));
 }
 
 void opcode_0xB7(Z80& cpu)
@@ -1202,7 +1202,7 @@ void opcode_0xBD(Z80& cpu)
 
 void opcode_0xBE(Z80& cpu)
 {
-    cpu.compare(read_byte(((word)cpu._r.h) << 8 + cpu._r.l));
+    cpu.compare(read_byte((((word)cpu._r.h) << 8) + cpu._r.l));
 }
 
 void opcode_0xBF(Z80& cpu)
@@ -1242,7 +1242,7 @@ void opcode_0xC4(Z80& cpu)
 
 void opcode_0xC5(Z80& cpu)
 {
-    cpu.push(((word) cpu._r.b) << 8 + cpu._r.c);
+    cpu.push((((word) cpu._r.b) << 8) + cpu._r.c);
 }
 
 void opcode_0xC6(Z80& cpu)
@@ -1332,7 +1332,7 @@ void opcode_0xD4(Z80& cpu)
 
 void opcode_0xD5(Z80& cpu)
 {
-    cpu.push(((word) cpu._r.d) << 8 + cpu._r.e);
+    cpu.push((((word) cpu._r.d) << 8) + cpu._r.e);
 }
 
 void opcode_0xD6(Z80& cpu)
@@ -1428,7 +1428,7 @@ void opcode_0xE4(Z80& cpu)
 
 void opcode_0xE5(Z80& cpu)
 {
-    cpu.push(((word) cpu._r.h) << 8 + cpu._r.l);
+    cpu.push((((word) cpu._r.h) << 8) + cpu._r.l);
 }
 
 void opcode_0xE6(Z80& cpu)
