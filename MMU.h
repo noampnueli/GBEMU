@@ -26,38 +26,39 @@ static byte get_io_data()
 {
     SDL_PollEvent(&event);
 
-    byte data = 0;
+    byte data = 0x00;
 
     if(event.type == SDL_KEYDOWN)
-        switch(event.key.keysym.sym)
-        {
+    {
+        switch (event.key.keysym.sym) {
             case SDLK_DOWN:
-                data &= (0x8 | 0x20);
+                data |= (0x8 | 0x20);
                 break;
             case SDLK_d: // Start
-                data &= (0x8 | 0x10);
+                data |= (0x8 | 0x10);
                 break;
             case SDLK_UP:
-                data &= (0x4 | 0x20);
+                data |= (0x4 | 0x20);
                 break;
             case SDLK_f: // Select
-                data &= (0x4 | 0x10);
+                data |= (0x4 | 0x10);
                 break;
             case SDLK_LEFT:
-                data &= (0x2 | 0x20);
+                data |= (0x2 | 0x20);
                 break;
             case SDLK_b:
-                data &= (0x2 | 0x10);
+                data |= (0x2 | 0x10);
                 break;
             case SDLK_RIGHT:
-                data &= (0x1 | 0x20);
+                data |= (0x1 | 0x20);
                 break;
             case SDLK_a:
-                data &= (0x1 | 0x10);
+                data |= (0x1 | 0x10);
                 break;
             default:
                 break;
         }
+    }
 
     return data;
 }
@@ -119,7 +120,12 @@ void write_byte(byte data, word addr)
         if(!(data & 0x10) || !(data & 0x20))
         {
             data = get_io_data();
+            printf("data: %x\n", data);
         }
+        else if(!(data & 0x30))
+            data = 0xff;
+        else
+            data = 0;
     }
 
     memory[addr] = data;

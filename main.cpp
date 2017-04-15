@@ -7,7 +7,7 @@
 
 Z80 cpu;
 GPU gpu;
-char* rom_file_name = (char *) "roms/Tennis.gb";
+char* rom_file_name = (char *) "roms/ttt.gb";
 
 
 void print_registers()
@@ -50,7 +50,7 @@ void dispatcher()
 //               cpu._r.h, cpu._r.l);
         if((old_pc - 1) == 0x2391)
         {
-            printf("aha");
+            printf("\r");
         }
 //        print_registers();
         cpu._clock.m += cpu._r.m; // add time to CPU clock
