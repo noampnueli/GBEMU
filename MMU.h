@@ -3,6 +3,7 @@
 
 #include <fstream>
 #include "definitions.h"
+#include "GUI.h"
 
 #define MEM_SIZE 0xFFFF
 #define ROM_BANK_0 0
@@ -68,6 +69,48 @@ void write_byte(byte data, word addr)
     if(addr == 0xFF40) gpu_control = (byte) data;
     else if(addr == 0xFF42) gpu_scroll_x = (byte) data;
     else if(addr == 0xFF43) gpu_scroll_y = (byte) data;
+
+    // Joypad I/O
+    if(addr == 0xFF00)
+    {
+        std::cout << "I/O party!" << std::endl;
+        // Is scan requested
+        if(!(data & 0x10) || !(data & 0x20))
+        {
+            SDL_PollEvent(&event);
+
+            if(event.type == SDL_KEYDOWN)
+                switch(event.key.keysym.sym)
+                {
+                    case SDLK_DOWN:
+                        data &= (0x8 | 0x20);
+                        break;
+                    case SDLK_d: // Start
+                        data &= (0x8 | 0x10);
+                        break;
+                    case SDLK_UP:
+                        data &= (0x4 | 0x20);
+                        break;
+                    case SDLK_f: // Select
+                        data &= (0x4 | 0x10);
+                        break;
+                    case SDLK_LEFT:
+                        data &= (0x2 | 0x20);
+                        break;
+                    case SDLK_b:
+                        data &= (0x2 | 0x10);
+                        break;
+                    case SDLK_RIGHT:
+                        data &= (0x1 | 0x20);
+                        break;
+                    case SDLK_a:
+                        data &= (0x1 | 0x10);
+                        break;
+                    default:
+                        break;
+                }
+        }
+    }
 
     memory[addr] = data;
 }

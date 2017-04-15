@@ -67,9 +67,21 @@ bool is_left_arrow()
     return (event.type == SDL_KEYDOWN) && (event.key.keysym.sym == SDLK_LEFT);
 }
 
+bool is_a()
+{
+    SDL_PollEvent(&event);
+    return (event.type == SDL_KEYDOWN) && (event.key.keysym.sym == SDLK_a);
+}
+
+bool is_b()
+{
+    SDL_PollEvent(&event);
+    return (event.type == SDL_KEYDOWN) && (event.key.keysym.sym == SDLK_s);
+}
+
 bool gameboy_keys_pressed() // TODO add A, B, Start, Select
 {
-    return true || is_up_arrow() || is_down_arrow() || is_right_arrow() || is_left_arrow();
+    return is_up_arrow() || is_down_arrow() || is_right_arrow() || is_left_arrow() || is_a() || is_b();
 }
 
 #endif //GBEMU_GUI_H
