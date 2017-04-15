@@ -10,6 +10,7 @@
 #define screen_width 160
 
 #define tile_num 384
+#define sprite_num 40
 
 class GPU
 {
@@ -22,9 +23,19 @@ private:
 
     } color;
 
+    typedef struct sprite
+    {
+        byte y;
+        byte x;
+        byte tile;
+        byte options;
+    } sprite;
+
     color palette[4];
 
     byte tileset[tile_num][64];
+
+    sprite oam[sprite_num];
 
     void init_palette()
     {
@@ -92,6 +103,47 @@ private:
 
                 if(control & (1 << 3) && tile < 128)
                     tile += 256;
+            }
+        }
+
+        for(byte i = 0; i < sprite_num; i++)
+        {
+            // Copy from memory to sprite table
+            sprite tmp_sprite[1];
+            memcpy(tmp_sprite, memory + OAM + i, sizeof(sprite));
+
+            sprite sprt = *tmp_sprite;
+
+            byte sprite_x = (byte) (sprt.x - 8);
+            byte sprite_y = (byte) (sprt.y - 16);
+
+            word sprite_pixel_offset = (word) (line * screen_width + sprite_x);
+
+            byte tile_row;
+
+            // Y flip
+            if(sprt.options & 0x40)
+                tile_row = (byte) (7 - line - sprite_y);
+            else
+                tile_row = (byte) (line - sprite_y);
+
+            for(byte _x = 0; _x < 8; _x++)
+            {
+                if(sprite_x + _x >= 0 && sprite_x + _x < screen_width
+                   && (!(sprt.options & 0x80) || !(line * screen_width + sprite_x + _x)))
+                {
+                    color c;
+                    // Is x flip
+                    if(sprt.options & 0x20)
+                        c = palette[tileset[sprt.tile][tile_row * 8 + 7 - _x]];
+                    else
+                        c = palette[tileset[sprt.tile][tile_row * 8 + _x]];
+
+                    if(c.red != 0)
+                        set_pixel(sprite_pixel_offset % screen_width, sprite_pixel_offset / screen_width, c.red, c.green, c.blue, 255);
+
+                    sprite_pixel_offset++;
+                }
             }
         }
         render();

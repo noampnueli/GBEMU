@@ -7,7 +7,7 @@
 
 Z80 cpu;
 GPU gpu;
-char* rom_file_name = (char *) "roms/ttt.gb";
+char* rom_file_name = (char *) "roms/Tennis.gb";
 
 
 void print_registers()
@@ -46,10 +46,7 @@ void dispatcher()
             opmap[op](cpu);
         }
 
-//        printf("OPCODE: %x PC: %x AF: %x%x BC: %x%x DE: %x%x HL: %x%x\n", op, old_pc - 1,
-//               cpu._r.a, cpu._r.f,
-//               cpu._r.b, cpu._r.c,
-//               cpu._r.d, cpu._r.e,
+//        printf("OPCODE: %x PC: %x DE: %x%x BC: %x%x HL: %x%x\n", op, old_pc - 1, cpu._r.d, cpu._r.e, cpu._r.b, cpu._r.c,
 //               cpu._r.h, cpu._r.l);
         if((old_pc - 1) == 0x2391)
         {
@@ -85,7 +82,7 @@ void boot()
     std::cout << "[*] Registers are set" << std::endl;
     load_ROM(rom_file_name);
     std::cout << "[*] ROM is loaded" << std::endl << std::endl;
-    cpu._r.a = 01;
+    cpu._r.a = 0x1;
     cpu._r.f = 0xB0;
     cpu._r.c = 0x13;
     cpu._r.e = 0xD8;
