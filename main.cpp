@@ -66,7 +66,7 @@ void dispatcher()
         gpu_line = gpu.line;
 
         gpu.step(cpu);
-        usleep(100);
+//        usleep(100);
     }
     std::cout << "hue(?)" << std::endl;
 }
@@ -79,7 +79,7 @@ void boot()
     std::cout << "[*] Registers are set" << std::endl;
     load_ROM(rom_file_name);
     std::cout << "[*] ROM is loaded" << std::endl << std::endl;
-    cpu._r.a = 01;
+    cpu._r.a = 0x1;
     cpu._r.f = 0xB0;
     cpu._r.c = 0x13;
     cpu._r.e = 0xD8;
