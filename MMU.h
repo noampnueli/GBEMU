@@ -21,6 +21,44 @@ word gpu_scroll_x = 0;
 word gpu_scroll_y = 0;
 byte gpu_line = 0;
 
+static byte get_io_data(byte data)
+{
+    SDL_PollEvent(&event);
+
+    if(event.type == SDL_KEYDOWN)
+        switch(event.key.keysym.sym)
+        {
+            case SDLK_DOWN:
+                data &= (0x8 | 0x20);
+                break;
+            case SDLK_d: // Start
+                data &= (0x8 | 0x10);
+                break;
+            case SDLK_UP:
+                data &= (0x4 | 0x20);
+                break;
+            case SDLK_f: // Select
+                data &= (0x4 | 0x10);
+                break;
+            case SDLK_LEFT:
+                data &= (0x2 | 0x20);
+                break;
+            case SDLK_b:
+                data &= (0x2 | 0x10);
+                break;
+            case SDLK_RIGHT:
+                data &= (0x1 | 0x20);
+                break;
+            case SDLK_a:
+                data &= (0x1 | 0x10);
+                break;
+            default:
+                break;
+        }
+
+    return data;
+}
+
 inline byte read_byte(word addr)
 {
     if(addr > MEM_SIZE)
@@ -77,38 +115,7 @@ void write_byte(byte data, word addr)
         // Is scan requested
         if(!(data & 0x10) || !(data & 0x20))
         {
-            SDL_PollEvent(&event);
-
-            if(event.type == SDL_KEYDOWN)
-                switch(event.key.keysym.sym)
-                {
-                    case SDLK_DOWN:
-                        data &= (0x8 | 0x20);
-                        break;
-                    case SDLK_d: // Start
-                        data &= (0x8 | 0x10);
-                        break;
-                    case SDLK_UP:
-                        data &= (0x4 | 0x20);
-                        break;
-                    case SDLK_f: // Select
-                        data &= (0x4 | 0x10);
-                        break;
-                    case SDLK_LEFT:
-                        data &= (0x2 | 0x20);
-                        break;
-                    case SDLK_b:
-                        data &= (0x2 | 0x10);
-                        break;
-                    case SDLK_RIGHT:
-                        data &= (0x1 | 0x20);
-                        break;
-                    case SDLK_a:
-                        data &= (0x1 | 0x10);
-                        break;
-                    default:
-                        break;
-                }
+            data = get_io_data(data);
         }
     }
 
