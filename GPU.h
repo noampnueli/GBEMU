@@ -109,27 +109,41 @@ private:
         for(byte i = 0; i < sprite_num; i++)
         {
             // Copy from memory to sprite table
-            sprite tmp_sprite[4];
-            memcpy(tmp_sprite, memory + OAM + i, 4);
+            sprite tmp_sprite[1];
+            memcpy(tmp_sprite, memory + OAM + i, sizeof(sprite));
 
             sprite sprt = *tmp_sprite;
 
-            byte sprite_x = (byte) (sprite.x - 8);
-            byte sprite_y = (byte) (sprite.y - 16);
+            byte sprite_x = (byte) (sprt.x - 8);
+            byte sprite_y = (byte) (sprt.y - 16);
 
-            pixel_offset = (word) (line * 160 + sprite_x);
+            word sprite_pixel_offset = (word) (line * screen_width + sprite_x);
 
             byte tile_row;
 
             // Y flip
-            if(sprite.options & 0x40)
+            if(sprt.options & 0x40)
                 tile_row = (byte) (7 - line - sprite_y);
             else
                 tile_row = (byte) (line - sprite_y);
 
             for(byte _x = 0; _x < 8; _x++)
             {
-                
+                if(sprite_x + _x >= 0 && sprite_x + _x < screen_width
+                   && (!(sprt.options & 0x80) || !(line * screen_width + sprite_x + _x)))
+                {
+                    color c;
+                    // Is x flip
+                    if(sprt.options & 0x20)
+                        c = palette[tileset[sprt.tile][tile_row * 8 + 7 - _x]];
+                    else
+                        c = palette[tileset[sprt.tile][tile_row * 8 + _x]];
+
+                    if(c.red != 0)
+                        set_pixel(sprite_pixel_offset % screen_width, sprite_pixel_offset / screen_width, c.red, c.green, c.blue, 255);
+
+                    sprite_pixel_offset++;
+                }
             }
         }
         render();

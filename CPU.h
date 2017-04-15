@@ -60,14 +60,16 @@ public:
 
     void add(byte& high, byte& low, word value)
     {
+        reset_flags();
         word hl = ((word) high << 8) + (word) low;
         hl += value;
         high = (byte) ((hl >> 8) & 0xFF);
         low = (byte) (hl & 0xFF);
-        set_operation(0);
-        set_half_carry((bool) (low & 0x08));
-        set_carry((bool) (low & 0x80));
-        set_zero(hl);
+        if ((((hl & 0xFF) + (value & 0xFF)) & 0x10) == 0x10)
+            set_half_carry(1);
+        if (hl > 0 && value > (0xFF - hl))
+            set_carry(1);
+        set_zero(hl == 0);
         _r.m = 3;
     }
 
