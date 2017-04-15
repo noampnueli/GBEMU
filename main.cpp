@@ -51,7 +51,7 @@ void dispatcher()
 //               cpu._r.b, cpu._r.c,
 //               cpu._r.d, cpu._r.e,
 //               cpu._r.h, cpu._r.l);
-        if((old_pc - 1) == 0x22BB && cpu._r.c == 0xff)
+        if((old_pc - 1) == 0x2391)
         {
             printf("aha");
         }
