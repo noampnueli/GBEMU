@@ -21,9 +21,11 @@ word gpu_scroll_x = 0;
 word gpu_scroll_y = 0;
 byte gpu_line = 0;
 
-static byte get_io_data(byte data)
+static byte get_io_data()
 {
     SDL_PollEvent(&event);
+
+    byte data = 0;
 
     if(event.type == SDL_KEYDOWN)
         switch(event.key.keysym.sym)
@@ -115,7 +117,7 @@ void write_byte(byte data, word addr)
         // Is scan requested
         if(!(data & 0x10) || !(data & 0x20))
         {
-            data = get_io_data(data);
+            data = get_io_data();
         }
     }
 
